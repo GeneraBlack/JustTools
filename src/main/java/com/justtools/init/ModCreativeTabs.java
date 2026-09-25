@@ -39,6 +39,15 @@ public class ModCreativeTabs {
                         output.accept(ModItems.DIAMOND_HAMMER.get());
                         output.accept(ModItems.NETHERITE_HAMMER.get());
 
+                        // Excavators (Base)
+                        output.accept(ModItems.WOODEN_EXCAVATOR.get());
+                        output.accept(ModItems.STONE_EXCAVATOR.get());
+                        output.accept(ModItems.COPPER_EXCAVATOR.get());
+                        output.accept(ModItems.IRON_EXCAVATOR.get());
+                        output.accept(ModItems.GOLDEN_EXCAVATOR.get());
+                        output.accept(ModItems.DIAMOND_EXCAVATOR.get());
+                        output.accept(ModItems.NETHERITE_EXCAVATOR.get());
+
                         // Paxels (Base)
                         output.accept(ModItems.WOODEN_PAXEL.get());
                         output.accept(ModItems.STONE_PAXEL.get());
@@ -100,6 +109,15 @@ public class ModCreativeTabs {
                         output.accept(ModItems.HARDENED_GOLDEN_HAMMER.get());
                         output.accept(ModItems.HARDENED_DIAMOND_HAMMER.get());
                         output.accept(ModItems.HARDENED_NETHERITE_HAMMER.get());
+
+                        // Hardened Excavators
+                        output.accept(ModItems.HARDENED_WOODEN_EXCAVATOR.get());
+                        output.accept(ModItems.HARDENED_STONE_EXCAVATOR.get());
+                        output.accept(ModItems.HARDENED_COPPER_EXCAVATOR.get());
+                        output.accept(ModItems.HARDENED_IRON_EXCAVATOR.get());
+                        output.accept(ModItems.HARDENED_GOLDEN_EXCAVATOR.get());
+                        output.accept(ModItems.HARDENED_DIAMOND_EXCAVATOR.get());
+                        output.accept(ModItems.HARDENED_NETHERITE_EXCAVATOR.get());
 
                         // Hardened Paxels
                         output.accept(ModItems.HARDENED_WOODEN_PAXEL.get());

@@ -21,6 +21,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> HAMMERS = create("hammers");
+        public static final TagKey<Item> EXCAVATORS = create("excavators");
         public static final TagKey<Item> PAXELS = create("paxels");
         public static final TagKey<Item> HARDENED_TOOLS = create("hardened_tools");
 

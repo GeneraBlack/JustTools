@@ -58,6 +58,7 @@ en_lang = {
     "block.justtools.hardening_station": "Tool Hardening Station",
     "item.justtools.hardening_plate": "Hardening Plate",
     "tag.item.justtools.hammers": "Hammers",
+    "tag.item.justtools.excavators": "Excavators",
     "tag.item.justtools.paxels": "Paxels",
     "tag.item.justtools.hardened_tools": "Hardened Tools"
 }
@@ -68,6 +69,7 @@ de_lang = {
     "block.justtools.hardening_station": "Werkzeug-Härtungsstation",
     "item.justtools.hardening_plate": "Härtungsplatte",
     "tag.item.justtools.hammers": "Hämmer",
+    "tag.item.justtools.excavators": "Großschaufeln",
     "tag.item.justtools.paxels": "Paxels",
     "tag.item.justtools.hardened_tools": "Gehärtete Werkzeuge"
 }
@@ -93,6 +95,21 @@ for tier in tiers:
     write_png(f"{item_tex_dir}/{h_item_id}.png", 16, 16, draw_hammer(PALETTES[tier], True))
     en_lang[f"item.justtools.{h_item_id}"] = f"Hardened {en_tier} Hammer"
     de_lang[f"item.justtools.{h_item_id}"] = f"Gehärteter {de_tier}hammer"
+
+# Excavators (Base & Hardened)
+for tier in tiers:
+    en_tier, de_tier = tier_display_names[tier]
+    # Base excavator
+    item_id = f"{tier}_excavator" if tier != "wood" and tier != "gold" else ("wooden_excavator" if tier == "wood" else "golden_excavator")
+    write_png(f"{item_tex_dir}/{item_id}.png", 16, 16, draw_excavator(PALETTES[tier], False))
+    en_lang[f"item.justtools.{item_id}"] = f"{en_tier} Excavator"
+    de_lang[f"item.justtools.{item_id}"] = f"{de_tier}-Großschaufel"
+
+    # Hardened excavator
+    h_item_id = f"hardened_{item_id}"
+    write_png(f"{item_tex_dir}/{h_item_id}.png", 16, 16, draw_excavator(PALETTES[tier], True))
+    en_lang[f"item.justtools.{h_item_id}"] = f"Hardened {en_tier} Excavator"
+    de_lang[f"item.justtools.{h_item_id}"] = f"Gehärtete {de_tier}-Großschaufel"
 
 # Paxels (Base & Hardened)
 for tier in tiers:
@@ -236,6 +253,12 @@ hammer_ids += [f"justtools:hardened_{h[10:]}" for h in hammer_ids]
 with open(f"{just_item_tags}/hammers.json", "w") as f:
     json.dump({ "replace": False, "values": hammer_ids }, f, indent=2)
 
+# Excavators item tag
+excavator_ids = [f"justtools:{tier}_excavator" if tier not in ["wood", "gold"] else f"justtools:{'wooden' if tier=='wood' else 'golden'}_excavator" for tier in tiers]
+excavator_ids += [f"justtools:hardened_{e[10:]}" for e in excavator_ids]
+with open(f"{just_item_tags}/excavators.json", "w") as f:
+    json.dump({ "replace": False, "values": excavator_ids }, f, indent=2)
+
 # Paxels item tag
 paxel_ids = [f"justtools:{tier}_paxel" if tier not in ["wood", "gold"] else f"justtools:{'wooden' if tier=='wood' else 'golden'}_paxel" for tier in tiers]
 paxel_ids += [f"justtools:hardened_{p[10:]}" for p in paxel_ids]
@@ -243,7 +266,7 @@ with open(f"{just_item_tags}/paxels.json", "w") as f:
     json.dump({ "replace": False, "values": paxel_ids }, f, indent=2)
 
 # Hardened tools item tag
-all_hardened = [h for h in hammer_ids if "hardened" in h] + [p for p in paxel_ids if "hardened" in p]
+all_hardened = [h for h in hammer_ids if "hardened" in h] + [e for e in excavator_ids if "hardened" in e] + [p for p in paxel_ids if "hardened" in p]
 for tier in tiers:
     tp = tier if tier not in ["wood", "gold"] else ("wooden" if tier == "wood" else "golden")
     for t, _, _ in tools:
@@ -257,7 +280,7 @@ def write_item_tag(filename, items):
         json.dump({ "replace": False, "values": items }, f, indent=2)
 
 write_item_tag("swords.json", ["justtools:copper_sword"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_sword" for tier in tiers])
-write_item_tag("shovels.json", ["justtools:copper_shovel"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_shovel" for tier in tiers] + paxel_ids)
+write_item_tag("shovels.json", ["justtools:copper_shovel"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_shovel" for tier in tiers] + excavator_ids + paxel_ids)
 write_item_tag("pickaxes.json", ["justtools:copper_pickaxe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_pickaxe" for tier in tiers] + hammer_ids + paxel_ids)
 write_item_tag("axes.json", ["justtools:copper_axe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_axe" for tier in tiers] + paxel_ids)
 write_item_tag("hoes.json", ["justtools:copper_hoe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_hoe" for tier in tiers])
@@ -310,6 +333,17 @@ for tier_name, mat in tier_hammer_materials.items():
 
 # Netherite Hammer
 write_smithing("netherite_hammer_smithing", "minecraft:netherite_upgrade_smithing_template", "justtools:diamond_hammer", "minecraft:netherite_ingot", "justtools:netherite_hammer")
+
+# Excavators (4 material + 2 sticks)
+for tier_name, mat in tier_hammer_materials.items():
+    write_shaped(f"{tier_name}_excavator", [
+        " M ",
+        "MSM",
+        " S "
+    ], {"M": {"item": mat}, "S": {"item": "minecraft:stick"}}, f"justtools:{tier_name}_excavator")
+
+# Netherite Excavator
+write_smithing("netherite_excavator_smithing", "minecraft:netherite_upgrade_smithing_template", "justtools:diamond_excavator", "minecraft:netherite_ingot", "justtools:netherite_excavator")
 
 # Paxels
 paxel_recipe_parts = {

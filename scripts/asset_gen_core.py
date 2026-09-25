@@ -149,6 +149,55 @@ def draw_shovel(palette, hardened=False):
         g[2][13] = HARDENED_TRIM["light"]
     return g
 
+def draw_excavator(palette, hardened=False):
+    g = empty_16x16()
+    # Reinforced thicker handle
+    draw_stick(g, palette, hardened)
+    for x, y in [(3, 13), (4, 12), (5, 11), (6, 10), (7, 9)]:
+        g[y][x] = palette["handle"][0]
+
+    h = palette["head"]
+    # Broad heavy excavator spade scoop (centered at top-right, wide curved head)
+    head_coords = [
+        (8, 4), (9, 4), (10, 4), (11, 4), (12, 4),
+        (8, 3), (9, 3), (10, 3), (11, 3), (12, 3), (13, 3),
+        (9, 2), (10, 2), (11, 2), (12, 2), (13, 2), (14, 2),
+        (10, 1), (11, 1), (12, 1), (13, 1), (14, 1), (15, 1),
+        (11, 0), (12, 0), (13, 0), (14, 0),
+        # Lateral flanges of the scoop
+        (7, 4), (7, 5), (8, 5), (9, 5),
+        (12, 5), (13, 5), (14, 4), (13, 4)
+    ]
+    for x, y in head_coords:
+        if 0 <= x < 16 and 0 <= y < 16:
+            g[y][x] = h[2]
+
+    # Highlights along cutting edge
+    for x, y in [(11, 0), (12, 0), (13, 0), (14, 0), (15, 1), (14, 1)]:
+        if 0 <= x < 16 and 0 <= y < 16:
+            g[y][x] = h[4]
+
+    # Midtones & ribs
+    for x, y in [(10, 2), (11, 2), (12, 1), (13, 2), (10, 3)]:
+        if 0 <= x < 16 and 0 <= y < 16:
+            g[y][x] = h[3]
+
+    # Shadows along back and collar
+    for x, y in [(7, 5), (8, 5), (9, 5), (6, 6), (7, 6), (12, 5), (13, 5)]:
+        if 0 <= x < 16 and 0 <= y < 16:
+            g[y][x] = h[0]
+
+    if hardened:
+        # Obsidian reinforced rim & steel studs
+        for x, y in [(7, 5), (14, 4), (11, 0), (15, 1)]:
+            if 0 <= x < 16 and 0 <= y < 16:
+                g[y][x] = HARDENED_TRIM["dark"]
+        g[4][10] = HARDENED_TRIM["rivet"]
+        g[2][12] = HARDENED_TRIM["light"]
+        g[10][3] = HARDENED_TRIM["rivet"]
+        g[12][2] = HARDENED_TRIM["light"]
+    return g
+
 def draw_pickaxe(palette, hardened=False):
     g = empty_16x16()
     draw_stick(g, palette, hardened)
