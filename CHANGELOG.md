@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.1 — Hotfix
+
+### Fixed
+- Wooden Hammer and Wooden Excavator can now be crafted with **all plank types** (Birch, Spruce, Acacia, etc.), not just Oak
+
 ## v1.0.0 — Initial Release
 
 ### Added
