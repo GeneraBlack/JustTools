@@ -3,11 +3,14 @@ package com.justtools.event;
 import com.justtools.JustTools;
 import com.justtools.init.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.AnvilUpdateEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -59,6 +62,20 @@ public class JustToolsEvents {
             int currentDamage = mainHand.getDamageValue();
             int actualRepair = Math.min(repairAmount, currentDamage);
             mainHand.setDamageValue(currentDamage - actualRepair);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onAnvilUpdate(AnvilUpdateEvent event) {
+        ItemStack left = event.getLeft();
+        if (!left.isEmpty()) {
+            ResourceLocation key = BuiltInRegistries.ITEM.getKey(left.getItem());
+            if (key.getNamespace().equals(JustTools.MODID)) {
+                // Prevent "Too Expensive!" lock in anvil by capping level cost below 40
+                if (event.getCost() >= 40) {
+                    event.setCost(39);
+                }
+            }
         }
     }
 }

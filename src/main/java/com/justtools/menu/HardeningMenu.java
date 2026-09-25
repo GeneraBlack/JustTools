@@ -4,10 +4,12 @@ import com.justtools.init.ModBlocks;
 import com.justtools.init.ModDataComponents;
 import com.justtools.init.ModItems;
 import com.justtools.init.ModMenuTypes;
+import com.justtools.init.ModTiers;
 import com.justtools.item.ExcavatorItem;
 import com.justtools.item.HammerItem;
 import com.justtools.menu.slot.HardeningResultSlot;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Unit;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -17,8 +19,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 public class HardeningMenu extends AbstractContainerMenu {
     public static final int INPUT_SLOT_TOOL = 0;
@@ -39,6 +42,7 @@ public class HardeningMenu extends AbstractContainerMenu {
     private final ResultContainer resultSlots = new ResultContainer();
     private final ContainerLevelAccess access;
     private final Player player;
+    private int materialCost = 1;
 
     public HardeningMenu(int containerId, Inventory playerInventory) {
         this(containerId, playerInventory, ContainerLevelAccess.NULL);
@@ -52,19 +56,16 @@ public class HardeningMenu extends AbstractContainerMenu {
         // Tool Input Slot
         this.addSlot(new Slot(this.inputSlots, INPUT_SLOT_TOOL, 27, 47));
 
-        // Plate Input Slot
+        // Plate / Repair Material Input Slot (accepts plates, repair ingots/materials, or duplicate tools)
         this.addSlot(new Slot(this.inputSlots, INPUT_SLOT_PLATE, 76, 47) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModItems.HARDENING_PLATE.get())
-                        || stack.is(ModItems.DEPTH_PLATE.get())
-                        || stack.is(ModItems.ECHO_PLATE.get())
-                        || stack.is(ModItems.LAVA_PLATE.get());
+                return true;
             }
         });
 
         // Result Slot
-        this.addSlot(new HardeningResultSlot(this.player, this.inputSlots, this.resultSlots, 0, 134, 47, access));
+        this.addSlot(new HardeningResultSlot(this, this.player, this.inputSlots, this.resultSlots, 0, 134, 47, access));
 
         // Player Inventory
         for (int row = 0; row < 3; ++row) {
@@ -79,6 +80,10 @@ public class HardeningMenu extends AbstractContainerMenu {
         }
     }
 
+    public int getMaterialCost() {
+        return this.materialCost;
+    }
+
     @Override
     public void slotsChanged(Container container) {
         super.slotsChanged(container);
@@ -88,60 +93,174 @@ public class HardeningMenu extends AbstractContainerMenu {
     }
 
     private void createResult() {
+        this.materialCost = 1;
         ItemStack toolStack = this.inputSlots.getItem(INPUT_SLOT_TOOL);
         ItemStack plateStack = this.inputSlots.getItem(INPUT_SLOT_PLATE);
 
         if (!toolStack.isEmpty() && !plateStack.isEmpty()) {
-            // Case 1: Hardening Plate -> upgrade base tool to hardened variant
+            // Case 1: Hardening Plate -> upgrade base tool to hardened variant (fully repaired & resets anvil penalty)
             if (plateStack.is(ModItems.HARDENING_PLATE.get())) {
                 Item hardenedItem = ModItems.getHardenedVariant(toolStack.getItem());
                 if (hardenedItem != null) {
                     ItemStack result = new ItemStack(hardenedItem);
                     result.applyComponents(toolStack.getComponents());
+                    result.setDamageValue(0);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
                     this.resultSlots.setItem(0, result);
                     this.broadcastChanges();
                     return;
                 }
             }
 
-            // Case 2: Depth Plate (3x3x2 tunnel mining) -> applies to Hammers & Excavators
+            // Case 2: Hardening Plate -> fully repair an already-hardened or non-upgradeable damaged tool
+            if (plateStack.is(ModItems.HARDENING_PLATE.get()) && toolStack.isDamaged()) {
+                ItemStack result = toolStack.copy();
+                result.setDamageValue(0);
+                result.remove(DataComponents.REPAIR_COST);
+                this.materialCost = 1;
+                this.resultSlots.setItem(0, result);
+                this.broadcastChanges();
+                return;
+            }
+
+            // Case 3: Depth Plate (3x3x2 tunnel mining) -> applies to Hammers & Excavators
             if (plateStack.is(ModItems.DEPTH_PLATE.get())) {
                 if ((toolStack.getItem() instanceof HammerItem || toolStack.getItem() instanceof ExcavatorItem)
                         && !toolStack.has(ModDataComponents.DEPTH_UPGRADE.get())) {
                     ItemStack result = toolStack.copy();
                     result.set(ModDataComponents.DEPTH_UPGRADE.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
                     this.resultSlots.setItem(0, result);
                     this.broadcastChanges();
                     return;
                 }
             }
 
-            // Case 3: Echo Plate (Auto-Repair & XP Mending) -> applies to any tool
+            // Case 4: Echo Plate (Auto-Repair & XP Mending) -> applies to any tool
             if (plateStack.is(ModItems.ECHO_PLATE.get())) {
-                if (!toolStack.has(ModDataComponents.AUTO_REPAIR.get())) {
+                if (!toolStack.has(ModDataComponents.AUTO_REPAIR.get()) && toolStack.isDamageableItem()) {
                     ItemStack result = toolStack.copy();
                     result.set(ModDataComponents.AUTO_REPAIR.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
                     this.resultSlots.setItem(0, result);
                     this.broadcastChanges();
                     return;
                 }
             }
 
-            // Case 4: Lava Plate (Obsidian Sealing / Fireproof) -> applies to any tool
+            // Case 5: Lava Plate (Obsidian Sealing / Fireproof) -> applies to any tool
             if (plateStack.is(ModItems.LAVA_PLATE.get())) {
-                if (!toolStack.has(ModDataComponents.LAVA_PROOF.get())) {
+                if (!toolStack.has(ModDataComponents.LAVA_PROOF.get()) && toolStack.isDamageableItem()) {
                     ItemStack result = toolStack.copy();
                     result.set(DataComponents.FIRE_RESISTANT, Unit.INSTANCE);
                     result.set(ModDataComponents.LAVA_PROOF.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
                     this.resultSlots.setItem(0, result);
                     this.broadcastChanges();
                     return;
                 }
             }
+
+            // Case 6: Raw Material Repair (Ingots, Diamonds, Netherite Scraps, Planks, Cobblestone, etc.)
+            // Restores 50% max durability per material, 0 XP, resets anvil penalty!
+            if (toolStack.isDamaged() && isRepairMaterial(toolStack, plateStack)) {
+                int currentDamage = toolStack.getDamageValue();
+                int maxDamage = toolStack.getMaxDamage();
+                int repairPerItem = Math.max(1, maxDamage / 2);
+                int needed = (int) Math.ceil((double) currentDamage / repairPerItem);
+                int toConsume = Math.min(needed, plateStack.getCount());
+                int repairAmount = toConsume * repairPerItem;
+                int newDamage = Math.max(0, currentDamage - repairAmount);
+
+                ItemStack result = toolStack.copy();
+                result.setDamageValue(newDamage);
+                result.remove(DataComponents.REPAIR_COST);
+                this.materialCost = toConsume;
+                this.resultSlots.setItem(0, result);
+                this.broadcastChanges();
+                return;
+            }
+
+            // Case 7: Same Tool Repair (Combining two tools of the same type)
+            if (toolStack.isDamaged() && plateStack.is(toolStack.getItem()) && plateStack.isDamageableItem()) {
+                int currentDamage = toolStack.getDamageValue();
+                int otherDurability = plateStack.getMaxDamage() - plateStack.getDamageValue();
+                int bonus = (int) (toolStack.getMaxDamage() * 0.12);
+                int newDamage = Math.max(0, currentDamage - otherDurability - bonus);
+
+                ItemStack result = toolStack.copy();
+                result.setDamageValue(newDamage);
+                result.remove(DataComponents.REPAIR_COST);
+
+                // Combine enchantments
+                ItemEnchantments ench0 = toolStack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
+                ItemEnchantments ench1 = plateStack.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
+                ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(ench0);
+                for (var entry : ench1.entrySet()) {
+                    mutable.upgrade(entry.getKey(), entry.getIntValue());
+                }
+                EnchantmentHelper.setEnchantments(result, mutable.toImmutable());
+
+                // Preserve/merge special upgrades
+                if (plateStack.has(ModDataComponents.DEPTH_UPGRADE.get())) {
+                    result.set(ModDataComponents.DEPTH_UPGRADE.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.AUTO_REPAIR.get())) {
+                    result.set(ModDataComponents.AUTO_REPAIR.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.LAVA_PROOF.get())) {
+                    result.set(ModDataComponents.LAVA_PROOF.get(), true);
+                    result.set(DataComponents.FIRE_RESISTANT, Unit.INSTANCE);
+                }
+
+                this.materialCost = 1;
+                this.resultSlots.setItem(0, result);
+                this.broadcastChanges();
+                return;
+            }
         }
 
+        this.materialCost = 1;
         this.resultSlots.setItem(0, ItemStack.EMPTY);
         this.broadcastChanges();
+    }
+
+    public static boolean isRepairMaterial(ItemStack tool, ItemStack material) {
+        if (tool.isEmpty() || material.isEmpty()) {
+            return false;
+        }
+
+        // Vanilla tool tier check
+        if (tool.getItem().isValidRepairItem(tool, material)) {
+            return true;
+        }
+
+        // Netherite Scrap support for Netherite tools
+        if (tool.getItem() instanceof TieredItem tiered) {
+            Tier tier = tiered.getTier();
+            if ((tier == Tiers.NETHERITE || tier == ModTiers.HARDENED_NETHERITE) && material.is(Items.NETHERITE_SCRAP)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isAnyRepairMaterial(ItemStack stack) {
+        if (stack.isEmpty()) return false;
+        return stack.is(Items.COPPER_INGOT)
+                || stack.is(Items.IRON_INGOT)
+                || stack.is(Items.GOLD_INGOT)
+                || stack.is(Items.DIAMOND)
+                || stack.is(Items.NETHERITE_INGOT)
+                || stack.is(Items.NETHERITE_SCRAP)
+                || stack.is(ItemTags.PLANKS)
+                || stack.is(ItemTags.STONE_TOOL_MATERIALS)
+                || stack.is(ModItems.HARDENING_PLATE.get());
     }
 
     @Override
@@ -179,14 +298,29 @@ public class HardeningMenu extends AbstractContainerMenu {
                         || itemstack1.is(ModItems.ECHO_PLATE.get())
                         || itemstack1.is(ModItems.LAVA_PLATE.get());
 
+                ItemStack toolInSlot0 = this.inputSlots.getItem(INPUT_SLOT_TOOL);
+                boolean isTool = itemstack1.isDamageableItem();
+
                 if (isUpgradePlate) {
                     if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (ModItems.getHardenedVariant(itemstack1.getItem()) != null
-                        || itemstack1.getItem() instanceof HammerItem
-                        || itemstack1.getItem() instanceof ExcavatorItem) {
+                } else if (!toolInSlot0.isEmpty() && (isRepairMaterial(toolInSlot0, itemstack1) || itemstack1.is(toolInSlot0.getItem()))) {
+                    if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (isTool) {
                     if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_TOOL, INPUT_SLOT_TOOL + 1, false)) {
+                        if (!toolInSlot0.isEmpty() && itemstack1.is(toolInSlot0.getItem())) {
+                            if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
+                                return ItemStack.EMPTY;
+                            }
+                        } else {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                } else if (isAnyRepairMaterial(itemstack1)) {
+                    if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (slotIndex < INV_SLOT_END) {

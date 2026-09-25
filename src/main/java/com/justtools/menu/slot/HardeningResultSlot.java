@@ -1,5 +1,6 @@
 package com.justtools.menu.slot;
 
+import com.justtools.menu.HardeningMenu;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -9,12 +10,14 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 public class HardeningResultSlot extends Slot {
+    private final HardeningMenu menu;
     private final Container inputSlots;
     private final Player player;
     private final ContainerLevelAccess access;
 
-    public HardeningResultSlot(Player player, Container inputSlots, Container resultSlots, int slotIndex, int x, int y, ContainerLevelAccess access) {
+    public HardeningResultSlot(HardeningMenu menu, Player player, Container inputSlots, Container resultSlots, int slotIndex, int x, int y, ContainerLevelAccess access) {
         super(resultSlots, slotIndex, x, y);
+        this.menu = menu;
         this.player = player;
         this.inputSlots = inputSlots;
         this.access = access;
@@ -27,8 +30,9 @@ public class HardeningResultSlot extends Slot {
 
     @Override
     public void onTake(Player player, ItemStack stack) {
-        this.inputSlots.removeItem(0, 1);
-        this.inputSlots.removeItem(1, 1);
+        int cost = this.menu.getMaterialCost();
+        this.inputSlots.removeItem(HardeningMenu.INPUT_SLOT_TOOL, 1);
+        this.inputSlots.removeItem(HardeningMenu.INPUT_SLOT_PLATE, cost);
 
         this.access.execute((level, pos) -> {
             level.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
