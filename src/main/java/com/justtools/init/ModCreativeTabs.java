@@ -33,6 +33,13 @@ public class ModCreativeTabs {
                         output.accept(ModItems.MOSS_PLATE.get());
                         output.accept(ModItems.MAGNETIC_PLATE.get());
 
+                        // Deepslate Tools
+                        output.accept(ModItems.DEEPSLATE_SWORD.get());
+                        output.accept(ModItems.DEEPSLATE_SHOVEL.get());
+                        output.accept(ModItems.DEEPSLATE_PICKAXE.get());
+                        output.accept(ModItems.DEEPSLATE_AXE.get());
+                        output.accept(ModItems.DEEPSLATE_HOE.get());
+
                         // Copper Tools
                         output.accept(ModItems.COPPER_SWORD.get());
                         output.accept(ModItems.COPPER_SHOVEL.get());
@@ -43,6 +50,7 @@ public class ModCreativeTabs {
                         // Hammers (Base)
                         output.accept(ModItems.WOODEN_HAMMER.get());
                         output.accept(ModItems.STONE_HAMMER.get());
+                        output.accept(ModItems.DEEPSLATE_HAMMER.get());
                         output.accept(ModItems.COPPER_HAMMER.get());
                         output.accept(ModItems.IRON_HAMMER.get());
                         output.accept(ModItems.GOLDEN_HAMMER.get());
@@ -52,6 +60,7 @@ public class ModCreativeTabs {
                         // Excavators (Base)
                         output.accept(ModItems.WOODEN_EXCAVATOR.get());
                         output.accept(ModItems.STONE_EXCAVATOR.get());
+                        output.accept(ModItems.DEEPSLATE_EXCAVATOR.get());
                         output.accept(ModItems.COPPER_EXCAVATOR.get());
                         output.accept(ModItems.IRON_EXCAVATOR.get());
                         output.accept(ModItems.GOLDEN_EXCAVATOR.get());
@@ -61,6 +70,7 @@ public class ModCreativeTabs {
                         // Paxels (Base)
                         output.accept(ModItems.WOODEN_PAXEL.get());
                         output.accept(ModItems.STONE_PAXEL.get());
+                        output.accept(ModItems.DEEPSLATE_PAXEL.get());
                         output.accept(ModItems.COPPER_PAXEL.get());
                         output.accept(ModItems.IRON_PAXEL.get());
                         output.accept(ModItems.GOLDEN_PAXEL.get());
@@ -80,6 +90,12 @@ public class ModCreativeTabs {
                         output.accept(ModItems.HARDENED_STONE_PICKAXE.get());
                         output.accept(ModItems.HARDENED_STONE_AXE.get());
                         output.accept(ModItems.HARDENED_STONE_HOE.get());
+                        // Deepslate
+                        output.accept(ModItems.HARDENED_DEEPSLATE_SWORD.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_SHOVEL.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_PICKAXE.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_AXE.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_HOE.get());
                         // Copper
                         output.accept(ModItems.HARDENED_COPPER_SWORD.get());
                         output.accept(ModItems.HARDENED_COPPER_SHOVEL.get());
@@ -114,6 +130,7 @@ public class ModCreativeTabs {
                         // Hardened Hammers
                         output.accept(ModItems.HARDENED_WOODEN_HAMMER.get());
                         output.accept(ModItems.HARDENED_STONE_HAMMER.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_HAMMER.get());
                         output.accept(ModItems.HARDENED_COPPER_HAMMER.get());
                         output.accept(ModItems.HARDENED_IRON_HAMMER.get());
                         output.accept(ModItems.HARDENED_GOLDEN_HAMMER.get());
@@ -123,6 +140,7 @@ public class ModCreativeTabs {
                         // Hardened Excavators
                         output.accept(ModItems.HARDENED_WOODEN_EXCAVATOR.get());
                         output.accept(ModItems.HARDENED_STONE_EXCAVATOR.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_EXCAVATOR.get());
                         output.accept(ModItems.HARDENED_COPPER_EXCAVATOR.get());
                         output.accept(ModItems.HARDENED_IRON_EXCAVATOR.get());
                         output.accept(ModItems.HARDENED_GOLDEN_EXCAVATOR.get());
@@ -132,6 +150,7 @@ public class ModCreativeTabs {
                         // Hardened Paxels
                         output.accept(ModItems.HARDENED_WOODEN_PAXEL.get());
                         output.accept(ModItems.HARDENED_STONE_PAXEL.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_PAXEL.get());
                         output.accept(ModItems.HARDENED_COPPER_PAXEL.get());
                         output.accept(ModItems.HARDENED_IRON_PAXEL.get());
                         output.accept(ModItems.HARDENED_GOLDEN_PAXEL.get());

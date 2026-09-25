@@ -3,6 +3,7 @@
   "values": [
     "justtools:wooden_excavator",
     "justtools:stone_excavator",
+    "justtools:deepslate_excavator",
     "justtools:copper_excavator",
     "justtools:iron_excavator",
     "justtools:golden_excavator",
@@ -10,6 +11,7 @@
     "justtools:netherite_excavator",
     "justtools:hardened_wooden_excavator",
     "justtools:hardened_stone_excavator",
+    "justtools:hardened_deepslate_excavator",
     "justtools:hardened_copper_excavator",
     "justtools:hardened_iron_excavator",
     "justtools:hardened_golden_excavator",

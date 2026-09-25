@@ -17,6 +17,15 @@ public class ModTiers {
             () -> Ingredient.of(Items.COPPER_INGOT)
     );
 
+    public static final Tier DEEPSLATE = new SimpleTier(
+            BlockTags.INCORRECT_FOR_STONE_TOOL,
+            320,
+            4.5F,
+            1.5F,
+            7,
+            () -> Ingredient.of(Items.COBBLED_DEEPSLATE)
+    );
+
     public static final Tier HARDENED_WOOD = new SimpleTier(
             BlockTags.INCORRECT_FOR_WOODEN_TOOL,
             180,
@@ -33,6 +42,15 @@ public class ModTiers {
             1.5F,
             8,
             () -> Ingredient.of(ItemTags.STONE_TOOL_MATERIALS)
+    );
+
+    public static final Tier HARDENED_DEEPSLATE = new SimpleTier(
+            BlockTags.INCORRECT_FOR_STONE_TOOL,
+            900,
+            5.5F,
+            2.0F,
+            12,
+            () -> Ingredient.of(Items.COBBLED_DEEPSLATE)
     );
 
     public static final Tier HARDENED_COPPER = new SimpleTier(

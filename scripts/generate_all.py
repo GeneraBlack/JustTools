@@ -43,10 +43,11 @@ write_png(f"{block_tex_dir}/hardening_station_bottom.png", 16, 16, draw_block_bo
 write_png(f"{gui_tex_dir}/hardening_station.png", 176, 166, draw_gui())
 
 # Tools
-tiers = ["wood", "stone", "copper", "iron", "gold", "diamond", "netherite"]
+tiers = ["wood", "stone", "deepslate", "copper", "iron", "gold", "diamond", "netherite"]
 tier_display_names = {
     "wood": ("Wooden", "Holz"),
     "stone": ("Stone", "Stein"),
+    "deepslate": ("Deepslate", "Tiefenschiefer"),
     "copper": ("Copper", "Kupfer"),
     "iron": ("Iron", "Eisen"),
     "gold": ("Golden", "Gold"),
@@ -166,6 +167,13 @@ for tool_name, draw_fn, (en_tool, de_tool) in tools:
     write_png(f"{item_tex_dir}/{item_id}.png", 16, 16, draw_fn(PALETTES["copper"], False))
     en_lang[f"item.justtools.{item_id}"] = f"Copper {en_tool}"
     de_lang[f"item.justtools.{item_id}"] = f"Kupfer{de_tool}"
+
+# Deepslate tools
+for tool_name, draw_fn, (en_tool, de_tool) in tools:
+    item_id = f"deepslate_{tool_name}"
+    write_png(f"{item_tex_dir}/{item_id}.png", 16, 16, draw_fn(PALETTES["deepslate"], False))
+    en_lang[f"item.justtools.{item_id}"] = f"Deepslate {en_tool}"
+    de_lang[f"item.justtools.{item_id}"] = f"Tiefenschiefer{de_tool.lower()}"
 
 # Hammers (Base & Hardened)
 for tier in tiers:
@@ -371,11 +379,11 @@ def write_item_tag(filename, items):
     with open(f"{mc_item_tags}/{filename}", "w") as f:
         json.dump({ "replace": False, "values": items }, f, indent=2)
 
-write_item_tag("swords.json", ["justtools:copper_sword"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_sword" for tier in tiers])
-write_item_tag("shovels.json", ["justtools:copper_shovel"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_shovel" for tier in tiers] + excavator_ids + paxel_ids)
-write_item_tag("pickaxes.json", ["justtools:copper_pickaxe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_pickaxe" for tier in tiers] + hammer_ids + paxel_ids)
-write_item_tag("axes.json", ["justtools:copper_axe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_axe" for tier in tiers] + paxel_ids)
-write_item_tag("hoes.json", ["justtools:copper_hoe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_hoe" for tier in tiers])
+write_item_tag("swords.json", ["justtools:copper_sword", "justtools:deepslate_sword"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_sword" for tier in tiers])
+write_item_tag("shovels.json", ["justtools:copper_shovel", "justtools:deepslate_shovel"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_shovel" for tier in tiers] + excavator_ids + paxel_ids)
+write_item_tag("pickaxes.json", ["justtools:copper_pickaxe", "justtools:deepslate_pickaxe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_pickaxe" for tier in tiers] + hammer_ids + paxel_ids)
+write_item_tag("axes.json", ["justtools:copper_axe", "justtools:deepslate_axe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_axe" for tier in tiers] + paxel_ids)
+write_item_tag("hoes.json", ["justtools:copper_hoe", "justtools:deepslate_hoe"] + [f"justtools:hardened_{tier if tier not in ['wood', 'gold'] else ('wooden' if tier=='wood' else 'golden')}_hoe" for tier in tiers])
 
 # 5. RECIPES
 recipe_dir = f"{DATA}/justtools/recipe"
@@ -407,10 +415,18 @@ write_shaped("copper_pickaxe", ["CCC", " S ", " S "], {"C": {"item": "minecraft:
 write_shaped("copper_axe", ["CC", "CS", " S"], {"C": {"item": "minecraft:copper_ingot"}, "S": {"item": "minecraft:stick"}}, "justtools:copper_axe")
 write_shaped("copper_hoe", ["CC", " S", " S"], {"C": {"item": "minecraft:copper_ingot"}, "S": {"item": "minecraft:stick"}}, "justtools:copper_hoe")
 
+# Deepslate Tools
+write_shaped("deepslate_sword", ["C", "C", "S"], {"C": {"item": "minecraft:cobbled_deepslate"}, "S": {"item": "minecraft:stick"}}, "justtools:deepslate_sword")
+write_shaped("deepslate_shovel", ["C", "S", "S"], {"C": {"item": "minecraft:cobbled_deepslate"}, "S": {"item": "minecraft:stick"}}, "justtools:deepslate_shovel")
+write_shaped("deepslate_pickaxe", ["CCC", " S ", " S "], {"C": {"item": "minecraft:cobbled_deepslate"}, "S": {"item": "minecraft:stick"}}, "justtools:deepslate_pickaxe")
+write_shaped("deepslate_axe", ["CC", "CS", " S"], {"C": {"item": "minecraft:cobbled_deepslate"}, "S": {"item": "minecraft:stick"}}, "justtools:deepslate_axe")
+write_shaped("deepslate_hoe", ["CC", " S", " S"], {"C": {"item": "minecraft:cobbled_deepslate"}, "S": {"item": "minecraft:stick"}}, "justtools:deepslate_hoe")
+
 # Hammers
 tier_hammer_materials = {
     "wooden": "minecraft:oak_planks",
     "stone": "minecraft:cobblestone",
+    "deepslate": "minecraft:cobbled_deepslate",
     "copper": "minecraft:copper_ingot",
     "iron": "minecraft:iron_ingot",
     "golden": "minecraft:gold_ingot",
@@ -441,6 +457,7 @@ write_smithing("netherite_excavator_smithing", "minecraft:netherite_upgrade_smit
 paxel_recipe_parts = {
     "wooden": ("minecraft:wooden_pickaxe", "minecraft:wooden_axe", "minecraft:wooden_shovel"),
     "stone": ("minecraft:stone_pickaxe", "minecraft:stone_axe", "minecraft:stone_shovel"),
+    "deepslate": ("justtools:deepslate_pickaxe", "justtools:deepslate_axe", "justtools:deepslate_shovel"),
     "copper": ("justtools:copper_pickaxe", "justtools:copper_axe", "justtools:copper_shovel"),
     "iron": ("minecraft:iron_pickaxe", "minecraft:iron_axe", "minecraft:iron_shovel"),
     "golden": ("minecraft:golden_pickaxe", "minecraft:golden_axe", "minecraft:golden_shovel"),

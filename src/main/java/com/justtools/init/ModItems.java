@@ -41,11 +41,25 @@ public class ModItems {
     public static final DeferredItem<HoeItem> COPPER_HOE = ITEMS.register("copper_hoe",
             () -> new HoeItem(ModTiers.COPPER, new Item.Properties()));
 
+    // --- Deepslate Tools ---
+    public static final DeferredItem<SwordItem> DEEPSLATE_SWORD = ITEMS.register("deepslate_sword",
+            () -> new SwordItem(ModTiers.DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<ShovelItem> DEEPSLATE_SHOVEL = ITEMS.register("deepslate_shovel",
+            () -> new ShovelItem(ModTiers.DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<PickaxeItem> DEEPSLATE_PICKAXE = ITEMS.register("deepslate_pickaxe",
+            () -> new PickaxeItem(ModTiers.DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<AxeItem> DEEPSLATE_AXE = ITEMS.register("deepslate_axe",
+            () -> new AxeItem(ModTiers.DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<HoeItem> DEEPSLATE_HOE = ITEMS.register("deepslate_hoe",
+            () -> new HoeItem(ModTiers.DEEPSLATE, new Item.Properties()));
+
     // --- Hammers (Base) ---
     public static final DeferredItem<HammerItem> WOODEN_HAMMER = ITEMS.register("wooden_hammer",
             () -> new HammerItem(Tiers.WOOD, new Item.Properties().durability(200)));
     public static final DeferredItem<HammerItem> STONE_HAMMER = ITEMS.register("stone_hammer",
             () -> new HammerItem(Tiers.STONE, new Item.Properties().durability(400)));
+    public static final DeferredItem<HammerItem> DEEPSLATE_HAMMER = ITEMS.register("deepslate_hammer",
+            () -> new HammerItem(ModTiers.DEEPSLATE, new Item.Properties().durability(650)));
     public static final DeferredItem<HammerItem> COPPER_HAMMER = ITEMS.register("copper_hammer",
             () -> new HammerItem(ModTiers.COPPER, new Item.Properties().durability(600)));
     public static final DeferredItem<HammerItem> IRON_HAMMER = ITEMS.register("iron_hammer",
@@ -62,6 +76,8 @@ public class ModItems {
             () -> new ExcavatorItem(Tiers.WOOD, new Item.Properties().durability(200)));
     public static final DeferredItem<ExcavatorItem> STONE_EXCAVATOR = ITEMS.register("stone_excavator",
             () -> new ExcavatorItem(Tiers.STONE, new Item.Properties().durability(400)));
+    public static final DeferredItem<ExcavatorItem> DEEPSLATE_EXCAVATOR = ITEMS.register("deepslate_excavator",
+            () -> new ExcavatorItem(ModTiers.DEEPSLATE, new Item.Properties().durability(650)));
     public static final DeferredItem<ExcavatorItem> COPPER_EXCAVATOR = ITEMS.register("copper_excavator",
             () -> new ExcavatorItem(ModTiers.COPPER, new Item.Properties().durability(600)));
     public static final DeferredItem<ExcavatorItem> IRON_EXCAVATOR = ITEMS.register("iron_excavator",
@@ -78,6 +94,8 @@ public class ModItems {
             () -> new PaxelItem(Tiers.WOOD, new Item.Properties().durability(160)));
     public static final DeferredItem<PaxelItem> STONE_PAXEL = ITEMS.register("stone_paxel",
             () -> new PaxelItem(Tiers.STONE, new Item.Properties().durability(350)));
+    public static final DeferredItem<PaxelItem> DEEPSLATE_PAXEL = ITEMS.register("deepslate_paxel",
+            () -> new PaxelItem(ModTiers.DEEPSLATE, new Item.Properties().durability(550)));
     public static final DeferredItem<PaxelItem> COPPER_PAXEL = ITEMS.register("copper_paxel",
             () -> new PaxelItem(ModTiers.COPPER, new Item.Properties().durability(500)));
     public static final DeferredItem<PaxelItem> IRON_PAXEL = ITEMS.register("iron_paxel",
@@ -112,6 +130,18 @@ public class ModItems {
             () -> new AxeItem(ModTiers.HARDENED_STONE, new Item.Properties()));
     public static final DeferredItem<HoeItem> HARDENED_STONE_HOE = ITEMS.register("hardened_stone_hoe",
             () -> new HoeItem(ModTiers.HARDENED_STONE, new Item.Properties()));
+
+    // --- Hardened Deepslate ---
+    public static final DeferredItem<SwordItem> HARDENED_DEEPSLATE_SWORD = ITEMS.register("hardened_deepslate_sword",
+            () -> new SwordItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<ShovelItem> HARDENED_DEEPSLATE_SHOVEL = ITEMS.register("hardened_deepslate_shovel",
+            () -> new ShovelItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<PickaxeItem> HARDENED_DEEPSLATE_PICKAXE = ITEMS.register("hardened_deepslate_pickaxe",
+            () -> new PickaxeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<AxeItem> HARDENED_DEEPSLATE_AXE = ITEMS.register("hardened_deepslate_axe",
+            () -> new AxeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+    public static final DeferredItem<HoeItem> HARDENED_DEEPSLATE_HOE = ITEMS.register("hardened_deepslate_hoe",
+            () -> new HoeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
 
     // --- Hardened Copper ---
     public static final DeferredItem<SwordItem> HARDENED_COPPER_SWORD = ITEMS.register("hardened_copper_sword",
@@ -178,6 +208,8 @@ public class ModItems {
             () -> new HammerItem(ModTiers.HARDENED_WOOD, new Item.Properties().durability(600)));
     public static final DeferredItem<HammerItem> HARDENED_STONE_HAMMER = ITEMS.register("hardened_stone_hammer",
             () -> new HammerItem(ModTiers.HARDENED_STONE, new Item.Properties().durability(1200)));
+    public static final DeferredItem<HammerItem> HARDENED_DEEPSLATE_HAMMER = ITEMS.register("hardened_deepslate_hammer",
+            () -> new HammerItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().durability(1600)));
     public static final DeferredItem<HammerItem> HARDENED_COPPER_HAMMER = ITEMS.register("hardened_copper_hammer",
             () -> new HammerItem(ModTiers.HARDENED_COPPER, new Item.Properties().durability(1800)));
     public static final DeferredItem<HammerItem> HARDENED_IRON_HAMMER = ITEMS.register("hardened_iron_hammer",
@@ -194,6 +226,8 @@ public class ModItems {
             () -> new ExcavatorItem(ModTiers.HARDENED_WOOD, new Item.Properties().durability(600)));
     public static final DeferredItem<ExcavatorItem> HARDENED_STONE_EXCAVATOR = ITEMS.register("hardened_stone_excavator",
             () -> new ExcavatorItem(ModTiers.HARDENED_STONE, new Item.Properties().durability(1200)));
+    public static final DeferredItem<ExcavatorItem> HARDENED_DEEPSLATE_EXCAVATOR = ITEMS.register("hardened_deepslate_excavator",
+            () -> new ExcavatorItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().durability(1600)));
     public static final DeferredItem<ExcavatorItem> HARDENED_COPPER_EXCAVATOR = ITEMS.register("hardened_copper_excavator",
             () -> new ExcavatorItem(ModTiers.HARDENED_COPPER, new Item.Properties().durability(1800)));
     public static final DeferredItem<ExcavatorItem> HARDENED_IRON_EXCAVATOR = ITEMS.register("hardened_iron_excavator",
@@ -210,6 +244,8 @@ public class ModItems {
             () -> new PaxelItem(ModTiers.HARDENED_WOOD, new Item.Properties().durability(480)));
     public static final DeferredItem<PaxelItem> HARDENED_STONE_PAXEL = ITEMS.register("hardened_stone_paxel",
             () -> new PaxelItem(ModTiers.HARDENED_STONE, new Item.Properties().durability(1000)));
+    public static final DeferredItem<PaxelItem> HARDENED_DEEPSLATE_PAXEL = ITEMS.register("hardened_deepslate_paxel",
+            () -> new PaxelItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().durability(1400)));
     public static final DeferredItem<PaxelItem> HARDENED_COPPER_PAXEL = ITEMS.register("hardened_copper_paxel",
             () -> new PaxelItem(ModTiers.HARDENED_COPPER, new Item.Properties().durability(1500)));
     public static final DeferredItem<PaxelItem> HARDENED_IRON_PAXEL = ITEMS.register("hardened_iron_paxel",
@@ -241,6 +277,13 @@ public class ModItems {
         HARDENING_UPGRADES.put(Items.STONE_PICKAXE, HARDENED_STONE_PICKAXE);
         HARDENING_UPGRADES.put(Items.STONE_AXE, HARDENED_STONE_AXE);
         HARDENING_UPGRADES.put(Items.STONE_HOE, HARDENED_STONE_HOE);
+
+        // Deepslate Tools
+        HARDENING_UPGRADES.put(DEEPSLATE_SWORD.get(), HARDENED_DEEPSLATE_SWORD);
+        HARDENING_UPGRADES.put(DEEPSLATE_SHOVEL.get(), HARDENED_DEEPSLATE_SHOVEL);
+        HARDENING_UPGRADES.put(DEEPSLATE_PICKAXE.get(), HARDENED_DEEPSLATE_PICKAXE);
+        HARDENING_UPGRADES.put(DEEPSLATE_AXE.get(), HARDENED_DEEPSLATE_AXE);
+        HARDENING_UPGRADES.put(DEEPSLATE_HOE.get(), HARDENED_DEEPSLATE_HOE);
 
         // Copper Tools
         HARDENING_UPGRADES.put(COPPER_SWORD.get(), HARDENED_COPPER_SWORD);
@@ -280,6 +323,7 @@ public class ModItems {
         // Hammers
         HARDENING_UPGRADES.put(WOODEN_HAMMER.get(), HARDENED_WOODEN_HAMMER);
         HARDENING_UPGRADES.put(STONE_HAMMER.get(), HARDENED_STONE_HAMMER);
+        HARDENING_UPGRADES.put(DEEPSLATE_HAMMER.get(), HARDENED_DEEPSLATE_HAMMER);
         HARDENING_UPGRADES.put(COPPER_HAMMER.get(), HARDENED_COPPER_HAMMER);
         HARDENING_UPGRADES.put(IRON_HAMMER.get(), HARDENED_IRON_HAMMER);
         HARDENING_UPGRADES.put(GOLDEN_HAMMER.get(), HARDENED_GOLDEN_HAMMER);
@@ -289,6 +333,7 @@ public class ModItems {
         // Excavators
         HARDENING_UPGRADES.put(WOODEN_EXCAVATOR.get(), HARDENED_WOODEN_EXCAVATOR);
         HARDENING_UPGRADES.put(STONE_EXCAVATOR.get(), HARDENED_STONE_EXCAVATOR);
+        HARDENING_UPGRADES.put(DEEPSLATE_EXCAVATOR.get(), HARDENED_DEEPSLATE_EXCAVATOR);
         HARDENING_UPGRADES.put(COPPER_EXCAVATOR.get(), HARDENED_COPPER_EXCAVATOR);
         HARDENING_UPGRADES.put(IRON_EXCAVATOR.get(), HARDENED_IRON_EXCAVATOR);
         HARDENING_UPGRADES.put(GOLDEN_EXCAVATOR.get(), HARDENED_GOLDEN_EXCAVATOR);
@@ -298,6 +343,7 @@ public class ModItems {
         // Paxels
         HARDENING_UPGRADES.put(WOODEN_PAXEL.get(), HARDENED_WOODEN_PAXEL);
         HARDENING_UPGRADES.put(STONE_PAXEL.get(), HARDENED_STONE_PAXEL);
+        HARDENING_UPGRADES.put(DEEPSLATE_PAXEL.get(), HARDENED_DEEPSLATE_PAXEL);
         HARDENING_UPGRADES.put(COPPER_PAXEL.get(), HARDENED_COPPER_PAXEL);
         HARDENING_UPGRADES.put(IRON_PAXEL.get(), HARDENED_IRON_PAXEL);
         HARDENING_UPGRADES.put(GOLDEN_PAXEL.get(), HARDENED_GOLDEN_PAXEL);

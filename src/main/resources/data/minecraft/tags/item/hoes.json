@@ -2,8 +2,10 @@
   "replace": false,
   "values": [
     "justtools:copper_hoe",
+    "justtools:deepslate_hoe",
     "justtools:hardened_wooden_hoe",
     "justtools:hardened_stone_hoe",
+    "justtools:hardened_deepslate_hoe",
     "justtools:hardened_copper_hoe",
     "justtools:hardened_iron_hoe",
     "justtools:hardened_golden_hoe",

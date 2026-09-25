@@ -3,6 +3,7 @@
   "values": [
     "justtools:wooden_paxel",
     "justtools:stone_paxel",
+    "justtools:deepslate_paxel",
     "justtools:copper_paxel",
     "justtools:iron_paxel",
     "justtools:golden_paxel",
@@ -10,6 +11,7 @@
     "justtools:netherite_paxel",
     "justtools:hardened_wooden_paxel",
     "justtools:hardened_stone_paxel",
+    "justtools:hardened_deepslate_paxel",
     "justtools:hardened_copper_paxel",
     "justtools:hardened_iron_paxel",
     "justtools:hardened_golden_paxel",

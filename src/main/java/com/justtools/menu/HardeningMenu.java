@@ -372,6 +372,7 @@ public class HardeningMenu extends AbstractContainerMenu {
                 || stack.is(Items.NETHERITE_SCRAP)
                 || stack.is(ItemTags.PLANKS)
                 || stack.is(ItemTags.STONE_TOOL_MATERIALS)
+                || stack.is(Items.COBBLED_DEEPSLATE)
                 || stack.is(ModItems.HARDENING_PLATE.get());
     }
 
