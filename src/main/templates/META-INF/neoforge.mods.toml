@@ -46,7 +46,7 @@ authors="Gener"
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-JustTools adds complete Copper tools, 3x3 Hammers for all tiers, Paxels combining pickaxe/axe/shovel/hoe, a Tool Hardening Station, and reinforced Hardened variants of all tools!
+Just Tools is a comprehensive tool expansion mod that adds 110+ items: Copper & Deepslate tool tiers, 3x3 Hammers, 3x3 Excavators, multi-purpose Paxels, a Tool Hardening Station with free repairs, Hardened tool variants with 2.5-4x durability, and 11 unique Upgrade Plates (Auto-Smelt, Magnetic Vacuum, Lava Seal, Depth Drill, and more). No dependencies required!
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
