@@ -1,6 +1,5 @@
 package com.justtools;
 
-import com.justtools.client.JustToolsClient;
 import com.justtools.init.*;
 import com.mojang.logging.LogUtils;
 import net.neoforged.api.distmarker.Dist;
@@ -23,7 +22,9 @@ public class JustTools {
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
-            modEventBus.addListener(JustToolsClient::onRegisterScreens);
+            // Use double-lambda to prevent JVM from loading client classes on server
+            modEventBus.addListener(net.neoforged.neoforge.client.event.RegisterMenuScreensEvent.class,
+                    event -> com.justtools.client.JustToolsClient.onRegisterScreens(event));
         }
 
         LOGGER.info("JustTools initialized!");

@@ -5,9 +5,7 @@ import com.justtools.init.ModDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,17 +19,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.AnvilUpdateEvent;
-import com.justtools.init.ModItems;
-import com.justtools.item.ExcavatorItem;
-import com.justtools.item.HammerItem;
-import com.justtools.item.PaxelItem;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -40,90 +33,6 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = JustTools.MODID)
 public class JustToolsEvents {
-
-    @SubscribeEvent
-    public static void onTooltip(ItemTooltipEvent event) {
-        ItemStack stack = event.getItemStack();
-
-        // 1. Upgrade component badges on tools
-        if (stack.has(ModDataComponents.DEPTH_UPGRADE.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.depth_upgrade").withStyle(ChatFormatting.AQUA));
-        }
-        if (stack.has(ModDataComponents.AUTO_REPAIR.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.auto_repair").withStyle(ChatFormatting.GREEN));
-        }
-        if (stack.has(ModDataComponents.LAVA_PROOF.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.lava_proof").withStyle(ChatFormatting.GOLD));
-        }
-        if (stack.has(ModDataComponents.OVERCLOCK.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.overclock").withStyle(ChatFormatting.RED));
-        }
-        if (stack.has(ModDataComponents.BREEZE_CHARGE.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.breeze_charge").withStyle(ChatFormatting.DARK_AQUA));
-        }
-        if (stack.has(ModDataComponents.AUTO_SMELT.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.auto_smelt").withStyle(ChatFormatting.YELLOW));
-        }
-        if (stack.has(ModDataComponents.REINFORCED.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.reinforced").withStyle(ChatFormatting.BLUE));
-        }
-        if (stack.has(ModDataComponents.AMETHYST_SHIELD.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.amethyst_shield").withStyle(ChatFormatting.LIGHT_PURPLE));
-        }
-        if (stack.has(ModDataComponents.PHOTOSYNTHESIS.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.photosynthesis").withStyle(ChatFormatting.DARK_GREEN));
-        }
-        if (stack.has(ModDataComponents.MAGNETIC.get())) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.magnetic").withStyle(ChatFormatting.DARK_PURPLE));
-        }
-
-        // 2. Item descriptions for upgrade plates and station
-        if (stack.is(ModItems.HARDENING_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.hardening_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.DEPTH_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.depth_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_hammers_excavators").withStyle(ChatFormatting.DARK_AQUA));
-        } else if (stack.is(ModItems.ECHO_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.echo_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.LAVA_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.lava_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.OVERCLOCK_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.overclock_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.BREEZE_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.breeze_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.AUTO_SMELT_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.auto_smelt_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.REINFORCED_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.reinforced_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.AMETHYST_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.amethyst_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.MOSS_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.moss_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.MAGNETIC_PLATE.get())) {
-            event.getToolTip().add(Component.translatable("item.justtools.magnetic_plate.desc").withStyle(ChatFormatting.GRAY));
-            event.getToolTip().add(Component.translatable("tooltip.justtools.compatible_all").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.is(ModItems.HARDENING_STATION.get())) {
-            event.getToolTip().add(Component.translatable("block.justtools.hardening_station.desc").withStyle(ChatFormatting.GRAY));
-        }
-
-        // 3. Tool type descriptions
-        if (stack.getItem() instanceof HammerItem) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.hammer_desc").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.getItem() instanceof ExcavatorItem) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.excavator_desc").withStyle(ChatFormatting.DARK_GRAY));
-        } else if (stack.getItem() instanceof PaxelItem) {
-            event.getToolTip().add(Component.translatable("tooltip.justtools.paxel_desc").withStyle(ChatFormatting.DARK_GRAY));
-        }
-    }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -176,8 +85,26 @@ public class JustToolsEvents {
         // Breeze: ignore underwater & airborne speed penalties
         if (mainHand.has(ModDataComponents.BREEZE_CHARGE.get())) {
             float speed = event.getNewSpeed();
-            if (player.isEyeInFluid(FluidTags.WATER) && !player.hasEffect(MobEffects.DIG_SPEED)) {
-                speed *= 5.0F;
+            // Only compensate if the player doesn't have Aqua Affinity on their helmet.
+            // Check by comparing to the item's base speed — if underwater penalty was applied,
+            // the speed will be ~5x lower than expected.
+            if (player.isEyeInFluid(FluidTags.WATER)) {
+                // Check helmet for aqua affinity via data component
+                ItemStack helmet = player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.HEAD);
+                boolean hasAquaAffinity = false;
+                if (!helmet.isEmpty()) {
+                    var enchantments = helmet.getOrDefault(net.minecraft.core.component.DataComponents.ENCHANTMENTS,
+                            net.minecraft.world.item.enchantment.ItemEnchantments.EMPTY);
+                    var registry = player.level().registryAccess()
+                            .lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT);
+                    var aquaHolder = registry.get(net.minecraft.world.item.enchantment.Enchantments.AQUA_AFFINITY);
+                    if (aquaHolder.isPresent()) {
+                        hasAquaAffinity = enchantments.getLevel(aquaHolder.get()) > 0;
+                    }
+                }
+                if (!hasAquaAffinity) {
+                    speed *= 5.0F;
+                }
             }
             if (!player.onGround()) {
                 speed *= 5.0F;
@@ -191,16 +118,6 @@ public class JustToolsEvents {
         Player player = event.getPlayer();
         ItemStack tool = player.getMainHandItem();
         if (tool.isEmpty()) return;
-
-        // Amethyst Shield: prevent tool from breaking at 1 durability
-        if (tool.has(ModDataComponents.AMETHYST_SHIELD.get())) {
-            if (tool.getDamageValue() >= tool.getMaxDamage() - 1) {
-                event.setCanceled(true);
-                player.displayClientMessage(Component.translatable("message.justtools.break_prevented").withStyle(ChatFormatting.LIGHT_PURPLE), true);
-                player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0F, 1.2F);
-                return;
-            }
-        }
 
         // Overclock: 2-second Haste boost on continuous mining streaks
         if (tool.has(ModDataComponents.OVERCLOCK.get())) {
@@ -260,20 +177,6 @@ public class JustToolsEvents {
             int currentDamage = mainHand.getDamageValue();
             int actualRepair = Math.min(repairAmount, currentDamage);
             mainHand.setDamageValue(currentDamage - actualRepair);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onAnvilUpdate(AnvilUpdateEvent event) {
-        ItemStack left = event.getLeft();
-        if (!left.isEmpty()) {
-            ResourceLocation key = BuiltInRegistries.ITEM.getKey(left.getItem());
-            if (key.getNamespace().equals(JustTools.MODID)) {
-                // Prevent "Too Expensive!" lock in anvil by capping level cost below 40
-                if (event.getCost() >= 40) {
-                    event.setCost(39);
-                }
-            }
         }
     }
 }

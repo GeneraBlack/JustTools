@@ -91,7 +91,7 @@ public class HammerItem extends PickaxeItem {
                             }
                         }
                     } finally {
-                        IS_BREAKING_AREA.set(false);
+                        IS_BREAKING_AREA.remove();
                     }
                 }
             }

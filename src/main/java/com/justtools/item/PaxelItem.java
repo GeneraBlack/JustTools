@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
@@ -83,7 +84,7 @@ public class PaxelItem extends DiggerItem {
             level.setBlock(pos, unlitState, 11);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, unlitState));
             if (player != null) {
-                stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                stack.hurtAndBreak(1, player, context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
@@ -95,7 +96,7 @@ public class PaxelItem extends DiggerItem {
                 level.playSound(player, pos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.setBlock(pos, hoeModified, 11);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, hoeModified));
-                stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                stack.hurtAndBreak(1, player, context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }
@@ -127,7 +128,7 @@ public class PaxelItem extends DiggerItem {
                 level.setBlock(pos, modified, 11);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, modified));
                 if (player != null) {
-                    stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                    stack.hurtAndBreak(1, player, context.getHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }

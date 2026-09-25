@@ -91,7 +91,7 @@ public class ExcavatorItem extends ShovelItem {
                             }
                         }
                     } finally {
-                        IS_BREAKING_AREA.set(false);
+                        IS_BREAKING_AREA.remove();
                     }
                 }
             }

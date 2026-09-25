@@ -421,34 +421,28 @@ public class HardeningMenu extends AbstractContainerMenu {
                 ItemStack toolInSlot0 = this.inputSlots.getItem(INPUT_SLOT_TOOL);
                 boolean isTool = itemstack1.isDamageableItem();
 
+                boolean movedToStation = false;
                 if (isUpgradePlate) {
-                    if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
-                        return ItemStack.EMPTY;
-                    }
+                    movedToStation = this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false);
                 } else if (!toolInSlot0.isEmpty() && (isRepairMaterial(toolInSlot0, itemstack1) || itemstack1.is(toolInSlot0.getItem()))) {
-                    if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
-                        return ItemStack.EMPTY;
-                    }
+                    movedToStation = this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false);
                 } else if (isTool) {
-                    if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_TOOL, INPUT_SLOT_TOOL + 1, false)) {
-                        if (!toolInSlot0.isEmpty() && itemstack1.is(toolInSlot0.getItem())) {
-                            if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
-                                return ItemStack.EMPTY;
-                            }
-                        } else {
-                            return ItemStack.EMPTY;
-                        }
+                    movedToStation = this.moveItemStackTo(itemstack1, INPUT_SLOT_TOOL, INPUT_SLOT_TOOL + 1, false);
+                    if (!movedToStation && !toolInSlot0.isEmpty() && itemstack1.is(toolInSlot0.getItem())) {
+                        movedToStation = this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false);
                     }
                 } else if (isAnyRepairMaterial(itemstack1)) {
-                    if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
+                    movedToStation = this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false);
+                }
+
+                if (!movedToStation) {
+                    if (slotIndex < INV_SLOT_END) {
+                        if (!this.moveItemStackTo(itemstack1, USE_ROW_SLOT_START, USE_ROW_SLOT_END, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, INV_SLOT_END, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (slotIndex < INV_SLOT_END) {
-                    if (!this.moveItemStackTo(itemstack1, USE_ROW_SLOT_START, USE_ROW_SLOT_END, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (!this.moveItemStackTo(itemstack1, INV_SLOT_START, INV_SLOT_END, false)) {
-                    return ItemStack.EMPTY;
                 }
             }
 
