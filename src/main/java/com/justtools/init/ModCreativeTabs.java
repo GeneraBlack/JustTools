@@ -25,6 +25,13 @@ public class ModCreativeTabs {
                         output.accept(ModItems.DEPTH_PLATE.get());
                         output.accept(ModItems.ECHO_PLATE.get());
                         output.accept(ModItems.LAVA_PLATE.get());
+                        output.accept(ModItems.OVERCLOCK_PLATE.get());
+                        output.accept(ModItems.BREEZE_PLATE.get());
+                        output.accept(ModItems.AUTO_SMELT_PLATE.get());
+                        output.accept(ModItems.REINFORCED_PLATE.get());
+                        output.accept(ModItems.AMETHYST_PLATE.get());
+                        output.accept(ModItems.MOSS_PLATE.get());
+                        output.accept(ModItems.MAGNETIC_PLATE.get());
 
                         // Copper Tools
                         output.accept(ModItems.COPPER_SWORD.get());

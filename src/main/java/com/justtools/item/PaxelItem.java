@@ -26,6 +26,12 @@ public class PaxelItem extends DiggerItem {
     }
 
     @Override
+    public <T extends net.minecraft.world.entity.LivingEntity> int damageItem(ItemStack stack, int amount, T entity, java.util.function.Consumer<net.minecraft.world.item.Item> onBroken) {
+        amount = ToolDamageHandler.handleDamage(stack, amount, entity);
+        return super.damageItem(stack, amount, entity, onBroken);
+    }
+
+    @Override
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
         if (state.is(ModTags.Blocks.MINEABLE_WITH_PAXEL)
                 || state.is(BlockTags.MINEABLE_WITH_PICKAXE)

@@ -21,6 +21,13 @@ public class ModItems {
     public static final DeferredItem<Item> DEPTH_PLATE = ITEMS.registerItem("depth_plate", Item::new, new Item.Properties());
     public static final DeferredItem<Item> ECHO_PLATE = ITEMS.registerItem("echo_plate", Item::new, new Item.Properties());
     public static final DeferredItem<Item> LAVA_PLATE = ITEMS.registerItem("lava_plate", Item::new, new Item.Properties().fireResistant());
+    public static final DeferredItem<Item> OVERCLOCK_PLATE = ITEMS.registerItem("overclock_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> BREEZE_PLATE = ITEMS.registerItem("breeze_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> AUTO_SMELT_PLATE = ITEMS.registerItem("auto_smelt_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> REINFORCED_PLATE = ITEMS.registerItem("reinforced_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> AMETHYST_PLATE = ITEMS.registerItem("amethyst_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> MOSS_PLATE = ITEMS.registerItem("moss_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> MAGNETIC_PLATE = ITEMS.registerItem("magnetic_plate", Item::new, new Item.Properties());
 
     // --- Copper Tools ---
     public static final DeferredItem<SwordItem> COPPER_SWORD = ITEMS.register("copper_sword",

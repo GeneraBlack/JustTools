@@ -25,6 +25,13 @@ write_png(f"{item_tex_dir}/hardening_plate.png", 16, 16, draw_plate())
 write_png(f"{item_tex_dir}/depth_plate.png", 16, 16, draw_depth_plate())
 write_png(f"{item_tex_dir}/echo_plate.png", 16, 16, draw_echo_plate())
 write_png(f"{item_tex_dir}/lava_plate.png", 16, 16, draw_lava_plate())
+write_png(f"{item_tex_dir}/overclock_plate.png", 16, 16, draw_overclock_plate())
+write_png(f"{item_tex_dir}/breeze_plate.png", 16, 16, draw_breeze_plate())
+write_png(f"{item_tex_dir}/auto_smelt_plate.png", 16, 16, draw_auto_smelt_plate())
+write_png(f"{item_tex_dir}/reinforced_plate.png", 16, 16, draw_reinforced_plate())
+write_png(f"{item_tex_dir}/amethyst_plate.png", 16, 16, draw_amethyst_plate())
+write_png(f"{item_tex_dir}/moss_plate.png", 16, 16, draw_moss_plate())
+write_png(f"{item_tex_dir}/magnetic_plate.png", 16, 16, draw_magnetic_plate())
 
 # Blocks
 write_png(f"{block_tex_dir}/hardening_station_top.png", 16, 16, draw_block_top())
@@ -63,9 +70,24 @@ en_lang = {
     "item.justtools.depth_plate": "Depth Drill Plate",
     "item.justtools.echo_plate": "Soul Repair Core",
     "item.justtools.lava_plate": "Lava Seal Plating",
+    "item.justtools.overclock_plate": "Redstone Turbine Plate",
+    "item.justtools.breeze_plate": "Wind Core Plate",
+    "item.justtools.auto_smelt_plate": "Thermal Core Plate",
+    "item.justtools.reinforced_plate": "Reinforced Frame Plate",
+    "item.justtools.amethyst_plate": "Amethyst Shield Plate",
+    "item.justtools.moss_plate": "Photosynthesis Plate",
+    "item.justtools.magnetic_plate": "Magnetic Vacuum Plate",
     "tooltip.justtools.depth_upgrade": "🚜 Depth Drill: 3x3x2 Mining",
     "tooltip.justtools.auto_repair": "💚 Soul Repair: Passive Auto-Repair & XP Mending",
     "tooltip.justtools.lava_proof": "🌋 Lava-Sealed: Fireproof & floats in lava",
+    "tooltip.justtools.overclock": "⚡ Redstone Turbine: +35% Mining Speed & Streak Boost",
+    "tooltip.justtools.breeze_charge": "💨 Wind Core: Full Mining Speed in Water & Air",
+    "tooltip.justtools.auto_smelt": "🔥 Thermal Core: Automatically Smelts Mined Drops",
+    "tooltip.justtools.reinforced": "💎 Reinforced Frame: 50% Chance of Zero Durability Loss",
+    "tooltip.justtools.amethyst_shield": "💠 Amethyst Shield: Prevents Tool Breakage & Absorbs Shocks",
+    "tooltip.justtools.photosynthesis": "🌿 Photosynthesis: Continuous Sunlight Repair",
+    "tooltip.justtools.magnetic": "🧲 Magnetic Core: Attracts Mined Drops Directly to Inventory",
+    "message.justtools.break_prevented": "💠 Amethyst Shield prevented your tool from breaking!",
     "tag.item.justtools.hammers": "Hammers",
     "tag.item.justtools.excavators": "Excavators",
     "tag.item.justtools.paxels": "Paxels",
@@ -80,9 +102,24 @@ de_lang = {
     "item.justtools.depth_plate": "Tiefenbohrer-Platte",
     "item.justtools.echo_plate": "Seelen-Reparaturkern",
     "item.justtools.lava_plate": "Lava-Versiegelung",
+    "item.justtools.overclock_plate": "Redstone-Turbinen-Platte",
+    "item.justtools.breeze_plate": "Windstoß-Platte",
+    "item.justtools.auto_smelt_plate": "Thermo-Schmelzplatte",
+    "item.justtools.reinforced_plate": "Verstärkte Rahmenplatte",
+    "item.justtools.amethyst_plate": "Amethyst-Schildplatte",
+    "item.justtools.moss_plate": "Photosynthese-Platte",
+    "item.justtools.magnetic_plate": "Magnetit-Vakuumplatte",
     "tooltip.justtools.depth_upgrade": "🚜 Tiefenbohrer: 3x3x2 Abbau",
     "tooltip.justtools.auto_repair": "💚 Seelen-Reparatur: Automatische Reparatur & XP-Mending",
     "tooltip.justtools.lava_proof": "🌋 Lava-Versiegelt: Feuerfest & schwimmt auf Lava",
+    "tooltip.justtools.overclock": "⚡ Redstone-Turbine: +35% Abbaugeschwindigkeit & Minen-Rausch",
+    "tooltip.justtools.breeze_charge": "💨 Windstoß-Kern: Volle Abbaugeschwindigkeit in Wasser & Luft",
+    "tooltip.justtools.auto_smelt": "🔥 Thermo-Kern: Schmilzt Erze & Blöcke sofort beim Abbau",
+    "tooltip.justtools.reinforced": "💎 Verstärkter Rahmen: 50% Chance auf 0 Haltbarkeitsverlust",
+    "tooltip.justtools.amethyst_shield": "💠 Amethyst-Schutz: Verhindert Werkzeugbruch & dämpft Abnutzung",
+    "tooltip.justtools.photosynthesis": "🌿 Photosynthese: Kontinuierliche Reparatur im Sonnenlicht",
+    "tooltip.justtools.magnetic": "🧲 Magnet-Kern: Zieht alle Drops sofort ins Inventar",
+    "message.justtools.break_prevented": "💠 Der Amethyst-Schutz hat verhindert, dass dein Werkzeug zerbricht!",
     "tag.item.justtools.hammers": "Hämmer",
     "tag.item.justtools.excavators": "Großschaufeln",
     "tag.item.justtools.paxels": "Paxels",
@@ -162,7 +199,11 @@ ensure_dir(block_model_dir)
 ensure_dir(blockstate_dir)
 
 # Plate Models
-plate_items = ["hardening_plate", "depth_plate", "echo_plate", "lava_plate"]
+plate_items = [
+    "hardening_plate", "depth_plate", "echo_plate", "lava_plate",
+    "overclock_plate", "breeze_plate", "auto_smelt_plate", "reinforced_plate",
+    "amethyst_plate", "moss_plate", "magnetic_plate"
+]
 for p in plate_items:
     with open(f"{item_model_dir}/{p}.json", "w") as f:
         json.dump({
@@ -429,6 +470,83 @@ write_shaped("lava_plate", [
     "M": {"item": "minecraft:magma_block"},
     "O": {"item": "minecraft:obsidian"}
 }, "justtools:lava_plate", 2)
+
+# Overclock Plate (Crafting: 1 Redstone Block + 4 Gold Ingots + 4 Redstone -> 2 Plates)
+write_shaped("overclock_plate", [
+    "RGR",
+    "GBG",
+    "RGR"
+], {
+    "B": {"item": "minecraft:redstone_block"},
+    "G": {"item": "minecraft:gold_ingot"},
+    "R": {"item": "minecraft:redstone"}
+}, "justtools:overclock_plate", 2)
+
+# Breeze Wind Core Plate (Crafting: 1 Breeze Rod + 4 Iron Ingots + 4 Amethyst Shards -> 2 Plates)
+write_shaped("breeze_plate", [
+    "IAI",
+    "ABA",
+    "IAI"
+], {
+    "B": {"item": "minecraft:breeze_rod"},
+    "I": {"item": "minecraft:iron_ingot"},
+    "A": {"item": "minecraft:amethyst_shard"}
+}, "justtools:breeze_plate", 2)
+
+# Thermal Auto-Smelt Plate (Crafting: 1 Blaze Rod + 4 Magma Cream + 4 Copper Ingots -> 2 Plates)
+write_shaped("auto_smelt_plate", [
+    "CMC",
+    "MBM",
+    "CMC"
+], {
+    "B": {"item": "minecraft:blaze_rod"},
+    "M": {"item": "minecraft:magma_cream"},
+    "C": {"item": "minecraft:copper_ingot"}
+}, "justtools:auto_smelt_plate", 2)
+
+# Reinforced Frame Plate (Crafting: 1 Diamond Block + 4 Iron Ingots + 4 Smooth Stone -> 2 Plates)
+write_shaped("reinforced_plate", [
+    "SIS",
+    "IBI",
+    "SIS"
+], {
+    "B": {"item": "minecraft:diamond_block"},
+    "I": {"item": "minecraft:iron_ingot"},
+    "S": {"item": "minecraft:smooth_stone"}
+}, "justtools:reinforced_plate", 2)
+
+# Amethyst Shield Plate (Crafting: 1 Amethyst Block + 4 Copper Ingots + 4 Quartz -> 2 Plates)
+write_shaped("amethyst_plate", [
+    "QCQ",
+    "CAC",
+    "QCQ"
+], {
+    "A": {"item": "minecraft:amethyst_block"},
+    "C": {"item": "minecraft:copper_ingot"},
+    "Q": {"item": "minecraft:quartz"}
+}, "justtools:amethyst_plate", 2)
+
+# Photosynthesis Moss Plate (Crafting: 1 Moss Block + 4 Emeralds + 4 Sunflowers -> 2 Plates)
+write_shaped("moss_plate", [
+    "EME",
+    "MBM",
+    "EME"
+], {
+    "B": {"item": "minecraft:moss_block"},
+    "E": {"item": "minecraft:emerald"},
+    "M": {"item": "minecraft:sunflower"}
+}, "justtools:moss_plate", 2)
+
+# Magnetic Vacuum Plate (Crafting: 1 Compass + 4 Iron Ingots + 4 Redstone -> 2 Plates)
+write_shaped("magnetic_plate", [
+    "RIR",
+    "ICI",
+    "RIR"
+], {
+    "C": {"item": "minecraft:compass"},
+    "I": {"item": "minecraft:iron_ingot"},
+    "R": {"item": "minecraft:redstone"}
+}, "justtools:magnetic_plate", 2)
 
 # Hardening Station (Crafting: 2 Iron Ingots + 1 Anvil + 3 Deepslate / Smooth Stone)
 write_shaped("hardening_station", [

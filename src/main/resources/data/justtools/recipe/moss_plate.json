@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EME",
+    "MBM",
+    "EME"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:moss_block"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "M": {
+      "item": "minecraft:sunflower"
+    }
+  },
+  "result": {
+    "id": "justtools:moss_plate",
+    "count": 2
+  }
+}

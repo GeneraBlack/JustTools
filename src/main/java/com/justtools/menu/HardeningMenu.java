@@ -165,7 +165,98 @@ public class HardeningMenu extends AbstractContainerMenu {
                 }
             }
 
-            // Case 6: Raw Material Repair (Ingots, Diamonds, Netherite Scraps, Planks, Cobblestone, etc.)
+            // Case 6: Overclock Plate (+35% speed & streak haste) -> applies to any tool
+            if (plateStack.is(ModItems.OVERCLOCK_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.OVERCLOCK.get()) && toolStack.isDamageableItem()) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.OVERCLOCK.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 7: Breeze Plate (Water & air speed penalty removal) -> applies to any tool
+            if (plateStack.is(ModItems.BREEZE_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.BREEZE_CHARGE.get()) && toolStack.isDamageableItem()) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.BREEZE_CHARGE.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 8: Auto-Smelt Plate (Direct smelting of mined drops) -> applies to any tool
+            if (plateStack.is(ModItems.AUTO_SMELT_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.AUTO_SMELT.get()) && toolStack.isDamageableItem()) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.AUTO_SMELT.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 9: Reinforced Frame Plate (50% zero-damage chance) -> applies to any tool
+            if (plateStack.is(ModItems.REINFORCED_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.REINFORCED.get()) && toolStack.isDamageableItem()) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.REINFORCED.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 10: Amethyst Shield Plate (Break prevention at 1 dur & shock absorption) -> applies to any tool
+            if (plateStack.is(ModItems.AMETHYST_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.AMETHYST_SHIELD.get()) && toolStack.isDamageableItem()) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.AMETHYST_SHIELD.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 11: Photosynthesis Plate (Continuous sunlight repair) -> applies to any tool
+            if (plateStack.is(ModItems.MOSS_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.PHOTOSYNTHESIS.get()) && toolStack.isDamageableItem()) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.PHOTOSYNTHESIS.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 12: Magnetic Vacuum Plate (Pulls all drops directly into inventory) -> applies to any tool
+            if (plateStack.is(ModItems.MAGNETIC_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.MAGNETIC.get()) && toolStack.isDamageableItem()) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.MAGNETIC.get(), true);
+                    result.remove(DataComponents.REPAIR_COST);
+                    this.materialCost = 1;
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 13: Raw Material Repair (Ingots, Diamonds, Netherite Scraps, Planks, Cobblestone, etc.)
             // Restores 50% max durability per material, 0 XP, resets anvil penalty!
             if (toolStack.isDamaged() && isRepairMaterial(toolStack, plateStack)) {
                 int currentDamage = toolStack.getDamageValue();
@@ -185,7 +276,7 @@ public class HardeningMenu extends AbstractContainerMenu {
                 return;
             }
 
-            // Case 7: Same Tool Repair (Combining two tools of the same type)
+            // Case 14: Same Tool Repair (Combining two tools of the same type)
             if (toolStack.isDamaged() && plateStack.is(toolStack.getItem()) && plateStack.isDamageableItem()) {
                 int currentDamage = toolStack.getDamageValue();
                 int otherDurability = plateStack.getMaxDamage() - plateStack.getDamageValue();
@@ -215,6 +306,27 @@ public class HardeningMenu extends AbstractContainerMenu {
                 if (plateStack.has(ModDataComponents.LAVA_PROOF.get())) {
                     result.set(ModDataComponents.LAVA_PROOF.get(), true);
                     result.set(DataComponents.FIRE_RESISTANT, Unit.INSTANCE);
+                }
+                if (plateStack.has(ModDataComponents.OVERCLOCK.get())) {
+                    result.set(ModDataComponents.OVERCLOCK.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.BREEZE_CHARGE.get())) {
+                    result.set(ModDataComponents.BREEZE_CHARGE.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.AUTO_SMELT.get())) {
+                    result.set(ModDataComponents.AUTO_SMELT.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.REINFORCED.get())) {
+                    result.set(ModDataComponents.REINFORCED.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.AMETHYST_SHIELD.get())) {
+                    result.set(ModDataComponents.AMETHYST_SHIELD.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.PHOTOSYNTHESIS.get())) {
+                    result.set(ModDataComponents.PHOTOSYNTHESIS.get(), true);
+                }
+                if (plateStack.has(ModDataComponents.MAGNETIC.get())) {
+                    result.set(ModDataComponents.MAGNETIC.get(), true);
                 }
 
                 this.materialCost = 1;
@@ -296,7 +408,14 @@ public class HardeningMenu extends AbstractContainerMenu {
                 boolean isUpgradePlate = itemstack1.is(ModItems.HARDENING_PLATE.get())
                         || itemstack1.is(ModItems.DEPTH_PLATE.get())
                         || itemstack1.is(ModItems.ECHO_PLATE.get())
-                        || itemstack1.is(ModItems.LAVA_PLATE.get());
+                        || itemstack1.is(ModItems.LAVA_PLATE.get())
+                        || itemstack1.is(ModItems.OVERCLOCK_PLATE.get())
+                        || itemstack1.is(ModItems.BREEZE_PLATE.get())
+                        || itemstack1.is(ModItems.AUTO_SMELT_PLATE.get())
+                        || itemstack1.is(ModItems.REINFORCED_PLATE.get())
+                        || itemstack1.is(ModItems.AMETHYST_PLATE.get())
+                        || itemstack1.is(ModItems.MOSS_PLATE.get())
+                        || itemstack1.is(ModItems.MAGNETIC_PLATE.get());
 
                 ItemStack toolInSlot0 = this.inputSlots.getItem(INPUT_SLOT_TOOL);
                 boolean isTool = itemstack1.isDamageableItem();

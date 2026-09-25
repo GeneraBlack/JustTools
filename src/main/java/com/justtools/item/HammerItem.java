@@ -24,6 +24,12 @@ public class HammerItem extends PickaxeItem {
     }
 
     @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, java.util.function.Consumer<net.minecraft.world.item.Item> onBroken) {
+        amount = ToolDamageHandler.handleDamage(stack, amount, entity);
+        return super.damageItem(stack, amount, entity, onBroken);
+    }
+
+    @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entityLiving) {
         boolean result = super.mineBlock(stack, level, state, pos, entityLiving);
 

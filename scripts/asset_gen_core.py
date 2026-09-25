@@ -635,4 +635,178 @@ def draw_gui():
 
     return g
 
+def draw_overclock_plate():
+    g = empty_16x16()
+    for y in range(2, 14):
+        for x in range(2, 14):
+            g[y][x] = (45, 10, 10, 255)
+    for x in range(2, 14):
+        g[2][x] = (240, 190, 50, 255)
+        g[13][x] = (90, 15, 15, 255)
+    for y in range(2, 14):
+        g[y][2] = (190, 140, 30, 255)
+        g[y][13] = (90, 15, 15, 255)
+    for rx, ry in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        g[ry][rx] = (255, 230, 100, 255)
+        g[ry+1][rx] = (140, 80, 20, 255)
+    # Redstone circuit & turbine blades
+    for y in range(5, 11):
+        for x in range(5, 11):
+            g[y][x] = (180, 20, 20, 255)
+    turbine = [(7, 4), (8, 4), (11, 7), (11, 8), (8, 11), (7, 11), (4, 8), (4, 7)]
+    for tx, ty in turbine:
+        g[ty][tx] = (255, 80, 60, 255)
+    for cx, cy in [(7, 7), (8, 7), (7, 8), (8, 8)]:
+        g[cy][cx] = (255, 250, 160, 255)
+    return g
+
+def draw_breeze_plate():
+    g = empty_16x16()
+    for y in range(2, 14):
+        for x in range(2, 14):
+            g[y][x] = (40, 45, 65, 255)
+    for x in range(2, 14):
+        g[2][x] = (140, 220, 245, 255)
+        g[13][x] = (20, 22, 35, 255)
+    for y in range(2, 14):
+        g[y][2] = (100, 180, 210, 255)
+        g[y][13] = (20, 22, 35, 255)
+    for rx, ry in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        g[ry][rx] = (200, 245, 255, 255)
+        g[ry+1][rx] = (60, 65, 95, 255)
+    # Wind swirls & breeze rods
+    swirls = [(5, 6), (6, 5), (7, 5), (8, 5), (9, 6), (9, 7), (8, 8), (7, 8), (6, 9), (6, 10), (7, 11), (8, 11), (9, 10)]
+    for sx, sy in swirls:
+        g[sy][sx] = (215, 250, 255, 255)
+    breeze_purple = [(7, 6), (8, 7), (7, 9), (8, 10)]
+    for px, py in breeze_purple:
+        g[py][px] = (175, 125, 245, 255)
+    return g
+
+def draw_auto_smelt_plate():
+    g = empty_16x16()
+    for y in range(2, 14):
+        for x in range(2, 14):
+            g[y][x] = (50, 20, 15, 255)
+    for x in range(2, 14):
+        g[2][x] = (220, 110, 45, 255)
+        g[13][x] = (25, 10, 8, 255)
+    for y in range(2, 14):
+        g[y][2] = (180, 80, 30, 255)
+        g[y][13] = (25, 10, 8, 255)
+    for rx, ry in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        g[ry][rx] = (255, 190, 70, 255)
+        g[ry+1][rx] = (120, 45, 15, 255)
+    # Flame core
+    flames = [(7, 5), (8, 5), (6, 6), (7, 6), (8, 6), (9, 6), (6, 7), (7, 7), (8, 7), (9, 7), (6, 8), (7, 8), (8, 8), (9, 8), (7, 9), (8, 9), (7, 10), (8, 10)]
+    for fx, fy in flames:
+        g[fy][fx] = (245, 90, 20, 255)
+    for cx, cy in [(7, 6), (8, 6), (7, 7), (8, 7), (7, 8), (8, 8)]:
+        g[cy][cx] = (255, 235, 60, 255)
+    g[7][7] = (255, 255, 200, 255)
+    return g
+
+def draw_reinforced_plate():
+    g = empty_16x16()
+    for y in range(2, 14):
+        for x in range(2, 14):
+            g[y][x] = (25, 30, 38, 255)
+    for x in range(2, 14):
+        g[2][x] = (180, 190, 210, 255)
+        g[13][x] = (15, 18, 22, 255)
+    for y in range(2, 14):
+        g[y][2] = (130, 140, 160, 255)
+        g[y][13] = (15, 18, 22, 255)
+    for rx, ry in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        g[ry][rx] = (230, 240, 255, 255)
+        g[ry+1][rx] = (70, 80, 95, 255)
+    # Diamond reinforced center diamond
+    diamond_rim = [(7, 4), (8, 4), (6, 5), (9, 5), (5, 6), (10, 6), (4, 7), (11, 7), (4, 8), (11, 8), (5, 9), (10, 9), (6, 10), (9, 10), (7, 11), (8, 11)]
+    for dx, dy in diamond_rim:
+        g[dy][dx] = (20, 160, 175, 255)
+    for y in range(6, 10):
+        for x in range(6, 10):
+            g[y][x] = (60, 230, 235, 255)
+    for cx, cy in [(6, 6), (7, 6), (6, 7)]:
+        g[cy][cx] = (210, 255, 255, 255)
+    return g
+
+def draw_amethyst_plate():
+    g = empty_16x16()
+    for y in range(2, 14):
+        for x in range(2, 14):
+            g[y][x] = (30, 18, 40, 255)
+    for x in range(2, 14):
+        g[2][x] = (200, 130, 230, 255)
+        g[13][x] = (15, 8, 22, 255)
+    for y in range(2, 14):
+        g[y][2] = (160, 90, 190, 255)
+        g[y][13] = (15, 8, 22, 255)
+    for rx, ry in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        g[ry][rx] = (235, 170, 255, 255)
+        g[ry+1][rx] = (75, 30, 100, 255)
+    # Amethyst crystal cluster
+    shards = [(7, 4), (8, 5), (6, 6), (7, 6), (8, 6), (9, 6), (5, 7), (6, 7), (7, 7), (8, 7), (9, 7), (10, 7), (6, 8), (7, 8), (8, 8), (9, 8), (7, 9), (8, 9), (7, 10), (8, 11)]
+    for sx, sy in shards:
+        g[sy][sx] = (155, 65, 220, 255)
+    highlights = [(7, 5), (7, 6), (8, 6), (6, 7), (7, 7)]
+    for hx, hy in highlights:
+        g[hy][hx] = (230, 160, 255, 255)
+    return g
+
+def draw_moss_plate():
+    g = empty_16x16()
+    for y in range(2, 14):
+        for x in range(2, 14):
+            g[y][x] = (25, 42, 20, 255)
+    for x in range(2, 14):
+        g[2][x] = (110, 190, 70, 255)
+        g[13][x] = (10, 22, 8, 255)
+    for y in range(2, 14):
+        g[y][2] = (80, 150, 50, 255)
+        g[y][13] = (10, 22, 8, 255)
+    for rx, ry in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        g[ry][rx] = (180, 245, 110, 255)
+        g[ry+1][rx] = (30, 70, 20, 255)
+    # Moss & Emerald sprout
+    leaf = [(7, 4), (8, 5), (6, 6), (7, 6), (8, 6), (9, 6), (7, 7), (8, 7), (6, 8), (7, 8), (8, 8), (9, 8), (7, 9), (8, 10), (7, 11)]
+    for lx, ly in leaf:
+        g[ly][lx] = (45, 185, 75, 255)
+    for sx, sy in [(7, 6), (8, 7), (7, 8)]:
+        g[sy][sx] = (245, 235, 80, 255)
+    return g
+
+def draw_magnetic_plate():
+    g = empty_16x16()
+    for y in range(2, 14):
+        for x in range(2, 14):
+            g[y][x] = (35, 38, 45, 255)
+    for x in range(2, 14):
+        g[2][x] = (160, 165, 180, 255)
+        g[13][x] = (18, 20, 25, 255)
+    for y in range(2, 14):
+        g[y][2] = (120, 125, 140, 255)
+        g[y][13] = (18, 20, 25, 255)
+    for rx, ry in [(3, 3), (12, 3), (3, 12), (12, 12)]:
+        g[ry][rx] = (220, 225, 240, 255)
+        g[ry+1][rx] = (60, 65, 75, 255)
+    # Magnet horseshoe (Red left pole, Blue right pole)
+    # Red pole (left)
+    for y in range(5, 10):
+        g[y][5] = (220, 40, 45, 255)
+        g[y][6] = (180, 25, 30, 255)
+    # Blue pole (right)
+    for y in range(5, 10):
+        g[y][9] = (30, 120, 235, 255)
+        g[y][10] = (20, 80, 195, 255)
+    # Bottom connector
+    for x in range(6, 10):
+        g[10][x] = (130, 135, 150, 255)
+        g[11][x] = (90, 95, 110, 255)
+    # Pole tips
+    g[5][5] = (255, 120, 120, 255)
+    g[5][10] = (120, 190, 255, 255)
+    return g
+
 print("Generators configured")
+

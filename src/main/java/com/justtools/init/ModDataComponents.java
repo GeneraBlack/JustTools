@@ -29,4 +29,46 @@ public class ModDataComponents {
                     .persistent(Codec.BOOL)
                     .networkSynchronized(ByteBufCodecs.BOOL)
                     .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> OVERCLOCK =
+            DATA_COMPONENTS.register("overclock", () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> BREEZE_CHARGE =
+            DATA_COMPONENTS.register("breeze_charge", () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> AUTO_SMELT =
+            DATA_COMPONENTS.register("auto_smelt", () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> REINFORCED =
+            DATA_COMPONENTS.register("reinforced", () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> AMETHYST_SHIELD =
+            DATA_COMPONENTS.register("amethyst_shield", () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> PHOTOSYNTHESIS =
+            DATA_COMPONENTS.register("photosynthesis", () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> MAGNETIC =
+            DATA_COMPONENTS.register("magnetic", () -> DataComponentType.<Boolean>builder()
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+                    .build());
 }
