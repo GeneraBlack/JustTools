@@ -19,8 +19,12 @@ import net.minecraft.world.phys.HitResult;
 public class HammerItem extends PickaxeItem {
     private static final ThreadLocal<Boolean> IS_BREAKING_AREA = ThreadLocal.withInitial(() -> false);
 
-    public HammerItem(Tier tier, Properties properties) {
-        super(tier, properties);
+    public HammerItem(Tier tier, int durability, Properties properties) {
+        super(new CustomDurabilityTier(tier, durability), properties);
+    }
+
+    public HammerItem(Tier tier, int durability) {
+        this(tier, durability, new Properties());
     }
 
     @Override
@@ -79,11 +83,8 @@ public class HammerItem extends PickaxeItem {
                     IS_BREAKING_AREA.set(true);
                     try {
                         if (player.gameMode.destroyBlock(targetPos)) {
-                            if (!player.isCreative()) {
-                                stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                                if (stack.isEmpty()) {
-                                    return;
-                                }
+                            if (stack.isEmpty()) {
+                                return;
                             }
                         }
                     } finally {

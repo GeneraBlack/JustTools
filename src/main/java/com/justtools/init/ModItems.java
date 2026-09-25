@@ -55,57 +55,57 @@ public class ModItems {
 
     // --- Hammers (Base) ---
     public static final DeferredItem<HammerItem> WOODEN_HAMMER = ITEMS.register("wooden_hammer",
-            () -> new HammerItem(Tiers.WOOD, new Item.Properties().durability(200)));
+            () -> new HammerItem(Tiers.WOOD, 200));
     public static final DeferredItem<HammerItem> STONE_HAMMER = ITEMS.register("stone_hammer",
-            () -> new HammerItem(Tiers.STONE, new Item.Properties().durability(400)));
+            () -> new HammerItem(Tiers.STONE, 400));
     public static final DeferredItem<HammerItem> DEEPSLATE_HAMMER = ITEMS.register("deepslate_hammer",
-            () -> new HammerItem(ModTiers.DEEPSLATE, new Item.Properties().durability(650)));
+            () -> new HammerItem(ModTiers.DEEPSLATE, 650));
     public static final DeferredItem<HammerItem> COPPER_HAMMER = ITEMS.register("copper_hammer",
-            () -> new HammerItem(ModTiers.COPPER, new Item.Properties().durability(600)));
+            () -> new HammerItem(ModTiers.COPPER, 600));
     public static final DeferredItem<HammerItem> IRON_HAMMER = ITEMS.register("iron_hammer",
-            () -> new HammerItem(Tiers.IRON, new Item.Properties().durability(800)));
+            () -> new HammerItem(Tiers.IRON, 800));
     public static final DeferredItem<HammerItem> GOLDEN_HAMMER = ITEMS.register("golden_hammer",
-            () -> new HammerItem(Tiers.GOLD, new Item.Properties().durability(150)));
+            () -> new HammerItem(Tiers.GOLD, 150));
     public static final DeferredItem<HammerItem> DIAMOND_HAMMER = ITEMS.register("diamond_hammer",
-            () -> new HammerItem(Tiers.DIAMOND, new Item.Properties().durability(3500)));
+            () -> new HammerItem(Tiers.DIAMOND, 3500));
     public static final DeferredItem<HammerItem> NETHERITE_HAMMER = ITEMS.register("netherite_hammer",
-            () -> new HammerItem(Tiers.NETHERITE, new Item.Properties().durability(5000).fireResistant()));
+            () -> new HammerItem(Tiers.NETHERITE, 5000, new Item.Properties().fireResistant()));
 
     // --- Excavators (Base) ---
     public static final DeferredItem<ExcavatorItem> WOODEN_EXCAVATOR = ITEMS.register("wooden_excavator",
-            () -> new ExcavatorItem(Tiers.WOOD, new Item.Properties().durability(200)));
+            () -> new ExcavatorItem(Tiers.WOOD, 200));
     public static final DeferredItem<ExcavatorItem> STONE_EXCAVATOR = ITEMS.register("stone_excavator",
-            () -> new ExcavatorItem(Tiers.STONE, new Item.Properties().durability(400)));
+            () -> new ExcavatorItem(Tiers.STONE, 400));
     public static final DeferredItem<ExcavatorItem> DEEPSLATE_EXCAVATOR = ITEMS.register("deepslate_excavator",
-            () -> new ExcavatorItem(ModTiers.DEEPSLATE, new Item.Properties().durability(650)));
+            () -> new ExcavatorItem(ModTiers.DEEPSLATE, 650));
     public static final DeferredItem<ExcavatorItem> COPPER_EXCAVATOR = ITEMS.register("copper_excavator",
-            () -> new ExcavatorItem(ModTiers.COPPER, new Item.Properties().durability(600)));
+            () -> new ExcavatorItem(ModTiers.COPPER, 600));
     public static final DeferredItem<ExcavatorItem> IRON_EXCAVATOR = ITEMS.register("iron_excavator",
-            () -> new ExcavatorItem(Tiers.IRON, new Item.Properties().durability(800)));
+            () -> new ExcavatorItem(Tiers.IRON, 800));
     public static final DeferredItem<ExcavatorItem> GOLDEN_EXCAVATOR = ITEMS.register("golden_excavator",
-            () -> new ExcavatorItem(Tiers.GOLD, new Item.Properties().durability(150)));
+            () -> new ExcavatorItem(Tiers.GOLD, 150));
     public static final DeferredItem<ExcavatorItem> DIAMOND_EXCAVATOR = ITEMS.register("diamond_excavator",
-            () -> new ExcavatorItem(Tiers.DIAMOND, new Item.Properties().durability(3500)));
+            () -> new ExcavatorItem(Tiers.DIAMOND, 3500));
     public static final DeferredItem<ExcavatorItem> NETHERITE_EXCAVATOR = ITEMS.register("netherite_excavator",
-            () -> new ExcavatorItem(Tiers.NETHERITE, new Item.Properties().durability(5000).fireResistant()));
+            () -> new ExcavatorItem(Tiers.NETHERITE, 5000, new Item.Properties().fireResistant()));
 
     // --- Paxels (Base) ---
     public static final DeferredItem<PaxelItem> WOODEN_PAXEL = ITEMS.register("wooden_paxel",
-            () -> new PaxelItem(Tiers.WOOD, new Item.Properties().durability(160)));
+            () -> new PaxelItem(Tiers.WOOD, 160));
     public static final DeferredItem<PaxelItem> STONE_PAXEL = ITEMS.register("stone_paxel",
-            () -> new PaxelItem(Tiers.STONE, new Item.Properties().durability(350)));
+            () -> new PaxelItem(Tiers.STONE, 350));
     public static final DeferredItem<PaxelItem> DEEPSLATE_PAXEL = ITEMS.register("deepslate_paxel",
-            () -> new PaxelItem(ModTiers.DEEPSLATE, new Item.Properties().durability(550)));
+            () -> new PaxelItem(ModTiers.DEEPSLATE, 550));
     public static final DeferredItem<PaxelItem> COPPER_PAXEL = ITEMS.register("copper_paxel",
-            () -> new PaxelItem(ModTiers.COPPER, new Item.Properties().durability(500)));
+            () -> new PaxelItem(ModTiers.COPPER, 500));
     public static final DeferredItem<PaxelItem> IRON_PAXEL = ITEMS.register("iron_paxel",
-            () -> new PaxelItem(Tiers.IRON, new Item.Properties().durability(650)));
+            () -> new PaxelItem(Tiers.IRON, 650));
     public static final DeferredItem<PaxelItem> GOLDEN_PAXEL = ITEMS.register("golden_paxel",
-            () -> new PaxelItem(Tiers.GOLD, new Item.Properties().durability(100)));
+            () -> new PaxelItem(Tiers.GOLD, 100));
     public static final DeferredItem<PaxelItem> DIAMOND_PAXEL = ITEMS.register("diamond_paxel",
-            () -> new PaxelItem(Tiers.DIAMOND, new Item.Properties().durability(3000)));
+            () -> new PaxelItem(Tiers.DIAMOND, 3000));
     public static final DeferredItem<PaxelItem> NETHERITE_PAXEL = ITEMS.register("netherite_paxel",
-            () -> new PaxelItem(Tiers.NETHERITE, new Item.Properties().durability(4500).fireResistant()));
+            () -> new PaxelItem(Tiers.NETHERITE, 4500, new Item.Properties().fireResistant()));
 
     // --- Hardened Wood ---
     public static final DeferredItem<SwordItem> HARDENED_WOODEN_SWORD = ITEMS.register("hardened_wooden_sword",
@@ -205,57 +205,57 @@ public class ModItems {
 
     // --- Hardened Hammers ---
     public static final DeferredItem<HammerItem> HARDENED_WOODEN_HAMMER = ITEMS.register("hardened_wooden_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_WOOD, new Item.Properties().durability(600)));
+            () -> new HammerItem(ModTiers.HARDENED_WOOD, 600));
     public static final DeferredItem<HammerItem> HARDENED_STONE_HAMMER = ITEMS.register("hardened_stone_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_STONE, new Item.Properties().durability(1200)));
+            () -> new HammerItem(ModTiers.HARDENED_STONE, 1200));
     public static final DeferredItem<HammerItem> HARDENED_DEEPSLATE_HAMMER = ITEMS.register("hardened_deepslate_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().durability(1600)));
+            () -> new HammerItem(ModTiers.HARDENED_DEEPSLATE, 1600));
     public static final DeferredItem<HammerItem> HARDENED_COPPER_HAMMER = ITEMS.register("hardened_copper_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_COPPER, new Item.Properties().durability(1800)));
+            () -> new HammerItem(ModTiers.HARDENED_COPPER, 1800));
     public static final DeferredItem<HammerItem> HARDENED_IRON_HAMMER = ITEMS.register("hardened_iron_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_IRON, new Item.Properties().durability(2400)));
+            () -> new HammerItem(ModTiers.HARDENED_IRON, 2400));
     public static final DeferredItem<HammerItem> HARDENED_GOLDEN_HAMMER = ITEMS.register("hardened_golden_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_GOLD, new Item.Properties().durability(500)));
+            () -> new HammerItem(ModTiers.HARDENED_GOLD, 500));
     public static final DeferredItem<HammerItem> HARDENED_DIAMOND_HAMMER = ITEMS.register("hardened_diamond_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().durability(9000)));
+            () -> new HammerItem(ModTiers.HARDENED_DIAMOND, 9000));
     public static final DeferredItem<HammerItem> HARDENED_NETHERITE_HAMMER = ITEMS.register("hardened_netherite_hammer",
-            () -> new HammerItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().durability(13000).fireResistant()));
+            () -> new HammerItem(ModTiers.HARDENED_NETHERITE, 13000, new Item.Properties().fireResistant()));
 
     // --- Hardened Excavators ---
     public static final DeferredItem<ExcavatorItem> HARDENED_WOODEN_EXCAVATOR = ITEMS.register("hardened_wooden_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_WOOD, new Item.Properties().durability(600)));
+            () -> new ExcavatorItem(ModTiers.HARDENED_WOOD, 600));
     public static final DeferredItem<ExcavatorItem> HARDENED_STONE_EXCAVATOR = ITEMS.register("hardened_stone_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_STONE, new Item.Properties().durability(1200)));
+            () -> new ExcavatorItem(ModTiers.HARDENED_STONE, 1200));
     public static final DeferredItem<ExcavatorItem> HARDENED_DEEPSLATE_EXCAVATOR = ITEMS.register("hardened_deepslate_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().durability(1600)));
+            () -> new ExcavatorItem(ModTiers.HARDENED_DEEPSLATE, 1600));
     public static final DeferredItem<ExcavatorItem> HARDENED_COPPER_EXCAVATOR = ITEMS.register("hardened_copper_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_COPPER, new Item.Properties().durability(1800)));
+            () -> new ExcavatorItem(ModTiers.HARDENED_COPPER, 1800));
     public static final DeferredItem<ExcavatorItem> HARDENED_IRON_EXCAVATOR = ITEMS.register("hardened_iron_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_IRON, new Item.Properties().durability(2400)));
+            () -> new ExcavatorItem(ModTiers.HARDENED_IRON, 2400));
     public static final DeferredItem<ExcavatorItem> HARDENED_GOLDEN_EXCAVATOR = ITEMS.register("hardened_golden_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_GOLD, new Item.Properties().durability(500)));
+            () -> new ExcavatorItem(ModTiers.HARDENED_GOLD, 500));
     public static final DeferredItem<ExcavatorItem> HARDENED_DIAMOND_EXCAVATOR = ITEMS.register("hardened_diamond_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().durability(9000)));
+            () -> new ExcavatorItem(ModTiers.HARDENED_DIAMOND, 9000));
     public static final DeferredItem<ExcavatorItem> HARDENED_NETHERITE_EXCAVATOR = ITEMS.register("hardened_netherite_excavator",
-            () -> new ExcavatorItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().durability(13000).fireResistant()));
+            () -> new ExcavatorItem(ModTiers.HARDENED_NETHERITE, 13000, new Item.Properties().fireResistant()));
 
     // --- Hardened Paxels ---
     public static final DeferredItem<PaxelItem> HARDENED_WOODEN_PAXEL = ITEMS.register("hardened_wooden_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_WOOD, new Item.Properties().durability(480)));
+            () -> new PaxelItem(ModTiers.HARDENED_WOOD, 480));
     public static final DeferredItem<PaxelItem> HARDENED_STONE_PAXEL = ITEMS.register("hardened_stone_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_STONE, new Item.Properties().durability(1000)));
+            () -> new PaxelItem(ModTiers.HARDENED_STONE, 1000));
     public static final DeferredItem<PaxelItem> HARDENED_DEEPSLATE_PAXEL = ITEMS.register("hardened_deepslate_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().durability(1400)));
+            () -> new PaxelItem(ModTiers.HARDENED_DEEPSLATE, 1400));
     public static final DeferredItem<PaxelItem> HARDENED_COPPER_PAXEL = ITEMS.register("hardened_copper_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_COPPER, new Item.Properties().durability(1500)));
+            () -> new PaxelItem(ModTiers.HARDENED_COPPER, 1500));
     public static final DeferredItem<PaxelItem> HARDENED_IRON_PAXEL = ITEMS.register("hardened_iron_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_IRON, new Item.Properties().durability(1950)));
+            () -> new PaxelItem(ModTiers.HARDENED_IRON, 1950));
     public static final DeferredItem<PaxelItem> HARDENED_GOLDEN_PAXEL = ITEMS.register("hardened_golden_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_GOLD, new Item.Properties().durability(350)));
+            () -> new PaxelItem(ModTiers.HARDENED_GOLD, 350));
     public static final DeferredItem<PaxelItem> HARDENED_DIAMOND_PAXEL = ITEMS.register("hardened_diamond_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().durability(7500)));
+            () -> new PaxelItem(ModTiers.HARDENED_DIAMOND, 7500));
     public static final DeferredItem<PaxelItem> HARDENED_NETHERITE_PAXEL = ITEMS.register("hardened_netherite_paxel",
-            () -> new PaxelItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().durability(11000).fireResistant()));
+            () -> new PaxelItem(ModTiers.HARDENED_NETHERITE, 11000, new Item.Properties().fireResistant()));
 
     // --- Hardening Upgrade Mapping ---
     private static Map<Item, Supplier<? extends Item>> HARDENING_UPGRADES = null;

@@ -21,8 +21,12 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 
 public class PaxelItem extends DiggerItem {
-    public PaxelItem(Tier tier, Properties properties) {
-        super(tier, ModTags.Blocks.MINEABLE_WITH_PAXEL, properties);
+    public PaxelItem(Tier tier, int durability, Properties properties) {
+        super(new CustomDurabilityTier(tier, durability), ModTags.Blocks.MINEABLE_WITH_PAXEL, properties);
+    }
+
+    public PaxelItem(Tier tier, int durability) {
+        this(tier, durability, new Properties());
     }
 
     @Override
