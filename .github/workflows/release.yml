@@ -1,0 +1,56 @@
+name: Build & Release to CurseForge
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build
+        run: chmod +x gradlew && ./gradlew build
+
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Publish to CurseForge
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          curseforge-id: ${{ secrets.CURSEFORGE_PROJECT_ID }}
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: build/libs/justtools-*.jar
+
+          name: "Just Tools v${{ steps.version.outputs.VERSION }}"
+          version: ${{ steps.version.outputs.VERSION }}
+          version-type: release
+          changelog-file: CHANGELOG.md
+
+          loaders: neoforge
+          game-versions: 1.21.1
+          java: 21
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/libs/justtools-*.jar
+          body_path: CHANGELOG.md
+          name: "Just Tools v${{ steps.version.outputs.VERSION }}"
