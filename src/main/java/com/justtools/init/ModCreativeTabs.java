@@ -22,6 +22,9 @@ public class ModCreativeTabs {
                         // Workstation & Components
                         output.accept(ModItems.HARDENING_STATION.get());
                         output.accept(ModItems.HARDENING_PLATE.get());
+                        output.accept(ModItems.DEPTH_PLATE.get());
+                        output.accept(ModItems.ECHO_PLATE.get());
+                        output.accept(ModItems.LAVA_PLATE.get());
 
                         // Copper Tools
                         output.accept(ModItems.COPPER_SWORD.get());

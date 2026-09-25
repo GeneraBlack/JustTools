@@ -1,5 +1,6 @@
 package com.justtools.item;
 
+import com.justtools.init.ModDataComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -36,47 +37,52 @@ public class ExcavatorItem extends ShovelItem {
     private void mineArea(Level level, ServerPlayer player, ItemStack stack, BlockPos origin) {
         Direction dir = getHitDirection(player, origin);
         Direction.Axis axis = dir.getAxis();
+        int maxDepth = stack.has(ModDataComponents.DEPTH_UPGRADE.get()) ? 2 : 1;
 
-        for (int u = -1; u <= 1; u++) {
-            for (int v = -1; v <= 1; v++) {
-                if (u == 0 && v == 0) {
-                    continue; // Center block already broken
-                }
+        for (int depth = 0; depth < maxDepth; depth++) {
+            BlockPos sliceOrigin = origin.relative(dir.getOpposite(), depth);
 
-                BlockPos targetPos;
-                if (axis == Direction.Axis.Y) {
-                    targetPos = origin.offset(u, 0, v);
-                } else if (axis == Direction.Axis.Z) {
-                    targetPos = origin.offset(u, v, 0);
-                } else {
-                    targetPos = origin.offset(0, v, u);
-                }
+            for (int u = -1; u <= 1; u++) {
+                for (int v = -1; v <= 1; v++) {
+                    if (depth == 0 && u == 0 && v == 0) {
+                        continue; // Center primary block already broken
+                    }
 
-                BlockState targetState = level.getBlockState(targetPos);
-                if (targetState.isAir() || targetState.getDestroySpeed(level, targetPos) < 0) {
-                    continue;
-                }
+                    BlockPos targetPos;
+                    if (axis == Direction.Axis.Y) {
+                        targetPos = sliceOrigin.offset(u, 0, v);
+                    } else if (axis == Direction.Axis.Z) {
+                        targetPos = sliceOrigin.offset(u, v, 0);
+                    } else {
+                        targetPos = sliceOrigin.offset(0, v, u);
+                    }
 
-                if (!targetState.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
-                    continue;
-                }
+                    BlockState targetState = level.getBlockState(targetPos);
+                    if (targetState.isAir() || targetState.getDestroySpeed(level, targetPos) < 0) {
+                        continue;
+                    }
 
-                if (!this.isCorrectToolForDrops(stack, targetState)) {
-                    continue;
-                }
+                    if (!targetState.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+                        continue;
+                    }
 
-                IS_BREAKING_AREA.set(true);
-                try {
-                    if (player.gameMode.destroyBlock(targetPos)) {
-                        if (!player.isCreative()) {
-                            stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                            if (stack.isEmpty()) {
-                                return;
+                    if (!this.isCorrectToolForDrops(stack, targetState)) {
+                        continue;
+                    }
+
+                    IS_BREAKING_AREA.set(true);
+                    try {
+                        if (player.gameMode.destroyBlock(targetPos)) {
+                            if (!player.isCreative()) {
+                                stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                                if (stack.isEmpty()) {
+                                    return;
+                                }
                             }
                         }
+                    } finally {
+                        IS_BREAKING_AREA.set(false);
                     }
-                } finally {
-                    IS_BREAKING_AREA.set(false);
                 }
             }
         }

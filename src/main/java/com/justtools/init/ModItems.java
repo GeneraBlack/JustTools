@@ -15,9 +15,12 @@ import java.util.function.Supplier;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(JustTools.MODID);
 
-    // Hardening Station BlockItem & Material
+    // Hardening Station BlockItem & Materials
     public static final DeferredItem<BlockItem> HARDENING_STATION = ITEMS.registerSimpleBlockItem("hardening_station", ModBlocks.HARDENING_STATION);
     public static final DeferredItem<Item> HARDENING_PLATE = ITEMS.registerItem("hardening_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> DEPTH_PLATE = ITEMS.registerItem("depth_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> ECHO_PLATE = ITEMS.registerItem("echo_plate", Item::new, new Item.Properties());
+    public static final DeferredItem<Item> LAVA_PLATE = ITEMS.registerItem("lava_plate", Item::new, new Item.Properties().fireResistant());
 
     // --- Copper Tools ---
     public static final DeferredItem<SwordItem> COPPER_SWORD = ITEMS.register("copper_sword",

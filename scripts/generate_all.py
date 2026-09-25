@@ -20,8 +20,11 @@ ensure_dir(gui_tex_dir)
 
 print("Generating textures...")
 
-# Plate
+# Plates
 write_png(f"{item_tex_dir}/hardening_plate.png", 16, 16, draw_plate())
+write_png(f"{item_tex_dir}/depth_plate.png", 16, 16, draw_depth_plate())
+write_png(f"{item_tex_dir}/echo_plate.png", 16, 16, draw_echo_plate())
+write_png(f"{item_tex_dir}/lava_plate.png", 16, 16, draw_lava_plate())
 
 # Blocks
 write_png(f"{block_tex_dir}/hardening_station_top.png", 16, 16, draw_block_top())
@@ -57,6 +60,12 @@ en_lang = {
     "container.justtools.hardening_station": "Tool Hardening Station",
     "block.justtools.hardening_station": "Tool Hardening Station",
     "item.justtools.hardening_plate": "Hardening Plate",
+    "item.justtools.depth_plate": "Depth Drill Plate",
+    "item.justtools.echo_plate": "Soul Repair Core",
+    "item.justtools.lava_plate": "Lava Seal Plating",
+    "tooltip.justtools.depth_upgrade": "🚜 Depth Drill: 3x3x2 Mining",
+    "tooltip.justtools.auto_repair": "💚 Soul Repair: Passive Auto-Repair & XP Mending",
+    "tooltip.justtools.lava_proof": "🌋 Lava-Sealed: Fireproof & floats in lava",
     "tag.item.justtools.hammers": "Hammers",
     "tag.item.justtools.excavators": "Excavators",
     "tag.item.justtools.paxels": "Paxels",
@@ -68,6 +77,12 @@ de_lang = {
     "container.justtools.hardening_station": "Werkzeug-Härtungsstation",
     "block.justtools.hardening_station": "Werkzeug-Härtungsstation",
     "item.justtools.hardening_plate": "Härtungsplatte",
+    "item.justtools.depth_plate": "Tiefenbohrer-Platte",
+    "item.justtools.echo_plate": "Seelen-Reparaturkern",
+    "item.justtools.lava_plate": "Lava-Versiegelung",
+    "tooltip.justtools.depth_upgrade": "🚜 Tiefenbohrer: 3x3x2 Abbau",
+    "tooltip.justtools.auto_repair": "💚 Seelen-Reparatur: Automatische Reparatur & XP-Mending",
+    "tooltip.justtools.lava_proof": "🌋 Lava-Versiegelt: Feuerfest & schwimmt auf Lava",
     "tag.item.justtools.hammers": "Hämmer",
     "tag.item.justtools.excavators": "Großschaufeln",
     "tag.item.justtools.paxels": "Paxels",
@@ -146,14 +161,16 @@ ensure_dir(item_model_dir)
 ensure_dir(block_model_dir)
 ensure_dir(blockstate_dir)
 
-# Plate Model
-with open(f"{item_model_dir}/hardening_plate.json", "w") as f:
-    json.dump({
-        "parent": "minecraft:item/generated",
-        "textures": {
-            "layer0": "justtools:item/hardening_plate"
-        }
-    }, f, indent=2)
+# Plate Models
+plate_items = ["hardening_plate", "depth_plate", "echo_plate", "lava_plate"]
+for p in plate_items:
+    with open(f"{item_model_dir}/{p}.json", "w") as f:
+        json.dump({
+            "parent": "minecraft:item/generated",
+            "textures": {
+                "layer0": f"justtools:item/{p}"
+            }
+        }, f, indent=2)
 
 # Block Models & Blockstate
 with open(f"{block_model_dir}/hardening_station.json", "w") as f:
@@ -187,7 +204,7 @@ with open(f"{item_model_dir}/hardening_station.json", "w") as f:
 
 # Tool Item Models
 for fn in os.listdir(item_tex_dir):
-    if fn.endswith(".png") and fn not in ["hardening_plate.png"]:
+    if fn.endswith(".png") and fn[:-4] not in plate_items:
         item_name = fn[:-4]
         with open(f"{item_model_dir}/{item_name}.json", "w") as f:
             json.dump({
@@ -379,6 +396,39 @@ write_shaped("hardening_plate", [
     "I": {"item": "minecraft:iron_ingot"},
     "C": {"item": "minecraft:copper_ingot"}
 }, "justtools:hardening_plate", 4)
+
+# Depth Drill Plate (Crafting: 1 Piston + 4 Iron Ingots + 4 Smooth Stone -> 2 Plates)
+write_shaped("depth_plate", [
+    "SIS",
+    "IPI",
+    "SIS"
+], {
+    "P": {"item": "minecraft:piston"},
+    "I": {"item": "minecraft:iron_ingot"},
+    "S": {"item": "minecraft:smooth_stone"}
+}, "justtools:depth_plate", 2)
+
+# Soul Repair Core (Crafting: 1 Echo Shard + 4 Lapis Lazuli + 4 Diamonds -> 2 Plates)
+write_shaped("echo_plate", [
+    "DLD",
+    "LEL",
+    "DLD"
+], {
+    "E": {"item": "minecraft:echo_shard"},
+    "L": {"item": "minecraft:lapis_lazuli"},
+    "D": {"item": "minecraft:diamond"}
+}, "justtools:echo_plate", 2)
+
+# Lava Seal Plating (Crafting: 4 Crying Obsidian + 4 Magma Blocks + 1 Obsidian -> 2 Plates)
+write_shaped("lava_plate", [
+    "CMC",
+    "MOM",
+    "CMC"
+], {
+    "C": {"item": "minecraft:crying_obsidian"},
+    "M": {"item": "minecraft:magma_block"},
+    "O": {"item": "minecraft:obsidian"}
+}, "justtools:lava_plate", 2)
 
 # Hardening Station (Crafting: 2 Iron Ingots + 1 Anvil + 3 Deepslate / Smooth Stone)
 write_shaped("hardening_station", [

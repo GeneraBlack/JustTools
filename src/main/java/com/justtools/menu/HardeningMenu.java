@@ -1,10 +1,14 @@
 package com.justtools.menu;
 
 import com.justtools.init.ModBlocks;
+import com.justtools.init.ModDataComponents;
 import com.justtools.init.ModItems;
 import com.justtools.init.ModMenuTypes;
+import com.justtools.item.ExcavatorItem;
+import com.justtools.item.HammerItem;
 import com.justtools.menu.slot.HardeningResultSlot;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.util.Unit;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -52,7 +56,10 @@ public class HardeningMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(this.inputSlots, INPUT_SLOT_PLATE, 76, 47) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModItems.HARDENING_PLATE.get());
+                return stack.is(ModItems.HARDENING_PLATE.get())
+                        || stack.is(ModItems.DEPTH_PLATE.get())
+                        || stack.is(ModItems.ECHO_PLATE.get())
+                        || stack.is(ModItems.LAVA_PLATE.get());
             }
         });
 
@@ -84,24 +91,52 @@ public class HardeningMenu extends AbstractContainerMenu {
         ItemStack toolStack = this.inputSlots.getItem(INPUT_SLOT_TOOL);
         ItemStack plateStack = this.inputSlots.getItem(INPUT_SLOT_PLATE);
 
-        if (!toolStack.isEmpty() && !plateStack.isEmpty() && plateStack.is(ModItems.HARDENING_PLATE.get())) {
-            Item hardenedItem = ModItems.getHardenedVariant(toolStack.getItem());
-            if (hardenedItem != null) {
-                ItemStack result = new ItemStack(hardenedItem);
+        if (!toolStack.isEmpty() && !plateStack.isEmpty()) {
+            // Case 1: Hardening Plate -> upgrade base tool to hardened variant
+            if (plateStack.is(ModItems.HARDENING_PLATE.get())) {
+                Item hardenedItem = ModItems.getHardenedVariant(toolStack.getItem());
+                if (hardenedItem != null) {
+                    ItemStack result = new ItemStack(hardenedItem);
+                    result.applyComponents(toolStack.getComponents());
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
 
-                if (toolStack.has(DataComponents.ENCHANTMENTS)) {
-                    result.set(DataComponents.ENCHANTMENTS, toolStack.get(DataComponents.ENCHANTMENTS));
+            // Case 2: Depth Plate (3x3x2 tunnel mining) -> applies to Hammers & Excavators
+            if (plateStack.is(ModItems.DEPTH_PLATE.get())) {
+                if ((toolStack.getItem() instanceof HammerItem || toolStack.getItem() instanceof ExcavatorItem)
+                        && !toolStack.has(ModDataComponents.DEPTH_UPGRADE.get())) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.DEPTH_UPGRADE.get(), true);
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
                 }
-                if (toolStack.has(DataComponents.CUSTOM_NAME)) {
-                    result.set(DataComponents.CUSTOM_NAME, toolStack.get(DataComponents.CUSTOM_NAME));
-                }
-                if (toolStack.has(DataComponents.REPAIR_COST)) {
-                    result.set(DataComponents.REPAIR_COST, toolStack.get(DataComponents.REPAIR_COST));
-                }
+            }
 
-                this.resultSlots.setItem(0, result);
-                this.broadcastChanges();
-                return;
+            // Case 3: Echo Plate (Auto-Repair & XP Mending) -> applies to any tool
+            if (plateStack.is(ModItems.ECHO_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.AUTO_REPAIR.get())) {
+                    ItemStack result = toolStack.copy();
+                    result.set(ModDataComponents.AUTO_REPAIR.get(), true);
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
+            }
+
+            // Case 4: Lava Plate (Obsidian Sealing / Fireproof) -> applies to any tool
+            if (plateStack.is(ModItems.LAVA_PLATE.get())) {
+                if (!toolStack.has(ModDataComponents.LAVA_PROOF.get())) {
+                    ItemStack result = toolStack.copy();
+                    result.set(DataComponents.FIRE_RESISTANT, Unit.INSTANCE);
+                    result.set(ModDataComponents.LAVA_PROOF.get(), true);
+                    this.resultSlots.setItem(0, result);
+                    this.broadcastChanges();
+                    return;
+                }
             }
         }
 
@@ -139,11 +174,18 @@ public class HardeningMenu extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
             } else if (slotIndex >= INV_SLOT_START && slotIndex < USE_ROW_SLOT_END) {
-                if (itemstack1.is(ModItems.HARDENING_PLATE.get())) {
+                boolean isUpgradePlate = itemstack1.is(ModItems.HARDENING_PLATE.get())
+                        || itemstack1.is(ModItems.DEPTH_PLATE.get())
+                        || itemstack1.is(ModItems.ECHO_PLATE.get())
+                        || itemstack1.is(ModItems.LAVA_PLATE.get());
+
+                if (isUpgradePlate) {
                     if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_PLATE, INPUT_SLOT_PLATE + 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (ModItems.getHardenedVariant(itemstack1.getItem()) != null) {
+                } else if (ModItems.getHardenedVariant(itemstack1.getItem()) != null
+                        || itemstack1.getItem() instanceof HammerItem
+                        || itemstack1.getItem() instanceof ExcavatorItem) {
                     if (!this.moveItemStackTo(itemstack1, INPUT_SLOT_TOOL, INPUT_SLOT_TOOL + 1, false)) {
                         return ItemStack.EMPTY;
                     }
