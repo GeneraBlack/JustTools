@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PAS",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:golden_pickaxe"
+    },
+    "A": {
+      "item": "minecraft:golden_axe"
+    },
+    "S": {
+      "item": "minecraft:golden_shovel"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "justtools:golden_paxel",
+    "count": 1
+  }
+}

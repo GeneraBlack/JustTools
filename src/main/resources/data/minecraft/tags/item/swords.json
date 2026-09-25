@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "justtools:copper_sword",
+    "justtools:hardened_wooden_sword",
+    "justtools:hardened_stone_sword",
+    "justtools:hardened_copper_sword",
+    "justtools:hardened_iron_sword",
+    "justtools:hardened_golden_sword",
+    "justtools:hardened_diamond_sword",
+    "justtools:hardened_netherite_sword"
+  ]
+}

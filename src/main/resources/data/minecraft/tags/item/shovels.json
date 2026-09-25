@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "justtools:copper_shovel",
+    "justtools:hardened_wooden_shovel",
+    "justtools:hardened_stone_shovel",
+    "justtools:hardened_copper_shovel",
+    "justtools:hardened_iron_shovel",
+    "justtools:hardened_golden_shovel",
+    "justtools:hardened_diamond_shovel",
+    "justtools:hardened_netherite_shovel",
+    "justtools:wooden_paxel",
+    "justtools:stone_paxel",
+    "justtools:copper_paxel",
+    "justtools:iron_paxel",
+    "justtools:golden_paxel",
+    "justtools:diamond_paxel",
+    "justtools:netherite_paxel",
+    "justtools:hardened_wooden_paxel",
+    "justtools:hardened_stone_paxel",
+    "justtools:hardened_copper_paxel",
+    "justtools:hardened_iron_paxel",
+    "justtools:hardened_golden_paxel",
+    "justtools:hardened_diamond_paxel",
+    "justtools:hardened_netherite_paxel"
+  ]
+}

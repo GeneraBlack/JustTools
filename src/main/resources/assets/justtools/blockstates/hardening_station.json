@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "justtools:block/hardening_station"
+    },
+    "facing=south": {
+      "model": "justtools:block/hardening_station",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "justtools:block/hardening_station",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "justtools:block/hardening_station",
+      "y": 90
+    }
+  }
+}

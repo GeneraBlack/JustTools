@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PAS",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "P": {
+      "item": "justtools:copper_pickaxe"
+    },
+    "A": {
+      "item": "justtools:copper_axe"
+    },
+    "S": {
+      "item": "justtools:copper_shovel"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "justtools:copper_paxel",
+    "count": 1
+  }
+}

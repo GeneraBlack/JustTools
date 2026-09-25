@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PAS",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:wooden_pickaxe"
+    },
+    "A": {
+      "item": "minecraft:wooden_axe"
+    },
+    "S": {
+      "item": "minecraft:wooden_shovel"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "justtools:wooden_paxel",
+    "count": 1
+  }
+}

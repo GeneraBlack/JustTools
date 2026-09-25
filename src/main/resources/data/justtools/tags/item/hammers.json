@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "justtools:wooden_hammer",
+    "justtools:stone_hammer",
+    "justtools:copper_hammer",
+    "justtools:iron_hammer",
+    "justtools:golden_hammer",
+    "justtools:diamond_hammer",
+    "justtools:netherite_hammer",
+    "justtools:hardened_wooden_hammer",
+    "justtools:hardened_stone_hammer",
+    "justtools:hardened_copper_hammer",
+    "justtools:hardened_iron_hammer",
+    "justtools:hardened_golden_hammer",
+    "justtools:hardened_diamond_hammer",
+    "justtools:hardened_netherite_hammer"
+  ]
+}

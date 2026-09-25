@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "justtools:block/hardening_station_side",
+    "down": "justtools:block/hardening_station_bottom",
+    "up": "justtools:block/hardening_station_top",
+    "north": "justtools:block/hardening_station_front",
+    "south": "justtools:block/hardening_station_side",
+    "east": "justtools:block/hardening_station_side",
+    "west": "justtools:block/hardening_station_side"
+  }
+}
