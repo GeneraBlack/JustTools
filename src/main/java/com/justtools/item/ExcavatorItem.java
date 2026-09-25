@@ -35,7 +35,10 @@ public class ExcavatorItem extends ShovelItem {
 
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entityLiving) {
-        boolean result = super.mineBlock(stack, level, state, pos, entityLiving);
+        boolean result = true;
+        if (!IS_BREAKING_AREA.get()) {
+            result = super.mineBlock(stack, level, state, pos, entityLiving);
+        }
 
         if (!level.isClientSide && !IS_BREAKING_AREA.get() && entityLiving instanceof ServerPlayer player) {
             mineArea(level, player, stack, pos);
