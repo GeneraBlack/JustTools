@@ -1,5 +1,6 @@
 package com.justtools.menu;
 
+import com.justtools.init.ModArmorMaterials;
 import com.justtools.init.ModBlocks;
 import com.justtools.init.ModDataComponents;
 import com.justtools.init.ModItems;
@@ -124,9 +125,10 @@ public class HardeningMenu extends AbstractContainerMenu {
                 return;
             }
 
-            // Case 3: Depth Plate (3x3x2 tunnel mining) -> applies to Hammers & Excavators
+            // Case 3: Depth Plate (3x3x2 tunnel mining for tools / Heavy Plating for armor)
             if (plateStack.is(ModItems.DEPTH_PLATE.get())) {
-                if ((toolStack.getItem() instanceof HammerItem || toolStack.getItem() instanceof ExcavatorItem)
+                if (((toolStack.getItem() instanceof HammerItem || toolStack.getItem() instanceof ExcavatorItem)
+                        || toolStack.getItem() instanceof ArmorItem)
                         && !toolStack.has(ModDataComponents.DEPTH_UPGRADE.get())) {
                     ItemStack result = toolStack.copy();
                     result.set(ModDataComponents.DEPTH_UPGRADE.get(), true);
@@ -351,10 +353,16 @@ public class HardeningMenu extends AbstractContainerMenu {
             return true;
         }
 
-        // Netherite Scrap support for Netherite tools
+        // Netherite Scrap support for Netherite tools and armor
         if (tool.getItem() instanceof TieredItem tiered) {
             Tier tier = tiered.getTier();
             if ((tier == Tiers.NETHERITE || tier == ModTiers.HARDENED_NETHERITE) && material.is(Items.NETHERITE_SCRAP)) {
+                return true;
+            }
+        }
+        if (tool.getItem() instanceof ArmorItem armor) {
+            var mat = armor.getMaterial();
+            if ((mat == ArmorMaterials.NETHERITE || mat == ModArmorMaterials.HARDENED_NETHERITE) && material.is(Items.NETHERITE_SCRAP)) {
                 return true;
             }
         }
@@ -370,6 +378,7 @@ public class HardeningMenu extends AbstractContainerMenu {
                 || stack.is(Items.DIAMOND)
                 || stack.is(Items.NETHERITE_INGOT)
                 || stack.is(Items.NETHERITE_SCRAP)
+                || stack.is(Items.LEATHER)
                 || stack.is(ItemTags.PLANKS)
                 || stack.is(ItemTags.STONE_TOOL_MATERIALS)
                 || stack.is(Items.COBBLED_DEEPSLATE)

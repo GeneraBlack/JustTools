@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "justtools:copper_helmet",
+    "justtools:deepslate_helmet",
+    "justtools:hardened_leather_helmet",
+    "justtools:hardened_copper_helmet",
+    "justtools:hardened_deepslate_helmet",
+    "justtools:hardened_chainmail_helmet",
+    "justtools:hardened_iron_helmet",
+    "justtools:hardened_golden_helmet",
+    "justtools:hardened_diamond_helmet",
+    "justtools:hardened_netherite_helmet"
+  ]
+}

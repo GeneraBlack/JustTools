@@ -2,14 +2,14 @@ package com.justtools.event;
 
 import com.justtools.JustTools;
 import com.justtools.init.ModDataComponents;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -19,12 +19,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -33,6 +37,25 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = JustTools.MODID)
 public class JustToolsEvents {
+
+    public static boolean hasArmorWith(Player player, DataComponentType<?> component) {
+        for (ItemStack armor : player.getArmorSlots()) {
+            if (!armor.isEmpty() && armor.has(component)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int countArmorWith(Player player, DataComponentType<?> component) {
+        int count = 0;
+        for (ItemStack armor : player.getArmorSlots()) {
+            if (!armor.isEmpty() && armor.has(component)) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -45,10 +68,17 @@ public class JustToolsEvents {
 
         // 1. Passive auto-repair (every 100 ticks = 5s)
         if (gameTime % 100 == 0) {
+            // Inventory tools
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack stack = player.getInventory().getItem(i);
                 if (!stack.isEmpty() && stack.has(ModDataComponents.AUTO_REPAIR.get()) && stack.isDamaged()) {
                     stack.setDamageValue(stack.getDamageValue() - 1);
+                }
+            }
+            // Equipped armor
+            for (ItemStack armor : player.getArmorSlots()) {
+                if (!armor.isEmpty() && armor.has(ModDataComponents.AUTO_REPAIR.get()) && armor.isDamaged()) {
+                    armor.setDamageValue(armor.getDamageValue() - 1);
                 }
             }
         }
@@ -61,11 +91,105 @@ public class JustToolsEvents {
             boolean onNature = belowState.is(BlockTags.DIRT) || belowState.is(Blocks.MOSS_BLOCK);
 
             if (inSunlight || onNature) {
+                // Inventory tools
                 for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                     ItemStack stack = player.getInventory().getItem(i);
                     if (!stack.isEmpty() && stack.has(ModDataComponents.PHOTOSYNTHESIS.get()) && stack.isDamaged()) {
                         stack.setDamageValue(stack.getDamageValue() - 1);
                     }
+                }
+                // Equipped armor
+                for (ItemStack armor : player.getArmorSlots()) {
+                    if (!armor.isEmpty() && armor.has(ModDataComponents.PHOTOSYNTHESIS.get()) && armor.isDamaged()) {
+                        armor.setDamageValue(armor.getDamageValue() - 1);
+                    }
+                }
+                // Daytime regeneration from Photosynthesis armor
+                if (inSunlight && hasArmorWith(player, ModDataComponents.PHOTOSYNTHESIS.get())) {
+                    player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 50, 0, false, false, false));
+                }
+            }
+        }
+
+        // 3. Armor Plate: Lava Proof (clears fire, gives Fire Resistance in lava)
+        if (hasArmorWith(player, ModDataComponents.LAVA_PROOF.get())) {
+            if (player.isOnFire()) {
+                player.clearFire();
+            }
+            if (player.isInLava()) {
+                player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 40, 0, false, false, false));
+            }
+        }
+
+        // 4. Armor Plate: Overclock (Kinetic Boost: +15% movement speed)
+        if (gameTime % 20 == 0 && hasArmorWith(player, ModDataComponents.OVERCLOCK.get())) {
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 40, 0, false, false, false));
+        }
+
+        // 5. Armor Plate: Auto-Smelt (Flame Barrier: freeze immunity from Powder Snow)
+        if (hasArmorWith(player, ModDataComponents.AUTO_SMELT.get())) {
+            if (player.getTicksFrozen() > 0) {
+                player.setTicksFrozen(0);
+            }
+        }
+
+        // 6. Armor Plate: Magnetic Vacuum (Item Magnet Aura within 8 blocks)
+        if (gameTime % 10 == 0 && hasArmorWith(player, ModDataComponents.MAGNETIC.get())) {
+            AABB magnetBox = player.getBoundingBox().inflate(8.0);
+            for (ItemEntity item : level.getEntitiesOfClass(ItemEntity.class, magnetBox)) {
+                if (item.isAlive() && !item.hasPickUpDelay()) {
+                    Vec3 motion = player.position().add(0, 0.5, 0).subtract(item.position()).normalize().scale(0.35);
+                    item.setDeltaMovement(motion);
+                }
+            }
+        }
+
+        // 7. Armor Plate: Amethyst Shield (Armor shatter protection safeguard)
+        for (ItemStack armor : player.getArmorSlots()) {
+            if (!armor.isEmpty() && armor.has(ModDataComponents.AMETHYST_SHIELD.get())) {
+                if (armor.getDamageValue() >= armor.getMaxDamage()) {
+                    armor.setDamageValue(armor.getMaxDamage() - 1);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingFall(LivingFallEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            // Wind Core Armor: immune to fall damage
+            if (hasArmorWith(player, ModDataComponents.BREEZE_CHARGE.get())) {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingIncomingDamage(LivingIncomingDamageEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            // Lava Proof Armor: immune to all fire and lava damage
+            if (event.getSource().is(DamageTypeTags.IS_FIRE) && hasArmorWith(player, ModDataComponents.LAVA_PROOF.get())) {
+                event.setCanceled(true);
+                return;
+            }
+
+            // Heavy Plating (Depth Plate on Armor): 12% damage reduction per piece installed
+            int depthPlates = countArmorWith(player, ModDataComponents.DEPTH_UPGRADE.get());
+            if (depthPlates > 0) {
+                float factor = Math.max(0.5F, 1.0F - (0.12F * depthPlates));
+                event.setAmount(event.getAmount() * factor);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDamagePost(LivingDamageEvent.Post event) {
+        if (event.getEntity() instanceof Player player) {
+            // Flame Barrier (Auto-Smelt on Armor): set attacker on fire for 4 seconds
+            if (hasArmorWith(player, ModDataComponents.AUTO_SMELT.get())) {
+                Entity attacker = event.getSource().getEntity();
+                if (attacker != null) {
+                    attacker.igniteForSeconds(4.0F);
                 }
             }
         }
@@ -85,9 +209,6 @@ public class JustToolsEvents {
         // Breeze: ignore underwater & airborne speed penalties
         if (mainHand.has(ModDataComponents.BREEZE_CHARGE.get())) {
             float speed = event.getNewSpeed();
-            // Only compensate if the player doesn't have Aqua Affinity on their helmet.
-            // Check by comparing to the item's base speed — if underwater penalty was applied,
-            // the speed will be ~5x lower than expected.
             if (player.isEyeInFluid(FluidTags.WATER)) {
                 // Check helmet for aqua affinity via data component
                 ItemStack helmet = player.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.HEAD);
@@ -170,13 +291,28 @@ public class JustToolsEvents {
             return;
         }
 
-        // XP-Mending for held item with AUTO_REPAIR
+        int orbValue = event.getOrb().getValue();
+        int repairAvailable = orbValue * 2;
+
+        // 1. XP-Mending for held item with AUTO_REPAIR
         ItemStack mainHand = player.getMainHandItem();
         if (!mainHand.isEmpty() && mainHand.has(ModDataComponents.AUTO_REPAIR.get()) && mainHand.isDamaged()) {
-            int repairAmount = event.getOrb().getValue() * 2;
             int currentDamage = mainHand.getDamageValue();
-            int actualRepair = Math.min(repairAmount, currentDamage);
+            int actualRepair = Math.min(repairAvailable, currentDamage);
             mainHand.setDamageValue(currentDamage - actualRepair);
+            repairAvailable -= actualRepair;
+        }
+
+        // 2. XP-Mending for equipped armor with AUTO_REPAIR
+        if (repairAvailable > 0) {
+            for (ItemStack armor : player.getArmorSlots()) {
+                if (!armor.isEmpty() && armor.has(ModDataComponents.AUTO_REPAIR.get()) && armor.isDamaged()) {
+                    int currentDamage = armor.getDamageValue();
+                    int actualRepair = Math.min(repairAvailable, currentDamage);
+                    armor.setDamageValue(currentDamage - actualRepair);
+                    break;
+                }
+            }
         }
     }
 }

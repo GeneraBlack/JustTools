@@ -20,6 +20,7 @@ public class JustTools {
         ModDataComponents.DATA_COMPONENTS.register(modEventBus);
         ModMenuTypes.MENUS.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
             // Use double-lambda to prevent JVM from loading client classes on server

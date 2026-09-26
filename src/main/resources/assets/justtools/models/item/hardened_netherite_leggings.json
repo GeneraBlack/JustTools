@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "justtools:item/hardened_netherite_leggings"
+                 },
+    "parent":  "minecraft:item/generated"
+}

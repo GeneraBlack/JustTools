@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "justtools:item/hardened_deepslate_chestplate"
+                 },
+    "parent":  "minecraft:item/generated"
+}

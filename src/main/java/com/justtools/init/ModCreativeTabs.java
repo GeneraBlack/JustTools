@@ -156,6 +156,66 @@ public class ModCreativeTabs {
                         output.accept(ModItems.HARDENED_GOLDEN_PAXEL.get());
                         output.accept(ModItems.HARDENED_DIAMOND_PAXEL.get());
                         output.accept(ModItems.HARDENED_NETHERITE_PAXEL.get());
+
+                        // Base Armor: Copper
+                        output.accept(ModItems.COPPER_HELMET.get());
+                        output.accept(ModItems.COPPER_CHESTPLATE.get());
+                        output.accept(ModItems.COPPER_LEGGINGS.get());
+                        output.accept(ModItems.COPPER_BOOTS.get());
+
+                        // Base Armor: Deepslate
+                        output.accept(ModItems.DEEPSLATE_HELMET.get());
+                        output.accept(ModItems.DEEPSLATE_CHESTPLATE.get());
+                        output.accept(ModItems.DEEPSLATE_LEGGINGS.get());
+                        output.accept(ModItems.DEEPSLATE_BOOTS.get());
+
+                        // Hardened Armor: Leather
+                        output.accept(ModItems.HARDENED_LEATHER_HELMET.get());
+                        output.accept(ModItems.HARDENED_LEATHER_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_LEATHER_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_LEATHER_BOOTS.get());
+
+                        // Hardened Armor: Copper
+                        output.accept(ModItems.HARDENED_COPPER_HELMET.get());
+                        output.accept(ModItems.HARDENED_COPPER_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_COPPER_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_COPPER_BOOTS.get());
+
+                        // Hardened Armor: Deepslate
+                        output.accept(ModItems.HARDENED_DEEPSLATE_HELMET.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_BOOTS.get());
+
+                        // Hardened Armor: Chainmail
+                        output.accept(ModItems.HARDENED_CHAINMAIL_HELMET.get());
+                        output.accept(ModItems.HARDENED_CHAINMAIL_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_CHAINMAIL_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_CHAINMAIL_BOOTS.get());
+
+                        // Hardened Armor: Iron
+                        output.accept(ModItems.HARDENED_IRON_HELMET.get());
+                        output.accept(ModItems.HARDENED_IRON_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_IRON_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_IRON_BOOTS.get());
+
+                        // Hardened Armor: Gold
+                        output.accept(ModItems.HARDENED_GOLDEN_HELMET.get());
+                        output.accept(ModItems.HARDENED_GOLDEN_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_GOLDEN_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_GOLDEN_BOOTS.get());
+
+                        // Hardened Armor: Diamond
+                        output.accept(ModItems.HARDENED_DIAMOND_HELMET.get());
+                        output.accept(ModItems.HARDENED_DIAMOND_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_DIAMOND_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_DIAMOND_BOOTS.get());
+
+                        // Hardened Armor: Netherite
+                        output.accept(ModItems.HARDENED_NETHERITE_HELMET.get());
+                        output.accept(ModItems.HARDENED_NETHERITE_CHESTPLATE.get());
+                        output.accept(ModItems.HARDENED_NETHERITE_LEGGINGS.get());
+                        output.accept(ModItems.HARDENED_NETHERITE_BOOTS.get());
                     })
                     .build()
     );

@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "justtools:item/copper_leggings"
+                 },
+    "parent":  "minecraft:item/generated"
+}

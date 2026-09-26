@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "justtools:item/hardened_iron_chestplate"
+                 },
+    "parent":  "minecraft:item/generated"
+}

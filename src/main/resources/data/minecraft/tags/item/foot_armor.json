@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "justtools:copper_boots",
+    "justtools:deepslate_boots",
+    "justtools:hardened_leather_boots",
+    "justtools:hardened_copper_boots",
+    "justtools:hardened_deepslate_boots",
+    "justtools:hardened_chainmail_boots",
+    "justtools:hardened_iron_boots",
+    "justtools:hardened_golden_boots",
+    "justtools:hardened_diamond_boots",
+    "justtools:hardened_netherite_boots"
+  ]
+}

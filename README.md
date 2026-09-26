@@ -33,25 +33,43 @@ The Hardening Station also serves as a **free repair station**:
 - Repair with raw materials (50% durability per item, 0 XP)
 - Combine duplicate tools (merges enchantments + 12% bonus durability)
 
+### 🦺 New Armor Sets & Armor Upgrades
+
+- **Copper Armor** — Complete 4-piece armor set crafted from Copper Ingots. Sits right between Leather/Gold and Iron with 11 defense points and high enchantability.
+- **Deepslate Armor** — Heavy stone armor crafted from Cobbled Deepslate with 15 defense points, built-in +1 Armor Toughness and Knockback Resistance.
+- **Hardened Armor (All Tiers)** — Reinforce any armor piece (Leather, Copper, Deepslate, Chainmail, Iron, Gold, Diamond, Netherite) into its Hardened variant for **2.5× to 3× durability** and bonus Toughness.
+- **Armor Upgrade Plates** — Install any Upgrade Plate on armor pieces in the Hardening Station (per-piece activation, stackable):
+  - 🔥 **Lava Seal**: Complete fire and lava damage immunity
+  - 💨 **Wind Core**: 100% fall damage immunity
+  - 💎 **Amethyst Shield**: Armor shatter protection (never breaks, stops at 1 durability)
+  - 🧲 **Magnetic Vacuum**: Item Magnet Aura pulling drops within 8 blocks
+  - ⚡ **Redstone Turbine**: +15% movement speed boost
+  - 🌋 **Thermal Core**: Flame barrier setting attackers on fire + powder snow freeze immunity
+  - 💜 **Soul Repair**: Passive auto-repair every 5s + collected XP repairs armor
+  - 🌿 **Photosynthesis**: Sunlight/grass armor repair + daylight regeneration
+  - 🔩 **Reinforced Frame**: 50% chance to take 0 durability damage from attacks
+  - 🛡️ **Heavy Plating (Depth)**: 12% incoming damage reduction per piece
+  - Fully compatible with vanilla armor trims at the smithing table!
+
 ### 🔧 11 Upgrade Plates
 
-Install upgrade plates in the Hardening Station to add permanent abilities to any tool:
+Install upgrade plates in the Hardening Station to add permanent abilities to any tool or armor piece:
 
-| Plate | Effect |
-|:------|:-------|
-| **Hardening Plate** | Upgrades to Hardened variant or fully repairs |
-| **Depth Drill Plate** | Hammers/Excavators mine 3×3×2 (18 blocks per swing) |
-| **Soul Repair Core** | Passive auto-repair (1 durability / 5s) + XP mending |
-| **Lava Seal Plating** | Tool is fireproof and floats in lava |
-| **Redstone Turbine** | +35% mining speed + Haste on continuous mining |
-| **Wind Core Plate** | Removes underwater and mid-air mining penalties |
-| **Thermal Core Plate** | Auto-smelts mined drops (ore → ingots, sand → glass) |
-| **Reinforced Frame** | 50% chance to negate durability loss |
-| **Amethyst Shield** | Prevents tool from breaking (stops at 1 durability) |
-| **Photosynthesis Plate** | Repairs in sunlight or on grass/moss |
-| **Magnetic Vacuum** | Mined items go directly into your inventory |
+| Plate | Tool Effect | Armor Effect |
+|:------|:------------|:-------------|
+| **Hardening Plate** | Upgrades to Hardened variant / full repair | Upgrades to Hardened armor / full repair |
+| **Depth Drill Plate** | 3×3×2 mining (18 blocks per swing) | Heavy Plating: 12% damage reduction |
+| **Soul Repair Core** | Auto-repair (1 dur / 5s) + XP mending | Auto-repair (1 dur / 5s) + XP mending |
+| **Lava Seal Plating** | Fireproof and floats on lava | Fire & lava damage immunity |
+| **Redstone Turbine** | +35% mining speed + streak Haste | +15% Movement speed |
+| **Wind Core Plate** | Removes water/air mining penalties | Fall damage immunity |
+| **Thermal Core Plate** | Auto-smelts mined drops | Ignites attackers for 4s + freeze immunity |
+| **Reinforced Frame** | 50% chance zero tool damage | 50% chance zero armor damage |
+| **Amethyst Shield** | Tool never breaks (stops at 1) | Armor never shatters (stops at 1) |
+| **Photosynthesis Plate** | Sunlight/grass durability repair | Sunlight repair + daylight regeneration |
+| **Magnetic Vacuum** | Mined items go directly to inventory | 8-block item magnet aura |
 
-All upgrades stack — combine them freely to create your perfect tool!
+All upgrades stack — combine them freely on any piece of gear!
 
 ---
 

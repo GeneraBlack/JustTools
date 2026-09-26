@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "justtools:copper_leggings",
+    "justtools:deepslate_leggings",
+    "justtools:hardened_leather_leggings",
+    "justtools:hardened_copper_leggings",
+    "justtools:hardened_deepslate_leggings",
+    "justtools:hardened_chainmail_leggings",
+    "justtools:hardened_iron_leggings",
+    "justtools:hardened_golden_leggings",
+    "justtools:hardened_diamond_leggings",
+    "justtools:hardened_netherite_leggings"
+  ]
+}

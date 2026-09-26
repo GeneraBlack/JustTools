@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "justtools:item/deepslate_leggings"
+                 },
+    "parent":  "minecraft:item/generated"
+}

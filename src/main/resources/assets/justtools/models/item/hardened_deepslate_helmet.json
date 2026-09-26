@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "justtools:item/hardened_deepslate_helmet"
+                 },
+    "parent":  "minecraft:item/generated"
+}

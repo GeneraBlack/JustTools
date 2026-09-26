@@ -3,6 +3,7 @@ package com.justtools.init;
 import com.justtools.JustTools;
 import com.justtools.item.ExcavatorItem;
 import com.justtools.item.HammerItem;
+import com.justtools.item.ModArmorItem;
 import com.justtools.item.PaxelItem;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -257,6 +258,75 @@ public class ModItems {
     public static final DeferredItem<PaxelItem> HARDENED_NETHERITE_PAXEL = ITEMS.register("hardened_netherite_paxel",
             () -> new PaxelItem(ModTiers.HARDENED_NETHERITE, 11000, new Item.Properties().fireResistant()));
 
+    // --- Helper methods for armor ---
+    private static DeferredItem<ModArmorItem> registerArmor(String name, net.minecraft.core.Holder<ArmorMaterial> material, ArmorItem.Type type, int multiplier) {
+        return ITEMS.register(name, () -> new ModArmorItem(material, type, new Item.Properties().durability(type.getDurability(multiplier))));
+    }
+
+    private static DeferredItem<ModArmorItem> registerFireResistantArmor(String name, net.minecraft.core.Holder<ArmorMaterial> material, ArmorItem.Type type, int multiplier) {
+        return ITEMS.register(name, () -> new ModArmorItem(material, type, new Item.Properties().durability(type.getDurability(multiplier)).fireResistant()));
+    }
+
+    // --- Base Armor: Copper ---
+    public static final DeferredItem<ModArmorItem> COPPER_HELMET = registerArmor("copper_helmet", ModArmorMaterials.COPPER, ArmorItem.Type.HELMET, 11);
+    public static final DeferredItem<ModArmorItem> COPPER_CHESTPLATE = registerArmor("copper_chestplate", ModArmorMaterials.COPPER, ArmorItem.Type.CHESTPLATE, 11);
+    public static final DeferredItem<ModArmorItem> COPPER_LEGGINGS = registerArmor("copper_leggings", ModArmorMaterials.COPPER, ArmorItem.Type.LEGGINGS, 11);
+    public static final DeferredItem<ModArmorItem> COPPER_BOOTS = registerArmor("copper_boots", ModArmorMaterials.COPPER, ArmorItem.Type.BOOTS, 11);
+
+    // --- Base Armor: Deepslate ---
+    public static final DeferredItem<ModArmorItem> DEEPSLATE_HELMET = registerArmor("deepslate_helmet", ModArmorMaterials.DEEPSLATE, ArmorItem.Type.HELMET, 18);
+    public static final DeferredItem<ModArmorItem> DEEPSLATE_CHESTPLATE = registerArmor("deepslate_chestplate", ModArmorMaterials.DEEPSLATE, ArmorItem.Type.CHESTPLATE, 18);
+    public static final DeferredItem<ModArmorItem> DEEPSLATE_LEGGINGS = registerArmor("deepslate_leggings", ModArmorMaterials.DEEPSLATE, ArmorItem.Type.LEGGINGS, 18);
+    public static final DeferredItem<ModArmorItem> DEEPSLATE_BOOTS = registerArmor("deepslate_boots", ModArmorMaterials.DEEPSLATE, ArmorItem.Type.BOOTS, 18);
+
+    // --- Hardened Armor: Leather ---
+    public static final DeferredItem<ModArmorItem> HARDENED_LEATHER_HELMET = registerArmor("hardened_leather_helmet", ModArmorMaterials.HARDENED_LEATHER, ArmorItem.Type.HELMET, 15);
+    public static final DeferredItem<ModArmorItem> HARDENED_LEATHER_CHESTPLATE = registerArmor("hardened_leather_chestplate", ModArmorMaterials.HARDENED_LEATHER, ArmorItem.Type.CHESTPLATE, 15);
+    public static final DeferredItem<ModArmorItem> HARDENED_LEATHER_LEGGINGS = registerArmor("hardened_leather_leggings", ModArmorMaterials.HARDENED_LEATHER, ArmorItem.Type.LEGGINGS, 15);
+    public static final DeferredItem<ModArmorItem> HARDENED_LEATHER_BOOTS = registerArmor("hardened_leather_boots", ModArmorMaterials.HARDENED_LEATHER, ArmorItem.Type.BOOTS, 15);
+
+    // --- Hardened Armor: Copper ---
+    public static final DeferredItem<ModArmorItem> HARDENED_COPPER_HELMET = registerArmor("hardened_copper_helmet", ModArmorMaterials.HARDENED_COPPER, ArmorItem.Type.HELMET, 30);
+    public static final DeferredItem<ModArmorItem> HARDENED_COPPER_CHESTPLATE = registerArmor("hardened_copper_chestplate", ModArmorMaterials.HARDENED_COPPER, ArmorItem.Type.CHESTPLATE, 30);
+    public static final DeferredItem<ModArmorItem> HARDENED_COPPER_LEGGINGS = registerArmor("hardened_copper_leggings", ModArmorMaterials.HARDENED_COPPER, ArmorItem.Type.LEGGINGS, 30);
+    public static final DeferredItem<ModArmorItem> HARDENED_COPPER_BOOTS = registerArmor("hardened_copper_boots", ModArmorMaterials.HARDENED_COPPER, ArmorItem.Type.BOOTS, 30);
+
+    // --- Hardened Armor: Deepslate ---
+    public static final DeferredItem<ModArmorItem> HARDENED_DEEPSLATE_HELMET = registerArmor("hardened_deepslate_helmet", ModArmorMaterials.HARDENED_DEEPSLATE, ArmorItem.Type.HELMET, 46);
+    public static final DeferredItem<ModArmorItem> HARDENED_DEEPSLATE_CHESTPLATE = registerArmor("hardened_deepslate_chestplate", ModArmorMaterials.HARDENED_DEEPSLATE, ArmorItem.Type.CHESTPLATE, 46);
+    public static final DeferredItem<ModArmorItem> HARDENED_DEEPSLATE_LEGGINGS = registerArmor("hardened_deepslate_leggings", ModArmorMaterials.HARDENED_DEEPSLATE, ArmorItem.Type.LEGGINGS, 46);
+    public static final DeferredItem<ModArmorItem> HARDENED_DEEPSLATE_BOOTS = registerArmor("hardened_deepslate_boots", ModArmorMaterials.HARDENED_DEEPSLATE, ArmorItem.Type.BOOTS, 46);
+
+    // --- Hardened Armor: Chainmail ---
+    public static final DeferredItem<ModArmorItem> HARDENED_CHAINMAIL_HELMET = registerArmor("hardened_chainmail_helmet", ModArmorMaterials.HARDENED_CHAINMAIL, ArmorItem.Type.HELMET, 38);
+    public static final DeferredItem<ModArmorItem> HARDENED_CHAINMAIL_CHESTPLATE = registerArmor("hardened_chainmail_chestplate", ModArmorMaterials.HARDENED_CHAINMAIL, ArmorItem.Type.CHESTPLATE, 38);
+    public static final DeferredItem<ModArmorItem> HARDENED_CHAINMAIL_LEGGINGS = registerArmor("hardened_chainmail_leggings", ModArmorMaterials.HARDENED_CHAINMAIL, ArmorItem.Type.LEGGINGS, 38);
+    public static final DeferredItem<ModArmorItem> HARDENED_CHAINMAIL_BOOTS = registerArmor("hardened_chainmail_boots", ModArmorMaterials.HARDENED_CHAINMAIL, ArmorItem.Type.BOOTS, 38);
+
+    // --- Hardened Armor: Iron ---
+    public static final DeferredItem<ModArmorItem> HARDENED_IRON_HELMET = registerArmor("hardened_iron_helmet", ModArmorMaterials.HARDENED_IRON, ArmorItem.Type.HELMET, 42);
+    public static final DeferredItem<ModArmorItem> HARDENED_IRON_CHESTPLATE = registerArmor("hardened_iron_chestplate", ModArmorMaterials.HARDENED_IRON, ArmorItem.Type.CHESTPLATE, 42);
+    public static final DeferredItem<ModArmorItem> HARDENED_IRON_LEGGINGS = registerArmor("hardened_iron_leggings", ModArmorMaterials.HARDENED_IRON, ArmorItem.Type.LEGGINGS, 42);
+    public static final DeferredItem<ModArmorItem> HARDENED_IRON_BOOTS = registerArmor("hardened_iron_boots", ModArmorMaterials.HARDENED_IRON, ArmorItem.Type.BOOTS, 42);
+
+    // --- Hardened Armor: Gold ---
+    public static final DeferredItem<ModArmorItem> HARDENED_GOLDEN_HELMET = registerArmor("hardened_golden_helmet", ModArmorMaterials.HARDENED_GOLD, ArmorItem.Type.HELMET, 22);
+    public static final DeferredItem<ModArmorItem> HARDENED_GOLDEN_CHESTPLATE = registerArmor("hardened_golden_chestplate", ModArmorMaterials.HARDENED_GOLD, ArmorItem.Type.CHESTPLATE, 22);
+    public static final DeferredItem<ModArmorItem> HARDENED_GOLDEN_LEGGINGS = registerArmor("hardened_golden_leggings", ModArmorMaterials.HARDENED_GOLD, ArmorItem.Type.LEGGINGS, 22);
+    public static final DeferredItem<ModArmorItem> HARDENED_GOLDEN_BOOTS = registerArmor("hardened_golden_boots", ModArmorMaterials.HARDENED_GOLD, ArmorItem.Type.BOOTS, 22);
+
+    // --- Hardened Armor: Diamond ---
+    public static final DeferredItem<ModArmorItem> HARDENED_DIAMOND_HELMET = registerArmor("hardened_diamond_helmet", ModArmorMaterials.HARDENED_DIAMOND, ArmorItem.Type.HELMET, 85);
+    public static final DeferredItem<ModArmorItem> HARDENED_DIAMOND_CHESTPLATE = registerArmor("hardened_diamond_chestplate", ModArmorMaterials.HARDENED_DIAMOND, ArmorItem.Type.CHESTPLATE, 85);
+    public static final DeferredItem<ModArmorItem> HARDENED_DIAMOND_LEGGINGS = registerArmor("hardened_diamond_leggings", ModArmorMaterials.HARDENED_DIAMOND, ArmorItem.Type.LEGGINGS, 85);
+    public static final DeferredItem<ModArmorItem> HARDENED_DIAMOND_BOOTS = registerArmor("hardened_diamond_boots", ModArmorMaterials.HARDENED_DIAMOND, ArmorItem.Type.BOOTS, 85);
+
+    // --- Hardened Armor: Netherite ---
+    public static final DeferredItem<ModArmorItem> HARDENED_NETHERITE_HELMET = registerFireResistantArmor("hardened_netherite_helmet", ModArmorMaterials.HARDENED_NETHERITE, ArmorItem.Type.HELMET, 100);
+    public static final DeferredItem<ModArmorItem> HARDENED_NETHERITE_CHESTPLATE = registerFireResistantArmor("hardened_netherite_chestplate", ModArmorMaterials.HARDENED_NETHERITE, ArmorItem.Type.CHESTPLATE, 100);
+    public static final DeferredItem<ModArmorItem> HARDENED_NETHERITE_LEGGINGS = registerFireResistantArmor("hardened_netherite_leggings", ModArmorMaterials.HARDENED_NETHERITE, ArmorItem.Type.LEGGINGS, 100);
+    public static final DeferredItem<ModArmorItem> HARDENED_NETHERITE_BOOTS = registerFireResistantArmor("hardened_netherite_boots", ModArmorMaterials.HARDENED_NETHERITE, ArmorItem.Type.BOOTS, 100);
+
     // --- Hardening Upgrade Mapping ---
     private static Map<Item, Supplier<? extends Item>> HARDENING_UPGRADES = null;
 
@@ -349,6 +419,54 @@ public class ModItems {
         HARDENING_UPGRADES.put(GOLDEN_PAXEL.get(), HARDENED_GOLDEN_PAXEL);
         HARDENING_UPGRADES.put(DIAMOND_PAXEL.get(), HARDENED_DIAMOND_PAXEL);
         HARDENING_UPGRADES.put(NETHERITE_PAXEL.get(), HARDENED_NETHERITE_PAXEL);
+
+        // Armor: Leather
+        HARDENING_UPGRADES.put(Items.LEATHER_HELMET, HARDENED_LEATHER_HELMET);
+        HARDENING_UPGRADES.put(Items.LEATHER_CHESTPLATE, HARDENED_LEATHER_CHESTPLATE);
+        HARDENING_UPGRADES.put(Items.LEATHER_LEGGINGS, HARDENED_LEATHER_LEGGINGS);
+        HARDENING_UPGRADES.put(Items.LEATHER_BOOTS, HARDENED_LEATHER_BOOTS);
+
+        // Armor: Copper
+        HARDENING_UPGRADES.put(COPPER_HELMET.get(), HARDENED_COPPER_HELMET);
+        HARDENING_UPGRADES.put(COPPER_CHESTPLATE.get(), HARDENED_COPPER_CHESTPLATE);
+        HARDENING_UPGRADES.put(COPPER_LEGGINGS.get(), HARDENED_COPPER_LEGGINGS);
+        HARDENING_UPGRADES.put(COPPER_BOOTS.get(), HARDENED_COPPER_BOOTS);
+
+        // Armor: Deepslate
+        HARDENING_UPGRADES.put(DEEPSLATE_HELMET.get(), HARDENED_DEEPSLATE_HELMET);
+        HARDENING_UPGRADES.put(DEEPSLATE_CHESTPLATE.get(), HARDENED_DEEPSLATE_CHESTPLATE);
+        HARDENING_UPGRADES.put(DEEPSLATE_LEGGINGS.get(), HARDENED_DEEPSLATE_LEGGINGS);
+        HARDENING_UPGRADES.put(DEEPSLATE_BOOTS.get(), HARDENED_DEEPSLATE_BOOTS);
+
+        // Armor: Chainmail
+        HARDENING_UPGRADES.put(Items.CHAINMAIL_HELMET, HARDENED_CHAINMAIL_HELMET);
+        HARDENING_UPGRADES.put(Items.CHAINMAIL_CHESTPLATE, HARDENED_CHAINMAIL_CHESTPLATE);
+        HARDENING_UPGRADES.put(Items.CHAINMAIL_LEGGINGS, HARDENED_CHAINMAIL_LEGGINGS);
+        HARDENING_UPGRADES.put(Items.CHAINMAIL_BOOTS, HARDENED_CHAINMAIL_BOOTS);
+
+        // Armor: Iron
+        HARDENING_UPGRADES.put(Items.IRON_HELMET, HARDENED_IRON_HELMET);
+        HARDENING_UPGRADES.put(Items.IRON_CHESTPLATE, HARDENED_IRON_CHESTPLATE);
+        HARDENING_UPGRADES.put(Items.IRON_LEGGINGS, HARDENED_IRON_LEGGINGS);
+        HARDENING_UPGRADES.put(Items.IRON_BOOTS, HARDENED_IRON_BOOTS);
+
+        // Armor: Gold
+        HARDENING_UPGRADES.put(Items.GOLDEN_HELMET, HARDENED_GOLDEN_HELMET);
+        HARDENING_UPGRADES.put(Items.GOLDEN_CHESTPLATE, HARDENED_GOLDEN_CHESTPLATE);
+        HARDENING_UPGRADES.put(Items.GOLDEN_LEGGINGS, HARDENED_GOLDEN_LEGGINGS);
+        HARDENING_UPGRADES.put(Items.GOLDEN_BOOTS, HARDENED_GOLDEN_BOOTS);
+
+        // Armor: Diamond
+        HARDENING_UPGRADES.put(Items.DIAMOND_HELMET, HARDENED_DIAMOND_HELMET);
+        HARDENING_UPGRADES.put(Items.DIAMOND_CHESTPLATE, HARDENED_DIAMOND_CHESTPLATE);
+        HARDENING_UPGRADES.put(Items.DIAMOND_LEGGINGS, HARDENED_DIAMOND_LEGGINGS);
+        HARDENING_UPGRADES.put(Items.DIAMOND_BOOTS, HARDENED_DIAMOND_BOOTS);
+
+        // Armor: Netherite
+        HARDENING_UPGRADES.put(Items.NETHERITE_HELMET, HARDENED_NETHERITE_HELMET);
+        HARDENING_UPGRADES.put(Items.NETHERITE_CHESTPLATE, HARDENED_NETHERITE_CHESTPLATE);
+        HARDENING_UPGRADES.put(Items.NETHERITE_LEGGINGS, HARDENED_NETHERITE_LEGGINGS);
+        HARDENING_UPGRADES.put(Items.NETHERITE_BOOTS, HARDENED_NETHERITE_BOOTS);
     }
 
     public static Item getHardenedVariant(Item baseItem) {

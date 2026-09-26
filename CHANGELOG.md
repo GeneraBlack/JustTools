@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.1.0 — The Armor Update
+
+### Added
+- **Copper Armor** — Complete 4-piece armor set crafted from Copper Ingots (Helmet, Chestplate, Leggings, Boots)
+- **Deepslate Armor** — Complete 4-piece armor set crafted from Cobbled Deepslate with innate +1 Toughness and Knockback Resistance
+- **Hardened Armor Variants** — Reinforced versions of all armor sets (Leather, Copper, Deepslate, Chainmail, Iron, Gold, Diamond, Netherite) with ~2.5-3x durability and +1 Armor Toughness
+- **Armor Upgrade Plates System** — All upgrade plates can now be installed onto armor pieces in the Hardening Station (stackable, per-piece activation):
+  - **Lava Seal Plating**: Complete fire & lava damage immunity + fire extinguishing
+  - **Wind Core Plate**: 100% fall damage immunity
+  - **Amethyst Shield Plate**: Armor shatter protection (never breaks, stops at 1 durability)
+  - **Magnetic Vacuum Plate**: Item Magnet Aura (passively draws drops within 8 blocks to player)
+  - **Redstone Turbine Plate**: Kinetic Boost (+15% movement speed)
+  - **Thermal Core Plate**: Flame Barrier (ignites attackers for 4s + freeze immunity)
+  - **Soul Repair Core**: Passive armor auto-repair + XP mending
+  - **Photosynthesis Plate**: Sunlight/nature armor repair + passive daylight regeneration
+  - **Reinforced Frame Plate**: 50% chance to negate incoming durability damage to armor
+  - **Depth Drill / Heavy Plating**: 12% incoming damage reduction per piece
+- **Hardening Station Armor Support** — Upgrade base armor to Hardened variants, free raw material repair (0 XP), and duplicate combining with enchantment merging
+- **Trimmable Armor Support** — All 40 armor pieces support vanilla armor trims at the smithing table
+
 ## v1.0.1 — Hotfix
 
 ### Fixed

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "justtools:copper_chestplate",
+    "justtools:deepslate_chestplate",
+    "justtools:hardened_leather_chestplate",
+    "justtools:hardened_copper_chestplate",
+    "justtools:hardened_deepslate_chestplate",
+    "justtools:hardened_chainmail_chestplate",
+    "justtools:hardened_iron_chestplate",
+    "justtools:hardened_golden_chestplate",
+    "justtools:hardened_diamond_chestplate",
+    "justtools:hardened_netherite_chestplate"
+  ]
+}

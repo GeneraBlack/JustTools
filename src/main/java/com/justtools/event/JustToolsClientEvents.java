@@ -98,6 +98,25 @@ public class JustToolsClientEvents {
             event.getToolTip().add(Component.translatable("tooltip.justtools.excavator_desc").withStyle(ChatFormatting.DARK_GRAY));
         } else if (stack.getItem() instanceof PaxelItem) {
             event.getToolTip().add(Component.translatable("tooltip.justtools.paxel_desc").withStyle(ChatFormatting.DARK_GRAY));
+        } else if (stack.getItem() instanceof net.minecraft.world.item.ArmorItem) {
+            if (stack.has(ModDataComponents.DEPTH_UPGRADE.get())) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.armor_depth").withStyle(ChatFormatting.DARK_GRAY));
+            }
+            if (stack.has(ModDataComponents.LAVA_PROOF.get())) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.armor_lava").withStyle(ChatFormatting.DARK_GRAY));
+            }
+            if (stack.has(ModDataComponents.BREEZE_CHARGE.get())) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.armor_breeze").withStyle(ChatFormatting.DARK_GRAY));
+            }
+            if (stack.has(ModDataComponents.OVERCLOCK.get())) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.armor_overclock").withStyle(ChatFormatting.DARK_GRAY));
+            }
+            if (stack.has(ModDataComponents.AUTO_SMELT.get())) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.armor_auto_smelt").withStyle(ChatFormatting.DARK_GRAY));
+            }
+            if (stack.has(ModDataComponents.MAGNETIC.get())) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.armor_magnetic").withStyle(ChatFormatting.DARK_GRAY));
+            }
         }
     }
 }
