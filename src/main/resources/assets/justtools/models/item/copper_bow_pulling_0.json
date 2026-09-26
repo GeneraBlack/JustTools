@@ -1,0 +1,6 @@
+{
+  "parent": "justtools:item/copper_bow",
+  "textures": {
+    "layer0": "justtools:item/copper_bow_pulling_0"
+  }
+}

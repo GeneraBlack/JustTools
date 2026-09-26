@@ -1,5 +1,44 @@
 # Changelog
 
+## v1.2.1 — Bugfix
+
+### Fixed
+- **Magnetic Plate item duplication** — Items collected by the Magnetic Plate were appearing in both the player's inventory and as dropped entities in the world. Fixed by properly removing collected items from the block drop list.
+
+## v1.2.0 — The Ranged Weapon Update
+
+### Added
+- **Tiered Bows (11 Bows)** — Complete bow progression across materials:
+  - **Copper Bow** (300 dur, +0.5 damage, 1.15× draw speed)
+  - **Deepslate Bow** (450 dur, +1.5 damage, heavy recurve)
+  - **Iron Bow** (550 dur, +1.0 damage, 1.10× draw speed)
+  - **Diamond Bow** (1,800 dur, +2.0 damage, 1.25× draw speed)
+  - **Netherite Bow** (2,500 dur, +3.0 damage, 1.35× draw speed, fireproof)
+  - **Hardened Variants** for all bows (including vanilla Wooden Bow: **Hardened Bow** with 1,150 dur) scaling up to **6,000 durability** and +4.5 damage!
+- **Tiered Crossbows (11 Crossbows)** — Complete crossbow progression across materials:
+  - **Copper Crossbow** (350 dur, +0.5 damage, 21 ticks reload)
+  - **Deepslate Crossbow** (500 dur, +2.0 damage, heavy arbalest)
+  - **Iron Crossbow** (600 dur, +1.0 damage, 22 ticks reload)
+  - **Diamond Crossbow** (2,000 dur, +2.5 damage, 19 ticks reload)
+  - **Netherite Crossbow** (2,800 dur, +3.5 damage, 17 ticks reload, fireproof)
+  - **Hardened Variants** for all crossbows (including vanilla: **Hardened Crossbow** with 1,400 dur) scaling up to **6,500 durability** and +5.0 damage!
+- **Ranged Upgrade Plate System** — Upgrade plates now empower Bows & Crossbows:
+  - 🔥 **Thermal Core**: Incendiary arrows & bolts (innate Flame effect)
+  - ⚡ **Redstone Turbine**: +30% to +35% faster draw time / rapid reload
+  - 💨 **Wind Core**: Gale velocity boost with flatter projectile trajectory
+  - 🧲 **Magnetic Vacuum**: Sniper Loot Magnet (mobs defeated at any range drop loot straight into player's inventory)
+  - 💎 **Amethyst Shield**: Break protection (bow/crossbow never snaps, stops at 1 durability)
+  - 💜 **Soul Repair**: Passive auto-repair (1 dur / 5s) + collected XP mending
+  - 🔩 **Reinforced Frame**: 50% chance of zero durability loss per shot
+  - 🔥 **Lava Seal**: Fireproof weapon that floats in lava
+- **Hardening Station Ranged Support**:
+  - Free material repairs (String, Sticks, Tripwire Hooks, Ingots, Diamonds) for 0 XP
+  - Duplicate combining with enchantment merging + 12% bonus durability
+  - Prior work anvil penalty reset
+- **Full Visuals & Translations**:
+  - Custom dynamic pulling, charged, arrow, and firework textures & model overrides for all 22 weapons
+  - Full English and German localization with stat badges
+
 ## v1.1.1 — Bugfix
 
 ### Fixed

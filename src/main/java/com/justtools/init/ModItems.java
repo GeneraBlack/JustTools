@@ -4,8 +4,12 @@ import com.justtools.JustTools;
 import com.justtools.item.ExcavatorItem;
 import com.justtools.item.HammerItem;
 import com.justtools.item.ModArmorItem;
+import com.justtools.item.ModBowItem;
+import com.justtools.item.ModCrossbowItem;
 import com.justtools.item.PaxelItem;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -327,6 +331,54 @@ public class ModItems {
     public static final DeferredItem<ModArmorItem> HARDENED_NETHERITE_LEGGINGS = registerFireResistantArmor("hardened_netherite_leggings", ModArmorMaterials.HARDENED_NETHERITE, ArmorItem.Type.LEGGINGS, 100);
     public static final DeferredItem<ModArmorItem> HARDENED_NETHERITE_BOOTS = registerFireResistantArmor("hardened_netherite_boots", ModArmorMaterials.HARDENED_NETHERITE, ArmorItem.Type.BOOTS, 100);
 
+    // --- Bows (Base & Hardened) ---
+    public static final DeferredItem<ModBowItem> HARDENED_BOW = ITEMS.register("hardened_bow",
+            () -> new ModBowItem(1150, 1.0F, 1.25F, () -> Ingredient.of(ItemTags.PLANKS), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> COPPER_BOW = ITEMS.register("copper_bow",
+            () -> new ModBowItem(300, 0.5F, 1.15F, () -> Ingredient.of(Items.COPPER_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> HARDENED_COPPER_BOW = ITEMS.register("hardened_copper_bow",
+            () -> new ModBowItem(900, 1.5F, 1.35F, () -> Ingredient.of(Items.COPPER_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> DEEPSLATE_BOW = ITEMS.register("deepslate_bow",
+            () -> new ModBowItem(450, 1.5F, 0.95F, () -> Ingredient.of(Items.COBBLED_DEEPSLATE), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> HARDENED_DEEPSLATE_BOW = ITEMS.register("hardened_deepslate_bow",
+            () -> new ModBowItem(1350, 2.5F, 1.10F, () -> Ingredient.of(Items.COBBLED_DEEPSLATE), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> IRON_BOW = ITEMS.register("iron_bow",
+            () -> new ModBowItem(550, 1.0F, 1.10F, () -> Ingredient.of(Items.IRON_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> HARDENED_IRON_BOW = ITEMS.register("hardened_iron_bow",
+            () -> new ModBowItem(1650, 2.0F, 1.30F, () -> Ingredient.of(Items.IRON_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> DIAMOND_BOW = ITEMS.register("diamond_bow",
+            () -> new ModBowItem(1800, 2.0F, 1.25F, () -> Ingredient.of(Items.DIAMOND), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> HARDENED_DIAMOND_BOW = ITEMS.register("hardened_diamond_bow",
+            () -> new ModBowItem(4500, 3.5F, 1.50F, () -> Ingredient.of(Items.DIAMOND), new Item.Properties()));
+    public static final DeferredItem<ModBowItem> NETHERITE_BOW = ITEMS.register("netherite_bow",
+            () -> new ModBowItem(2500, 3.0F, 1.35F, () -> Ingredient.of(Items.NETHERITE_INGOT), new Item.Properties().fireResistant()));
+    public static final DeferredItem<ModBowItem> HARDENED_NETHERITE_BOW = ITEMS.register("hardened_netherite_bow",
+            () -> new ModBowItem(6000, 4.5F, 1.60F, () -> Ingredient.of(Items.NETHERITE_INGOT), new Item.Properties().fireResistant()));
+
+    // --- Crossbows (Base & Hardened) ---
+    public static final DeferredItem<ModCrossbowItem> HARDENED_CROSSBOW = ITEMS.register("hardened_crossbow",
+            () -> new ModCrossbowItem(1400, 1.5F, 20, () -> Ingredient.of(Items.IRON_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> COPPER_CROSSBOW = ITEMS.register("copper_crossbow",
+            () -> new ModCrossbowItem(350, 0.5F, 21, () -> Ingredient.of(Items.COPPER_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> HARDENED_COPPER_CROSSBOW = ITEMS.register("hardened_copper_crossbow",
+            () -> new ModCrossbowItem(1050, 1.5F, 17, () -> Ingredient.of(Items.COPPER_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> DEEPSLATE_CROSSBOW = ITEMS.register("deepslate_crossbow",
+            () -> new ModCrossbowItem(500, 2.0F, 26, () -> Ingredient.of(Items.COBBLED_DEEPSLATE), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> HARDENED_DEEPSLATE_CROSSBOW = ITEMS.register("hardened_deepslate_crossbow",
+            () -> new ModCrossbowItem(1500, 3.0F, 21, () -> Ingredient.of(Items.COBBLED_DEEPSLATE), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> IRON_CROSSBOW = ITEMS.register("iron_crossbow",
+            () -> new ModCrossbowItem(600, 1.0F, 22, () -> Ingredient.of(Items.IRON_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> HARDENED_IRON_CROSSBOW = ITEMS.register("hardened_iron_crossbow",
+            () -> new ModCrossbowItem(1800, 2.0F, 18, () -> Ingredient.of(Items.IRON_INGOT), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> DIAMOND_CROSSBOW = ITEMS.register("diamond_crossbow",
+            () -> new ModCrossbowItem(2000, 2.5F, 19, () -> Ingredient.of(Items.DIAMOND), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> HARDENED_DIAMOND_CROSSBOW = ITEMS.register("hardened_diamond_crossbow",
+            () -> new ModCrossbowItem(5000, 4.0F, 15, () -> Ingredient.of(Items.DIAMOND), new Item.Properties()));
+    public static final DeferredItem<ModCrossbowItem> NETHERITE_CROSSBOW = ITEMS.register("netherite_crossbow",
+            () -> new ModCrossbowItem(2800, 3.5F, 17, () -> Ingredient.of(Items.NETHERITE_INGOT), new Item.Properties().fireResistant()));
+    public static final DeferredItem<ModCrossbowItem> HARDENED_NETHERITE_CROSSBOW = ITEMS.register("hardened_netherite_crossbow",
+            () -> new ModCrossbowItem(6500, 5.0F, 13, () -> Ingredient.of(Items.NETHERITE_INGOT), new Item.Properties().fireResistant()));
+
     // --- Hardening Upgrade Mapping ---
     private static Map<Item, Supplier<? extends Item>> HARDENING_UPGRADES = null;
 
@@ -467,6 +519,22 @@ public class ModItems {
         HARDENING_UPGRADES.put(Items.NETHERITE_CHESTPLATE, HARDENED_NETHERITE_CHESTPLATE);
         HARDENING_UPGRADES.put(Items.NETHERITE_LEGGINGS, HARDENED_NETHERITE_LEGGINGS);
         HARDENING_UPGRADES.put(Items.NETHERITE_BOOTS, HARDENED_NETHERITE_BOOTS);
+
+        // Bows
+        HARDENING_UPGRADES.put(Items.BOW, HARDENED_BOW);
+        HARDENING_UPGRADES.put(COPPER_BOW.get(), HARDENED_COPPER_BOW);
+        HARDENING_UPGRADES.put(DEEPSLATE_BOW.get(), HARDENED_DEEPSLATE_BOW);
+        HARDENING_UPGRADES.put(IRON_BOW.get(), HARDENED_IRON_BOW);
+        HARDENING_UPGRADES.put(DIAMOND_BOW.get(), HARDENED_DIAMOND_BOW);
+        HARDENING_UPGRADES.put(NETHERITE_BOW.get(), HARDENED_NETHERITE_BOW);
+
+        // Crossbows
+        HARDENING_UPGRADES.put(Items.CROSSBOW, HARDENED_CROSSBOW);
+        HARDENING_UPGRADES.put(COPPER_CROSSBOW.get(), HARDENED_COPPER_CROSSBOW);
+        HARDENING_UPGRADES.put(DEEPSLATE_CROSSBOW.get(), HARDENED_DEEPSLATE_CROSSBOW);
+        HARDENING_UPGRADES.put(IRON_CROSSBOW.get(), HARDENED_IRON_CROSSBOW);
+        HARDENING_UPGRADES.put(DIAMOND_CROSSBOW.get(), HARDENED_DIAMOND_CROSSBOW);
+        HARDENING_UPGRADES.put(NETHERITE_CROSSBOW.get(), HARDENED_NETHERITE_CROSSBOW);
     }
 
     public static Item getHardenedVariant(Item baseItem) {

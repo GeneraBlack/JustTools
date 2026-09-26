@@ -1,0 +1,6 @@
+{
+  "parent": "justtools:item/deepslate_crossbow",
+  "textures": {
+    "layer0": "justtools:item/deepslate_crossbow_pulling_2"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "justtools:item/hardened_copper_crossbow",
+  "textures": {
+    "layer0": "justtools:item/hardened_copper_crossbow_pulling_0"
+  }
+}

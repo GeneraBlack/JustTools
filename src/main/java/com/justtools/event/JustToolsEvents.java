@@ -27,6 +27,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -272,10 +273,12 @@ public class JustToolsEvents {
 
         // 2. Magnetic: pull drops directly into player's inventory
         if (tool.has(ModDataComponents.MAGNETIC.get()) && breaker instanceof Player player) {
-            for (ItemEntity itemEntity : event.getDrops()) {
+            java.util.Iterator<ItemEntity> it = event.getDrops().iterator();
+            while (it.hasNext()) {
+                ItemEntity itemEntity = it.next();
                 ItemStack drop = itemEntity.getItem();
                 if (player.getInventory().add(drop)) {
-                    itemEntity.discard();
+                    it.remove();
                     level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.2F, 1.5F);
                 } else {
                     itemEntity.setPos(player.getX(), player.getY() + 0.2, player.getZ());
@@ -303,7 +306,18 @@ public class JustToolsEvents {
             repairAvailable -= actualRepair;
         }
 
-        // 2. XP-Mending for equipped armor with AUTO_REPAIR
+        // 2. XP-Mending for offhand item with AUTO_REPAIR
+        if (repairAvailable > 0) {
+            ItemStack offHand = player.getOffhandItem();
+            if (!offHand.isEmpty() && offHand.has(ModDataComponents.AUTO_REPAIR.get()) && offHand.isDamaged()) {
+                int currentDamage = offHand.getDamageValue();
+                int actualRepair = Math.min(repairAvailable, currentDamage);
+                offHand.setDamageValue(currentDamage - actualRepair);
+                repairAvailable -= actualRepair;
+            }
+        }
+
+        // 3. XP-Mending for equipped armor with AUTO_REPAIR
         if (repairAvailable > 0) {
             for (ItemStack armor : player.getArmorSlots()) {
                 if (!armor.isEmpty() && armor.has(ModDataComponents.AUTO_REPAIR.get()) && armor.isDamaged()) {
@@ -311,6 +325,28 @@ public class JustToolsEvents {
                     int actualRepair = Math.min(repairAvailable, currentDamage);
                     armor.setDamageValue(currentDamage - actualRepair);
                     break;
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDrops(LivingDropsEvent event) {
+        if (event.getEntity().level().isClientSide) return;
+        Entity attacker = event.getSource().getEntity();
+        if (attacker instanceof Player player) {
+            ItemStack mainHand = player.getMainHandItem();
+            ItemStack offHand = player.getOffhandItem();
+            boolean hasMagnetic = (!mainHand.isEmpty() && mainHand.has(ModDataComponents.MAGNETIC.get()))
+                    || (!offHand.isEmpty() && offHand.has(ModDataComponents.MAGNETIC.get()));
+            if (hasMagnetic) {
+                Level level = player.level();
+                for (ItemEntity itemEntity : event.getDrops()) {
+                    ItemStack drop = itemEntity.getItem();
+                    if (player.getInventory().add(drop)) {
+                        itemEntity.discard();
+                        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.2F, 1.5F);
+                    }
                 }
             }
         }

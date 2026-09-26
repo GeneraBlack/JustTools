@@ -1,0 +1,6 @@
+{
+  "parent": "justtools:item/netherite_crossbow",
+  "textures": {
+    "layer0": "justtools:item/netherite_crossbow_firework"
+  }
+}

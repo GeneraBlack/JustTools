@@ -1,11 +1,11 @@
-# ⚒️ Just Tools — The Ultimate Tool & Armor Expansion
+# ⚒️ Just Tools — The Ultimate Tool, Armor & Ranged Expansion
 
 ![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)
 ![NeoForge](https://img.shields.io/badge/NeoForge-21.1.251+-orange)
-![Items](https://img.shields.io/badge/Items-150+-blue)
+![Items](https://img.shields.io/badge/Items-170+-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-**Just Tools** is a comprehensive Vanilla+ expansion mod for Minecraft 1.21.1 (NeoForge). It adds over **150+ new items** — including 3×3 area mining tools, versatile Paxels, complete Copper and Deepslate gear sets, a full armor overhaul, and an intuitive **Hardening Station** with **11 modular upgrade plates** that work on both tools and armor!
+**Just Tools** is a comprehensive Vanilla+ expansion mod for Minecraft 1.21.1 (NeoForge). It adds over **170+ new items** — including 3×3 area mining tools, versatile Paxels, complete Copper and Deepslate gear sets, a full armor overhaul, tiered Bows & Crossbows, and an intuitive **Hardening Station** with **11 modular upgrade plates** that work on tools, armor, and ranged weapons!
 
 No bloated dependencies. No overpowered mechanics that break survival balance. Just clean, satisfying progression done right.
 
@@ -15,10 +15,11 @@ No bloated dependencies. No overpowered mechanics that break survival balance. J
 
 - 🔨 **Hammers & Excavators** — Effortlessly mine and clear land in full 3×3 swathes (Wood through Netherite).
 - 🪓 **Paxels** — The ultimate 4-in-1 multi-tool (Pickaxe + Axe + Shovel + Hoe) with all right-click utility actions.
-- 🥉 **Copper & Deepslate Gear** — Full tool sets and 4-piece armor sets for both materials, finally giving Copper a meaningful purpose!
+- 🏹 **Tiered Bows & Crossbows** — Complete ranged weapon progression (Copper, Deepslate, Iron, Diamond, Netherite) plus **Hardened** variants with up to **6,500 durability**, faster draw speeds, and bonus damage!
+- 🥉 **Copper & Deepslate Gear** — Full tool, armor, and ranged weapon sets for both materials, finally giving Copper a meaningful purpose!
 - 🦺 **Hardened Armor System** — Reinforce every armor tier (Leather to Netherite) for **2.5× to 3× durability**, bonus Toughness, and Knockback Resistance.
 - 🛡️ **Tool Hardening Station** — Upgrade, customize, and repair gear with raw materials for **0 XP cost** while permanently **resetting anvil repair penalties**!
-- 🔮 **11 Stackable Upgrade Plates** — Apply modular enchant-like powers (Auto-smelt, Item Magnet, Lava immunity, Void fall save, Auto-repair, and more) to any tool or armor piece.
+- 🔮 **11 Stackable Upgrade Plates** — Apply modular enchant-like powers (Auto-smelt, Item Magnet, Lava immunity, Void fall save, Auto-repair, and more) to any tool, armor piece, bow, or crossbow.
 - 🎨 **Smithing Armor Trims** — Every armor piece fully supports all vanilla smithing templates and trims.
 - ⚡ **Standalone & Server-Safe** — Zero required library mods, tested for dedicated multiplayer servers.
 
@@ -41,6 +42,28 @@ Consolidate your hotbar! Paxels combine a Pickaxe, Axe, Shovel, and Hoe into a s
 
 ---
 
+## 🏹 Bows & Crossbows Expansion
+
+Ranged combat finally gets proper material progression and longevity:
+
+### 🏹 Tiered Bows
+* **Hardened Bow** (Upgraded vanilla Wooden Bow) — 1,150 durability, +1.0 damage, 1.25× draw speed.
+* **Copper Bow** (300 dur) & **Hardened Copper Bow** (900 dur) — Rapid draw speed (up to 1.35×) and high enchantability.
+* **Deepslate Bow** (450 dur) & **Hardened Deepslate Bow** (1,350 dur) — Heavy recurve bow packing a punch (+2.5 bonus damage).
+* **Iron Bow** (550 dur) & **Hardened Iron Bow** (1,650 dur) — Reliable mid-game ranged workhorses.
+* **Diamond Bow** (1,800 dur) & **Hardened Diamond Bow** (4,500 dur) — 1.50× draw speed and +3.5 damage.
+* **Netherite Bow** (2,500 dur) & **Hardened Netherite Bow** (6,000 dur) — Fireproof, 1.60× rapid draw speed, +4.5 bonus damage!
+
+### 🎯 Tiered Crossbows
+* **Hardened Crossbow** (Upgraded vanilla Crossbow) — 1,400 durability, +1.5 damage, 20 ticks reload (vs 25 vanilla).
+* **Copper Crossbow** (350 dur) & **Hardened Copper Crossbow** (1,050 dur) — 17 ticks rapid reload.
+* **Deepslate Crossbow** (500 dur) & **Hardened Deepslate Crossbow** (1,500 dur) — Heavy arbalest (+3.0 damage).
+* **Iron Crossbow** (600 dur) & **Hardened Iron Crossbow** (1,800 dur) — 18 ticks reload, +2.0 damage.
+* **Diamond Crossbow** (2,000 dur) & **Hardened Diamond Crossbow** (5,000 dur) — 15 ticks reload, +4.0 damage.
+* **Netherite Crossbow** (2,800 dur) & **Hardened Netherite Crossbow** (6,500 dur) — Fireproof, blistering 13 ticks reload, +5.0 bonus damage!
+
+---
+
 ## ⛏️ New Material Tiers
 
 | Tier | Durability | Speed | Attack Damage | Enchantability | Notes |
@@ -48,7 +71,7 @@ Consolidate your hotbar! Paxels combine a Pickaxe, Axe, Shovel, and Hoe into a s
 | **Copper** | 190 | 5.0 | 1.5 | 13 | Faster than stone, highly enchantable. Gives copper ingots real utility! |
 | **Deepslate** | 320 | 4.5 | 1.5 | 7 | Crafted from Cobbled Deepslate. A resilient early-game stone alternative. |
 
-*Both tiers include full sets: Sword, Pickaxe, Axe, Shovel, Hoe, Hammer, Excavator, Paxel, Helmet, Chestplate, Leggings, and Boots.*
+*Both tiers include full equipment sets: Sword, Pickaxe, Axe, Shovel, Hoe, Hammer, Excavator, Paxel, Bow, Crossbow, Helmet, Chestplate, Leggings, and Boots.*
 
 ---
 
@@ -70,30 +93,30 @@ Tired of having no armor between Leather and Iron? Just Tools fills the progress
 
 Say goodbye to the frustrating *"Too Expensive!"* anvil message! The **Hardening Station** is your all-in-one crafting workstation for maintaining and enhancing equipment:
 
-1. **Reinforce to Hardened Variants** — Use a Hardening Plate to upgrade base tools and armor to their Hardened forms, massively boosting durability and stats.
-2. **Free Material Repairs** — Place damaged gear with its base material (e.g., Diamond for Diamond gear, Planks for Wooden gear) to restore **50% durability per item for 0 XP**!
-3. **Combine Duplicate Gear** — Merge two damaged tools or armor pieces to combine their durability plus a **12% bonus**, merge compatible enchantments, and **reset prior work penalties**.
-4. **Universal Compatibility** — Works with all vanilla tools/armor as well as Just Tools gear!
+1. **Reinforce to Hardened Variants** — Use a Hardening Plate to upgrade base tools, armor, bows, and crossbows to their Hardened forms, massively boosting durability and stats.
+2. **Free Material Repairs** — Place damaged gear with its base material (e.g., Diamond for Diamond gear, String/Sticks for Bows, Tripwire Hooks/Iron for Crossbows) to restore **50% durability per item for 0 XP**!
+3. **Combine Duplicate Gear** — Merge two damaged tools, armor pieces, or bows to combine their durability plus a **12% bonus**, merge compatible enchantments, and **reset prior work penalties**.
+4. **Universal Compatibility** — Works with all vanilla gear as well as Just Tools gear!
 
 ---
 
 ## 🔮 11 Modular Upgrade Plates
 
-Install upgrade plates onto tools or armor in the Hardening Station. **Every single plate can be stacked**, allowing you to forge truly customized gear tailored to your playstyle:
+Install upgrade plates onto tools, armor, bows, or crossbows in the Hardening Station. **Every single plate can be stacked**, allowing you to forge truly customized gear tailored to your playstyle:
 
-| Upgrade Plate | 🛠️ Tool Ability | 🦺 Armor Ability |
-|:---|:---|:---|
-| 🛡️ **Hardening Plate** | Upgrades base tool to Hardened variant / full repair | Upgrades base armor to Hardened variant / full repair |
-| 🚜 **Depth Drill Plate** | Expands Hammer/Excavator mining to **3×3×2** (18 blocks) | **Heavy Plating**: Reduces all incoming damage by **12% per piece** |
-| 💜 **Soul Repair Core** | Passive repair (1 dur / 5s) + converts collected XP into durability | Passive repair (1 dur / 5s) + converts collected XP into durability |
-| 🔥 **Lava Seal Plating** | Makes tool fireproof; floats on lava | **Fire & Lava Immunity**: Cancels fire/lava damage and clears flames |
-| ⚡ **Redstone Turbine** | +35% mining speed + temporary Haste on mining streaks | **Kinetic Boost**: +15% player movement speed |
-| 💨 **Wind Core Plate** | Eliminates underwater and airborne mining speed penalties | **Feather Fall**: 100% fall damage immunity |
-| 🌋 **Thermal Core Plate** | **Auto-Smelts** mined drops directly into ingots/glass/bricks | **Flame Barrier**: Ignites melee attackers for 4s + freeze immunity |
-| 🔩 **Reinforced Frame** | **50% chance** to consume zero durability when mining | **50% chance** to consume zero durability from attacks |
-| 💎 **Amethyst Shield** | **Break Prevention**: Tool never breaks (stops at 1 durability) | **Shatter Guard**: Armor never breaks (stops at 1 durability) |
-| 🌿 **Photosynthesis Plate** | Repairs durability in direct sunlight or on grass/moss blocks | Repairs in sunlight/nature + grants **passive daytime Regeneration** |
-| 🧲 **Magnetic Vacuum** | Mined drops are automatically pulled into player inventory | **Item Magnet Aura**: Draws all nearby item drops within 8 blocks |
+| Upgrade Plate | 🛠️ Tool Ability | 🦺 Armor Ability | 🏹 Bow & Crossbow Ability |
+|:---|:---|:---|:---|
+| 🛡️ **Hardening Plate** | Hardened variant upgrade / full repair | Hardened armor upgrade / full repair | Hardened bow/crossbow upgrade / full repair |
+| 🚜 **Depth Drill Plate** | Expands Hammer/Excavator mining to **3×3×2** (18 blocks) | **Heavy Plating**: Reduces all incoming damage by **12% per piece** | Heavy frame reinforcement |
+| 💜 **Soul Repair Core** | Auto-repair (1 dur / 5s) + XP mending | Auto-repair (1 dur / 5s) + XP mending | Auto-repair (1 dur / 5s) + XP mending |
+| 🔥 **Lava Seal Plating** | Fireproof; floats on lava | **Fire & Lava Immunity**: Cancels fire/lava damage and clears flames | Fireproof; floats on lava |
+| ⚡ **Redstone Turbine** | +35% mining speed + streak Haste | **Kinetic Boost**: +15% player movement speed | **Rapid Draw / Quick Charge**: +30% to +35% faster draw and reload |
+| 💨 **Wind Core Plate** | Eliminates water/air mining penalties | **Feather Fall**: 100% fall damage immunity | **Gale Velocity**: Flatter trajectory and high-speed projectile flight |
+| 🌋 **Thermal Core Plate** | **Auto-Smelts** mined drops directly into ingots/glass/bricks | **Flame Barrier**: Ignites melee attackers for 4s + freeze immunity | **Incendiary Arrows/Bolts**: Innate Flame/Fire effect on all shots |
+| 🔩 **Reinforced Frame** | **50% chance** to consume zero durability | **50% chance** to consume zero durability from attacks | **50% chance** to consume zero durability per shot |
+| 💎 **Amethyst Shield** | **Break Prevention**: Tool never breaks (stops at 1 durability) | **Shatter Guard**: Armor never breaks (stops at 1 durability) | **Shatter Guard**: Weapon never snaps (stops at 1 durability) |
+| 🌿 **Photosynthesis Plate** | Repairs durability in sunlight or on grass/moss | Repairs in sunlight/nature + **daytime Regeneration** | Regenerates durability in direct sunlight |
+| 🧲 **Magnetic Vacuum** | Mined drops pulled into inventory | **Item Magnet Aura**: Draws drops within 8 blocks | **Sniper Loot Magnet**: Defeated mob drops fly straight to your inventory |
 
 ---
 
@@ -114,6 +137,23 @@ Install upgrade plates onto tools or armor in the Hardening Station. **Every sin
 
 *(Hammers & Excavators feature tailored durability scaling: e.g., Hardened Diamond Hammer boasts 9,000 durability; Hardened Netherite Hammer has 13,000!)*
 
+### Bows & Crossbows: Base vs. Hardened
+
+| Weapon Tier | Base Durability | Base Damage Bonus | Base Draw/Reload | Hardened Durability | Hardened Damage Bonus | Hardened Draw/Reload |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Vanilla Wood Bow** | 384 | +0.0 | 1.00× (20t) | **1,150** | +1.0 | **1.25× (16t)** |
+| **Copper Bow** | 300 | +0.5 | 1.15× (17t) | **900** | +1.5 | **1.35× (15t)** |
+| **Deepslate Bow** | 450 | +1.5 | 0.95× (21t) | **1,350** | +2.5 | **1.10× (18t)** |
+| **Iron Bow** | 550 | +1.0 | 1.10× (18t) | **1,650** | +2.0 | **1.30× (15t)** |
+| **Diamond Bow** | 1,800 | +2.0 | 1.25× (16t) | **4,500** | +3.5 | **1.50× (13t)** |
+| **Netherite Bow** | 2,500 | +3.0 | 1.35× (15t) | **6,000** | +4.5 | **1.60× (12t)** |
+| **Vanilla Crossbow** | 465 | +0.0 | 25t reload | **1,400** | +1.5 | **20t reload** |
+| **Copper Crossbow** | 350 | +0.5 | 21t reload | **1,050** | +1.5 | **17t reload** |
+| **Deepslate Crossbow**| 500 | +2.0 | 26t reload | **1,500** | +3.0 | **21t reload** |
+| **Iron Crossbow** | 600 | +1.0 | 22t reload | **1,800** | +2.0 | **18t reload** |
+| **Diamond Crossbow** | 2,000 | +2.5 | 19t reload | **5,000** | +4.0 | **15t reload** |
+| **Netherite Crossbow**| 2,800 | +3.5 | 17t reload | **6,500** | +5.0 | **13t reload** |
+
 ### Armor: Base vs. Hardened
 
 | Tier | Base Defense (H/C/L/B) | Base Toughness | Hardened Defense (H/C/L/B) | Hardened Toughness | Hardened Durability Multiplier |
@@ -131,7 +171,7 @@ Install upgrade plates onto tools or armor in the Hardening Station. **Every sin
 
 ## 🎮 Getting Started
 
-1. **Craft Copper or Deepslate Tools & Armor** using standard vanilla patterns with Copper Ingots or Cobbled Deepslate.
+1. **Craft Copper or Deepslate Tools, Armor, Bows & Crossbows** using standard recipes with Copper Ingots or Cobbled Deepslate.
 2. **Craft a Hammer or Excavator**:
    - Hammer: 5 ingots/materials + 2 sticks in a T-shape.
    - Excavator: 3 ingots/materials + 2 sticks in a wide shovel pattern.

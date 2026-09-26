@@ -1,0 +1,6 @@
+{
+  "parent": "justtools:item/hardened_netherite_bow",
+  "textures": {
+    "layer0": "justtools:item/hardened_netherite_bow_pulling_0"
+  }
+}

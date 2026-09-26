@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " DS",
+    "D S",
+    " DS"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:cobbled_deepslate"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "id": "justtools:deepslate_bow",
+    "count": 1
+  }
+}

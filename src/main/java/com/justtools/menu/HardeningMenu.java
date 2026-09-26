@@ -353,7 +353,17 @@ public class HardeningMenu extends AbstractContainerMenu {
             return true;
         }
 
-        // Netherite Scrap support for Netherite tools and armor
+        // Vanilla Bow repair with String or Sticks
+        if (tool.is(Items.BOW) && (material.is(Items.STRING) || material.is(Items.STICK))) {
+            return true;
+        }
+
+        // Vanilla Crossbow repair with Iron, String, or Tripwire Hook
+        if (tool.is(Items.CROSSBOW) && (material.is(Items.IRON_INGOT) || material.is(Items.STRING) || material.is(Items.TRIPWIRE_HOOK))) {
+            return true;
+        }
+
+        // Netherite Scrap support for Netherite tools, armor, bows, and crossbows
         if (tool.getItem() instanceof TieredItem tiered) {
             Tier tier = tiered.getTier();
             if ((tier == Tiers.NETHERITE || tier == ModTiers.HARDENED_NETHERITE) && material.is(Items.NETHERITE_SCRAP)) {
@@ -365,6 +375,11 @@ public class HardeningMenu extends AbstractContainerMenu {
             if ((mat == ArmorMaterials.NETHERITE || mat == ModArmorMaterials.HARDENED_NETHERITE) && material.is(Items.NETHERITE_SCRAP)) {
                 return true;
             }
+        }
+        if ((tool.is(ModItems.NETHERITE_BOW.get()) || tool.is(ModItems.HARDENED_NETHERITE_BOW.get())
+                || tool.is(ModItems.NETHERITE_CROSSBOW.get()) || tool.is(ModItems.HARDENED_NETHERITE_CROSSBOW.get()))
+                && material.is(Items.NETHERITE_SCRAP)) {
+            return true;
         }
 
         return false;
@@ -379,6 +394,9 @@ public class HardeningMenu extends AbstractContainerMenu {
                 || stack.is(Items.NETHERITE_INGOT)
                 || stack.is(Items.NETHERITE_SCRAP)
                 || stack.is(Items.LEATHER)
+                || stack.is(Items.STRING)
+                || stack.is(Items.STICK)
+                || stack.is(Items.TRIPWIRE_HOOK)
                 || stack.is(ItemTags.PLANKS)
                 || stack.is(ItemTags.STONE_TOOL_MATERIALS)
                 || stack.is(Items.COBBLED_DEEPSLATE)

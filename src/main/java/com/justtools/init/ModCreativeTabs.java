@@ -157,6 +157,32 @@ public class ModCreativeTabs {
                         output.accept(ModItems.HARDENED_DIAMOND_PAXEL.get());
                         output.accept(ModItems.HARDENED_NETHERITE_PAXEL.get());
 
+                        // Bows (Base & Hardened)
+                        output.accept(ModItems.COPPER_BOW.get());
+                        output.accept(ModItems.DEEPSLATE_BOW.get());
+                        output.accept(ModItems.IRON_BOW.get());
+                        output.accept(ModItems.DIAMOND_BOW.get());
+                        output.accept(ModItems.NETHERITE_BOW.get());
+                        output.accept(ModItems.HARDENED_BOW.get());
+                        output.accept(ModItems.HARDENED_COPPER_BOW.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_BOW.get());
+                        output.accept(ModItems.HARDENED_IRON_BOW.get());
+                        output.accept(ModItems.HARDENED_DIAMOND_BOW.get());
+                        output.accept(ModItems.HARDENED_NETHERITE_BOW.get());
+
+                        // Crossbows (Base & Hardened)
+                        output.accept(ModItems.COPPER_CROSSBOW.get());
+                        output.accept(ModItems.DEEPSLATE_CROSSBOW.get());
+                        output.accept(ModItems.IRON_CROSSBOW.get());
+                        output.accept(ModItems.DIAMOND_CROSSBOW.get());
+                        output.accept(ModItems.NETHERITE_CROSSBOW.get());
+                        output.accept(ModItems.HARDENED_CROSSBOW.get());
+                        output.accept(ModItems.HARDENED_COPPER_CROSSBOW.get());
+                        output.accept(ModItems.HARDENED_DEEPSLATE_CROSSBOW.get());
+                        output.accept(ModItems.HARDENED_IRON_CROSSBOW.get());
+                        output.accept(ModItems.HARDENED_DIAMOND_CROSSBOW.get());
+                        output.accept(ModItems.HARDENED_NETHERITE_CROSSBOW.get());
+
                         // Base Armor: Copper
                         output.accept(ModItems.COPPER_HELMET.get());
                         output.accept(ModItems.COPPER_CHESTPLATE.get());

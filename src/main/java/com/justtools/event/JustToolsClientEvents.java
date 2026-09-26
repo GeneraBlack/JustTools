@@ -5,6 +5,8 @@ import com.justtools.init.ModDataComponents;
 import com.justtools.init.ModItems;
 import com.justtools.item.ExcavatorItem;
 import com.justtools.item.HammerItem;
+import com.justtools.item.ModBowItem;
+import com.justtools.item.ModCrossbowItem;
 import com.justtools.item.PaxelItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -98,6 +100,25 @@ public class JustToolsClientEvents {
             event.getToolTip().add(Component.translatable("tooltip.justtools.excavator_desc").withStyle(ChatFormatting.DARK_GRAY));
         } else if (stack.getItem() instanceof PaxelItem) {
             event.getToolTip().add(Component.translatable("tooltip.justtools.paxel_desc").withStyle(ChatFormatting.DARK_GRAY));
+        } else if (stack.getItem() instanceof ModBowItem bow) {
+            if (bow.getArrowDamageBonus() > 0) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.bow_damage", String.format("+%.1f", bow.getArrowDamageBonus())).withStyle(ChatFormatting.BLUE));
+            }
+            if (bow.getDrawSpeedMultiplier() != 1.0F) {
+                int percent = Math.round((bow.getDrawSpeedMultiplier() - 1.0F) * 100);
+                String prefix = percent > 0 ? "+" : "";
+                event.getToolTip().add(Component.translatable("tooltip.justtools.draw_speed", prefix + percent + "%").withStyle(ChatFormatting.DARK_GREEN));
+            }
+        } else if (stack.getItem() instanceof ModCrossbowItem crossbow) {
+            if (crossbow.getDamageBonus() > 0) {
+                event.getToolTip().add(Component.translatable("tooltip.justtools.crossbow_damage", String.format("+%.1f", crossbow.getDamageBonus())).withStyle(ChatFormatting.BLUE));
+            }
+            if (crossbow.getBaseChargeTime() != 25) {
+                int diff = 25 - crossbow.getBaseChargeTime();
+                int percent = Math.round((diff / 25.0F) * 100);
+                String prefix = percent > 0 ? "+" : "";
+                event.getToolTip().add(Component.translatable("tooltip.justtools.reload_speed", prefix + percent + "%").withStyle(ChatFormatting.DARK_GREEN));
+            }
         } else if (stack.getItem() instanceof net.minecraft.world.item.ArmorItem) {
             if (stack.has(ModDataComponents.DEPTH_UPGRADE.get())) {
                 event.getToolTip().add(Component.translatable("tooltip.justtools.armor_depth").withStyle(ChatFormatting.DARK_GRAY));

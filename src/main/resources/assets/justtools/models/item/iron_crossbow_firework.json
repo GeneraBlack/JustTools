@@ -1,0 +1,6 @@
+{
+  "parent": "justtools:item/iron_crossbow",
+  "textures": {
+    "layer0": "justtools:item/iron_crossbow_firework"
+  }
+}

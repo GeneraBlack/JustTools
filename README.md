@@ -1,8 +1,8 @@
 # ⚒️ Just Tools
 
-**A comprehensive tool expansion mod for Minecraft 1.21.1 (NeoForge)**
+**A comprehensive tool, armor, and ranged weapon expansion mod for Minecraft 1.21.1 (NeoForge)**
 
-Just Tools adds new tool types, new material tiers, a tool hardening system, and 11 unique upgrade plates — all designed to extend your mining experience without changing Minecraft's core feel.
+Just Tools adds over 170+ items: new tool types, new material tiers, a complete armor overhaul, tiered Bows & Crossbows, a tool hardening system, and 11 unique upgrade plates — all designed to extend your survival experience without changing Minecraft's core feel.
 
 ---
 
@@ -50,6 +50,32 @@ The Hardening Station also serves as a **free repair station**:
   - 🔩 **Reinforced Frame**: 50% chance to take 0 durability damage from attacks
   - 🛡️ **Heavy Plating (Depth)**: 12% incoming damage reduction per piece
   - Fully compatible with vanilla armor trims at the smithing table!
+
+### 🏹 Bows & Crossbows Expansion
+
+- **Tiered Bows (11 Bows)**:
+  - **Copper Bow** (300 dur) & **Hardened Copper Bow** (900 dur) — Fast draw speed (up to 1.35×)
+  - **Deepslate Bow** (450 dur) & **Hardened Deepslate Bow** (1,350 dur) — Heavy recurve bow (+2.5 damage)
+  - **Iron Bow** (550 dur) & **Hardened Iron Bow** (1,650 dur) — Reliable mid-tier archery
+  - **Diamond Bow** (1,800 dur) & **Hardened Diamond Bow** (4,500 dur) — 1.50× draw speed, +3.5 damage
+  - **Netherite Bow** (2,500 dur) & **Hardened Netherite Bow** (6,000 dur) — Fireproof, 1.60× draw speed, +4.5 damage!
+  - **Hardened Bow** (Upgraded vanilla Wooden Bow) — 1,150 durability, +1.0 damage, 1.25× draw speed
+- **Tiered Crossbows (11 Crossbows)**:
+  - **Copper Crossbow** (350 dur) & **Hardened Copper Crossbow** (1,050 dur) — 17 ticks rapid reload
+  - **Deepslate Crossbow** (500 dur) & **Hardened Deepslate Crossbow** (1,500 dur) — Heavy arbalest (+3.0 damage)
+  - **Iron Crossbow** (600 dur) & **Hardened Iron Crossbow** (1,800 dur) — 18 ticks reload, +2.0 damage
+  - **Diamond Crossbow** (2,000 dur) & **Hardened Diamond Crossbow** (5,000 dur) — 15 ticks reload, +4.0 damage
+  - **Netherite Crossbow** (2,800 dur) & **Hardened Netherite Crossbow** (6,500 dur) — Fireproof, 13 ticks reload, +5.0 damage!
+  - **Hardened Crossbow** (Upgraded vanilla Crossbow) — 1,400 durability, 20 ticks reload, +1.5 damage
+- **Modular Upgrade Plates on Ranged Weapons**:
+  - 🔥 **Thermal Core**: Auto-igniting flame arrows & bolts
+  - ⚡ **Redstone Turbine**: +30% to +35% faster draw / rapid reload
+  - 💨 **Wind Core**: Gale velocity with flatter trajectory
+  - 🧲 **Magnetic Vacuum**: Defeated mob drops pulled straight to your inventory from range
+  - 💎 **Amethyst Shield**: Never breaks (stops at 1 durability)
+  - 💜 **Soul Repair**: Passive auto-repair + XP mending
+  - 🔩 **Reinforced Frame**: 50% chance zero durability loss per shot
+  - 🔥 **Lava Seal**: Fireproof weapon
 
 ### 🔧 11 Upgrade Plates
 
@@ -135,7 +161,7 @@ All recipes are viewable in-game via JEI/REI or the recipe book. Key recipes:
 ## ⚙️ Technical Details
 
 - **Mod ID**: `justtools`
-- **Version**: 1.0.0
+- **Version**: 1.2.0
 - **Minecraft**: 1.21.1
 - **Mod Loader**: NeoForge 21.1.251+
 - **License**: MIT
