@@ -381,11 +381,10 @@ def main():
         write_png(os.path.join(item_dir, f"{name}_leggings.png"), 16, 16, draw_leggings_item(pal, is_hardened))
         write_png(os.path.join(item_dir, f"{name}_boots.png"), 16, 16, draw_boots_item(pal, is_hardened))
 
-        # 2. Worn 3D armor layers (64x32)
-        write_png(os.path.join(armor_dir, f"{name}_layer_1.png"), 64, 32, draw_armor_layer(pal, layer=1, hardened=is_hardened))
-        write_png(os.path.join(armor_dir, f"{name}_layer_2.png"), 64, 32, draw_armor_layer(pal, layer=2, hardened=is_hardened))
-
-    print("All 40 item icons and 20 armor layer textures successfully generated!")
+    print("All 40 item icons generated.")
+    print("Generating 3D armor layer textures with authentic Minecraft UV mapping...")
+    import generate_authentic_armor
+    generate_authentic_armor.main()
 
 if __name__ == "__main__":
     main()

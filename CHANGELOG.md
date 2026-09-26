@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.2 — Armor Render & Texture Fix
+
+### Fixed
+- **Player Avatar Armor Rendering** — Re-rendered all 10 armor sets (Copper, Deepslate, and Hardened variants for Leather, Copper, Deepslate, Chainmail, Iron, Gold, Diamond, Netherite) with authentic Minecraft humanoid armor UV maps, fine plate shading, facial/neck cutouts, shoulder pauldrons, knee guards, sole treads, and reinforced obsidian trims. Armor pieces now render realistically on the player avatar instead of distorted flat solid blocks.
+- **Missing Hardened Gold Armor Textures** — Fixed naming mismatch where `hardened_gold` 3D layer textures were missing for Hardened Golden armor pieces, ensuring full compatibility across all armor slots.
+
 ## v1.2.1 — Bugfix
 
 ### Fixed
