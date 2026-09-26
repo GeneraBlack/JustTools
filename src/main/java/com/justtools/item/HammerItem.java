@@ -8,6 +8,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
@@ -20,7 +21,7 @@ public class HammerItem extends PickaxeItem {
     private static final ThreadLocal<Boolean> IS_BREAKING_AREA = ThreadLocal.withInitial(() -> false);
 
     public HammerItem(Tier tier, int durability, Properties properties) {
-        super(new CustomDurabilityTier(tier, durability), properties);
+        super(new CustomDurabilityTier(tier, durability), properties.attributes(DiggerItem.createAttributes(tier, 5.0F, -3.2F)));
     }
 
     public HammerItem(Tier tier, int durability) {

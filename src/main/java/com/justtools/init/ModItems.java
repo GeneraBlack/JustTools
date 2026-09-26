@@ -32,27 +32,27 @@ public class ModItems {
 
     // --- Copper Tools ---
     public static final DeferredItem<SwordItem> COPPER_SWORD = ITEMS.register("copper_sword",
-            () -> new SwordItem(ModTiers.COPPER, new Item.Properties()));
+            () -> new SwordItem(ModTiers.COPPER, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.COPPER, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> COPPER_SHOVEL = ITEMS.register("copper_shovel",
-            () -> new ShovelItem(ModTiers.COPPER, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.COPPER, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> COPPER_PICKAXE = ITEMS.register("copper_pickaxe",
-            () -> new PickaxeItem(ModTiers.COPPER, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.COPPER, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> COPPER_AXE = ITEMS.register("copper_axe",
-            () -> new AxeItem(ModTiers.COPPER, new Item.Properties()));
+            () -> new AxeItem(ModTiers.COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.COPPER, 6.0F, -3.1F))));
     public static final DeferredItem<HoeItem> COPPER_HOE = ITEMS.register("copper_hoe",
-            () -> new HoeItem(ModTiers.COPPER, new Item.Properties()));
+            () -> new HoeItem(ModTiers.COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.COPPER, -2.0F, -1.0F))));
 
     // --- Deepslate Tools ---
     public static final DeferredItem<SwordItem> DEEPSLATE_SWORD = ITEMS.register("deepslate_sword",
-            () -> new SwordItem(ModTiers.DEEPSLATE, new Item.Properties()));
+            () -> new SwordItem(ModTiers.DEEPSLATE, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.DEEPSLATE, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> DEEPSLATE_SHOVEL = ITEMS.register("deepslate_shovel",
-            () -> new ShovelItem(ModTiers.DEEPSLATE, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.DEEPSLATE, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> DEEPSLATE_PICKAXE = ITEMS.register("deepslate_pickaxe",
-            () -> new PickaxeItem(ModTiers.DEEPSLATE, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.DEEPSLATE, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> DEEPSLATE_AXE = ITEMS.register("deepslate_axe",
-            () -> new AxeItem(ModTiers.DEEPSLATE, new Item.Properties()));
+            () -> new AxeItem(ModTiers.DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.DEEPSLATE, 7.0F, -3.2F))));
     public static final DeferredItem<HoeItem> DEEPSLATE_HOE = ITEMS.register("deepslate_hoe",
-            () -> new HoeItem(ModTiers.DEEPSLATE, new Item.Properties()));
+            () -> new HoeItem(ModTiers.DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.DEEPSLATE, -1.0F, -2.0F))));
 
     // --- Hammers (Base) ---
     public static final DeferredItem<HammerItem> WOODEN_HAMMER = ITEMS.register("wooden_hammer",
@@ -110,99 +110,99 @@ public class ModItems {
 
     // --- Hardened Wood ---
     public static final DeferredItem<SwordItem> HARDENED_WOODEN_SWORD = ITEMS.register("hardened_wooden_sword",
-            () -> new SwordItem(ModTiers.HARDENED_WOOD, new Item.Properties()));
+            () -> new SwordItem(ModTiers.HARDENED_WOOD, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.HARDENED_WOOD, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_WOODEN_SHOVEL = ITEMS.register("hardened_wooden_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_WOOD, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.HARDENED_WOOD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_WOOD, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_WOODEN_PICKAXE = ITEMS.register("hardened_wooden_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_WOOD, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.HARDENED_WOOD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_WOOD, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_WOODEN_AXE = ITEMS.register("hardened_wooden_axe",
-            () -> new AxeItem(ModTiers.HARDENED_WOOD, new Item.Properties()));
+            () -> new AxeItem(ModTiers.HARDENED_WOOD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_WOOD, 6.0F, -3.2F))));
     public static final DeferredItem<HoeItem> HARDENED_WOODEN_HOE = ITEMS.register("hardened_wooden_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_WOOD, new Item.Properties()));
+            () -> new HoeItem(ModTiers.HARDENED_WOOD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_WOOD, 0.0F, -3.0F))));
 
     // --- Hardened Stone ---
     public static final DeferredItem<SwordItem> HARDENED_STONE_SWORD = ITEMS.register("hardened_stone_sword",
-            () -> new SwordItem(ModTiers.HARDENED_STONE, new Item.Properties()));
+            () -> new SwordItem(ModTiers.HARDENED_STONE, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.HARDENED_STONE, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_STONE_SHOVEL = ITEMS.register("hardened_stone_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_STONE, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.HARDENED_STONE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_STONE, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_STONE_PICKAXE = ITEMS.register("hardened_stone_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_STONE, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.HARDENED_STONE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_STONE, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_STONE_AXE = ITEMS.register("hardened_stone_axe",
-            () -> new AxeItem(ModTiers.HARDENED_STONE, new Item.Properties()));
+            () -> new AxeItem(ModTiers.HARDENED_STONE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_STONE, 7.0F, -3.2F))));
     public static final DeferredItem<HoeItem> HARDENED_STONE_HOE = ITEMS.register("hardened_stone_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_STONE, new Item.Properties()));
+            () -> new HoeItem(ModTiers.HARDENED_STONE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_STONE, -1.0F, -2.0F))));
 
     // --- Hardened Deepslate ---
     public static final DeferredItem<SwordItem> HARDENED_DEEPSLATE_SWORD = ITEMS.register("hardened_deepslate_sword",
-            () -> new SwordItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+            () -> new SwordItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.HARDENED_DEEPSLATE, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_DEEPSLATE_SHOVEL = ITEMS.register("hardened_deepslate_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DEEPSLATE, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_DEEPSLATE_PICKAXE = ITEMS.register("hardened_deepslate_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DEEPSLATE, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_DEEPSLATE_AXE = ITEMS.register("hardened_deepslate_axe",
-            () -> new AxeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+            () -> new AxeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DEEPSLATE, 7.0F, -3.2F))));
     public static final DeferredItem<HoeItem> HARDENED_DEEPSLATE_HOE = ITEMS.register("hardened_deepslate_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties()));
+            () -> new HoeItem(ModTiers.HARDENED_DEEPSLATE, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DEEPSLATE, -1.0F, -2.0F))));
 
     // --- Hardened Copper ---
     public static final DeferredItem<SwordItem> HARDENED_COPPER_SWORD = ITEMS.register("hardened_copper_sword",
-            () -> new SwordItem(ModTiers.HARDENED_COPPER, new Item.Properties()));
+            () -> new SwordItem(ModTiers.HARDENED_COPPER, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.HARDENED_COPPER, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_COPPER_SHOVEL = ITEMS.register("hardened_copper_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_COPPER, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.HARDENED_COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_COPPER, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_COPPER_PICKAXE = ITEMS.register("hardened_copper_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_COPPER, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.HARDENED_COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_COPPER, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_COPPER_AXE = ITEMS.register("hardened_copper_axe",
-            () -> new AxeItem(ModTiers.HARDENED_COPPER, new Item.Properties()));
+            () -> new AxeItem(ModTiers.HARDENED_COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_COPPER, 6.0F, -3.1F))));
     public static final DeferredItem<HoeItem> HARDENED_COPPER_HOE = ITEMS.register("hardened_copper_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_COPPER, new Item.Properties()));
+            () -> new HoeItem(ModTiers.HARDENED_COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_COPPER, -2.0F, -1.0F))));
 
     // --- Hardened Iron ---
     public static final DeferredItem<SwordItem> HARDENED_IRON_SWORD = ITEMS.register("hardened_iron_sword",
-            () -> new SwordItem(ModTiers.HARDENED_IRON, new Item.Properties()));
+            () -> new SwordItem(ModTiers.HARDENED_IRON, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.HARDENED_IRON, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_IRON_SHOVEL = ITEMS.register("hardened_iron_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_IRON, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.HARDENED_IRON, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_IRON, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_IRON_PICKAXE = ITEMS.register("hardened_iron_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_IRON, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.HARDENED_IRON, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_IRON, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_IRON_AXE = ITEMS.register("hardened_iron_axe",
-            () -> new AxeItem(ModTiers.HARDENED_IRON, new Item.Properties()));
+            () -> new AxeItem(ModTiers.HARDENED_IRON, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_IRON, 6.0F, -3.1F))));
     public static final DeferredItem<HoeItem> HARDENED_IRON_HOE = ITEMS.register("hardened_iron_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_IRON, new Item.Properties()));
+            () -> new HoeItem(ModTiers.HARDENED_IRON, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_IRON, -2.0F, -1.0F))));
 
     // --- Hardened Gold ---
     public static final DeferredItem<SwordItem> HARDENED_GOLDEN_SWORD = ITEMS.register("hardened_golden_sword",
-            () -> new SwordItem(ModTiers.HARDENED_GOLD, new Item.Properties()));
+            () -> new SwordItem(ModTiers.HARDENED_GOLD, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.HARDENED_GOLD, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_GOLDEN_SHOVEL = ITEMS.register("hardened_golden_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_GOLD, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.HARDENED_GOLD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_GOLD, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_GOLDEN_PICKAXE = ITEMS.register("hardened_golden_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_GOLD, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.HARDENED_GOLD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_GOLD, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_GOLDEN_AXE = ITEMS.register("hardened_golden_axe",
-            () -> new AxeItem(ModTiers.HARDENED_GOLD, new Item.Properties()));
+            () -> new AxeItem(ModTiers.HARDENED_GOLD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_GOLD, 6.0F, -3.0F))));
     public static final DeferredItem<HoeItem> HARDENED_GOLDEN_HOE = ITEMS.register("hardened_golden_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_GOLD, new Item.Properties()));
+            () -> new HoeItem(ModTiers.HARDENED_GOLD, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_GOLD, 0.0F, -3.0F))));
 
     // --- Hardened Diamond ---
     public static final DeferredItem<SwordItem> HARDENED_DIAMOND_SWORD = ITEMS.register("hardened_diamond_sword",
-            () -> new SwordItem(ModTiers.HARDENED_DIAMOND, new Item.Properties()));
+            () -> new SwordItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.HARDENED_DIAMOND, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_DIAMOND_SHOVEL = ITEMS.register("hardened_diamond_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_DIAMOND, new Item.Properties()));
+            () -> new ShovelItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DIAMOND, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_DIAMOND_PICKAXE = ITEMS.register("hardened_diamond_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_DIAMOND, new Item.Properties()));
+            () -> new PickaxeItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DIAMOND, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_DIAMOND_AXE = ITEMS.register("hardened_diamond_axe",
-            () -> new AxeItem(ModTiers.HARDENED_DIAMOND, new Item.Properties()));
+            () -> new AxeItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DIAMOND, 5.0F, -3.0F))));
     public static final DeferredItem<HoeItem> HARDENED_DIAMOND_HOE = ITEMS.register("hardened_diamond_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_DIAMOND, new Item.Properties()));
+            () -> new HoeItem(ModTiers.HARDENED_DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_DIAMOND, -3.0F, 0.0F))));
 
     // --- Hardened Netherite ---
     public static final DeferredItem<SwordItem> HARDENED_NETHERITE_SWORD = ITEMS.register("hardened_netherite_sword",
-            () -> new SwordItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant()));
+            () -> new SwordItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(ModTiers.HARDENED_NETHERITE, 3, -2.4F))));
     public static final DeferredItem<ShovelItem> HARDENED_NETHERITE_SHOVEL = ITEMS.register("hardened_netherite_shovel",
-            () -> new ShovelItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant()));
+            () -> new ShovelItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_NETHERITE, 1.5F, -3.0F))));
     public static final DeferredItem<PickaxeItem> HARDENED_NETHERITE_PICKAXE = ITEMS.register("hardened_netherite_pickaxe",
-            () -> new PickaxeItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant()));
+            () -> new PickaxeItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_NETHERITE, 1.0F, -2.8F))));
     public static final DeferredItem<AxeItem> HARDENED_NETHERITE_AXE = ITEMS.register("hardened_netherite_axe",
-            () -> new AxeItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant()));
+            () -> new AxeItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_NETHERITE, 5.0F, -3.0F))));
     public static final DeferredItem<HoeItem> HARDENED_NETHERITE_HOE = ITEMS.register("hardened_netherite_hoe",
-            () -> new HoeItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant()));
+            () -> new HoeItem(ModTiers.HARDENED_NETHERITE, new Item.Properties().fireResistant().attributes(DiggerItem.createAttributes(ModTiers.HARDENED_NETHERITE, -4.0F, 0.0F))));
 
     // --- Hardened Hammers ---
     public static final DeferredItem<HammerItem> HARDENED_WOODEN_HAMMER = ITEMS.register("hardened_wooden_hammer",

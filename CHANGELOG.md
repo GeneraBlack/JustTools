@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.1 — Bugfix
+
+### Fixed
+- **All tools now have proper attack damage and speed** — Swords, pickaxes, axes, shovels, hoes, hammers, excavators, and paxels were missing their combat attribute modifiers due to a Minecraft 1.21 API change. All tools now deal correct damage matching their tier.
+- **Dedicated server crash on startup** — Removed client-only class reference (`RegisterMenuScreensEvent`) from the main mod constructor that caused `NoClassDefFoundError` on dedicated servers. Client screen registration now uses the safe `@EventBusSubscriber(value = Dist.CLIENT)` pattern.
+
 ## v1.1.0 — The Armor Update
 
 ### Added
